@@ -13,6 +13,18 @@
         android:theme="@style/Theme.PresentPal"
         tools:targetApi="31">
         <activity
+            android:name=".ui.SplashScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SettingsScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RegisterScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
