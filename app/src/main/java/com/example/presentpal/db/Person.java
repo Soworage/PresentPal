@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @Entity(tableName = "person",
 foreignKeys = {
         @ForeignKey(entity = Relationship.class,
-            parentColumns = "",
+            parentColumns = "desricption",
             childColumns = "relationship",
             onDelete = ForeignKey.SET_NULL,
             onUpdate = ForeignKey.CASCADE)
