@@ -3,6 +3,7 @@ package com.example.presentpal.db;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +18,8 @@ import org.jetbrains.annotations.NotNull;
                         childColumns = "categoryId",
                         onDelete = ForeignKey.CASCADE)
         },
-        primaryKeys = {"personId", "categoryId"}
+        primaryKeys = {"personId", "categoryId"},
+        indices = {@Index(value = "categoryId")}
 )
 public class PersonCategory {
 

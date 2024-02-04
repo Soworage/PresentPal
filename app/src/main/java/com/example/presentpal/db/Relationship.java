@@ -10,10 +10,11 @@ import org.jetbrains.annotations.NotNull;
 public class Relationship {
 
     @PrimaryKey
+    @NotNull
     @ColumnInfo(name = "relationshipName")
     public String relationshipName;
 
-    public Relationship(String relationshipName) {
+    public Relationship(@NotNull String relationshipName) {
         this.relationshipName = relationshipName;
     }
 
@@ -21,7 +22,7 @@ public class Relationship {
         return relationshipName;
     }
 
-    public void setRelationshipName(String relationshipName) {
+    public void setRelationshipName(@NotNull String relationshipName) {
         this.relationshipName = relationshipName;
     }
 }

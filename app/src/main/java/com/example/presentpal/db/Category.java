@@ -10,11 +10,12 @@ import org.jetbrains.annotations.NotNull;
 public class Category {
 
     @PrimaryKey
+    @NotNull
     @ColumnInfo(name = "name")
     public String name;
 
 
-    public Category(String name) {
+    public Category(@NotNull String name) {
         this.name = name;
     }
 
@@ -22,7 +23,7 @@ public class Category {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 }

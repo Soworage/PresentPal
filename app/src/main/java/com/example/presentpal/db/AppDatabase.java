@@ -2,17 +2,6 @@ package com.example.presentpal.db;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-
-
-import com.example.presentpal.db.Person;
-import com.example.presentpal.db.Category;
-import com.example.presentpal.db.Characteristics;
-import com.example.presentpal.db.Event;
-import com.example.presentpal.db.PersonCategory;
-import com.example.presentpal.db.PresentIdea;
-import com.example.presentpal.db.Relationship;
-
-
 import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.db.dao.CategoryDao;
 import com.example.presentpal.db.dao.CharacteristicsDao;
@@ -30,6 +19,7 @@ import com.example.presentpal.db.dao.RelationshipDao;
         PresentIdea.class,
         Relationship.class
 }, version = 1)
+
 public abstract class AppDatabase extends RoomDatabase {
   //Abstract für jedes Dao
     public abstract PersonDao personDao();
