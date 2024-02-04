@@ -24,4 +24,6 @@ public class PersonCharacteristics {
 
     @ColumnInfo(name = "characteristicsId")
     public int characteristicsId;
+
+
 }

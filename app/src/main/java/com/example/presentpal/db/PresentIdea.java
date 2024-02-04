@@ -42,4 +42,71 @@ public class PresentIdea {
 
         @ColumnInfo(name = "availableAt")
         public String availableAt;
+
+        public PresentIdea(int id, int personId, Integer eventId, @NotNull String title, String description, float price, String availableAt) {
+                this.id = id;
+                this.personId = personId;
+                this.eventId = eventId;
+                this.title = title;
+                this.description = description;
+                this.price = price;
+                this.availableAt = availableAt;
+        }
+
+        public int getId() {
+                return id;
+        }
+
+        public void setId(int id) {
+                this.id = id;
+        }
+
+        public int getPersonId() {
+                return personId;
+        }
+
+        public void setPersonId(int personId) {
+                this.personId = personId;
+        }
+
+        public Integer getEventId() {
+                return eventId;
+        }
+
+        public void setEventId(Integer eventId) {
+                this.eventId = eventId;
+        }
+
+        @NotNull
+        public String getTitle() {
+                return title;
+        }
+
+        public void setTitle(@NotNull String title) {
+                this.title = title;
+        }
+
+        public String getDescription() {
+                return description;
+        }
+
+        public void setDescription(String description) {
+                this.description = description;
+        }
+
+        public float getPrice() {
+                return price;
+        }
+
+        public void setPrice(float price) {
+                this.price = price;
+        }
+
+        public String getAvailableAt() {
+                return availableAt;
+        }
+
+        public void setAvailableAt(String availableAt) {
+                this.availableAt = availableAt;
+        }
 }

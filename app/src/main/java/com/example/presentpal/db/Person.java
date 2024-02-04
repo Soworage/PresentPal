@@ -28,7 +28,6 @@ public class Person {
     @ColumnInfo(name ="lastname")
     public String lastname;
 
-    @NotNull
     @ColumnInfo(name ="nickname")
     public String nickname;
 
@@ -37,4 +36,62 @@ public class Person {
 
     @ColumnInfo(name ="relationshipName")
     public String relationshipName; // Verweis auf den Primärschlüssel in Relationship
+
+    public Person(int id, @NotNull String firstname, @NotNull String lastname, boolean user) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.user = user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @NotNull
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(@NotNull String firstname) {
+        this.firstname = firstname;
+    }
+
+    @NotNull
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(@NotNull String lastname) {
+        this.lastname = lastname;
+    }
+
+    @NotNull
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(@NotNull String nickname) {
+        this.nickname = nickname;
+    }
+
+    public boolean isUser() {
+        return user;
+    }
+
+    public void setUser(boolean user) {
+        this.user = user;
+    }
+
+    public String getRelationshipName() {
+        return relationshipName;
+    }
+
+    public void setRelationshipName(String relationshipName) {
+        this.relationshipName = relationshipName;
+    }
 }

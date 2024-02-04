@@ -12,4 +12,16 @@ public class Relationship {
     @PrimaryKey
     @ColumnInfo(name = "relationshipName")
     public String relationshipName;
+
+    public Relationship(String relationshipName) {
+        this.relationshipName = relationshipName;
+    }
+
+    public String getRelationshipName() {
+        return relationshipName;
+    }
+
+    public void setRelationshipName(String relationshipName) {
+        this.relationshipName = relationshipName;
+    }
 }

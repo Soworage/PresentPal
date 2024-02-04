@@ -34,4 +34,53 @@ public class Event {
 
         @ColumnInfo(name = "description")
         public String description;
+
+        public Event(int id, Integer personId, String title, @NotNull String date, String description) {
+                this.id = id;
+                this.personId = personId;
+                this.title = title;
+                this.date = date;
+                this.description = description;
+        }
+
+        public int getId() {
+                return id;
+        }
+
+        public void setId(int id) {
+                this.id = id;
+        }
+
+        public Integer getPersonId() {
+                return personId;
+        }
+
+        public void setPersonId(Integer personId) {
+                this.personId = personId;
+        }
+
+        public String getTitle() {
+                return title;
+        }
+
+        public void setTitle(String title) {
+                this.title = title;
+        }
+
+        @NotNull
+        public String getDate() {
+                return date;
+        }
+
+        public void setDate(@NotNull String date) {
+                this.date = date;
+        }
+
+        public String getDescription() {
+                return description;
+        }
+
+        public void setDescription(String description) {
+                this.description = description;
+        }
 }
