@@ -14,15 +14,14 @@ public class Characteristics {
     public int id;
 
     @NotNull
-    @ColumnInfo(name ="maincategory")
-    public String maincategory;
+    @ColumnInfo(name ="mainCategory")
+    public String mainCategory;
 
     @NotNull
-    @ColumnInfo(name ="subcategory")
-    public String subcategory;
+    @ColumnInfo(name ="subCategory")
+    public String subCategory;
 
     @NotNull
     @ColumnInfo(name ="description")
     public String description;
-
 }

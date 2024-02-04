@@ -7,42 +7,39 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-@Entity(tableName = "presentidea",
+@Entity(tableName = "presentIdea",
         foreignKeys = {
                 @ForeignKey(entity = Person.class,
                         parentColumns = "id",
                         childColumns = "personId",
-                        onDelete = ForeignKey.CASCADE,
-                        onUpdate = ForeignKey.CASCADE
-                ),
-                @ForeignKey(
-                        entity = Event.class,
+                        onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Event.class,
                         parentColumns = "id",
                         childColumns = "eventId",
-                        onDelete = ForeignKey.SET_NULL,
-                        onUpdate = ForeignKey.CASCADE
-                )
+                        onDelete = ForeignKey.SET_NULL)
         })
 public class PresentIdea {
 
         @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name ="id")
+        @ColumnInfo(name = "id")
         public int id;
-        @PrimaryKey
-        @ColumnInfo(name ="personId")
+
+        @ColumnInfo(name = "personId")
         public int personId;
 
+        @ColumnInfo(name = "eventId")
+        public Integer eventId; // Integer erlaubt auch 0 als ID
+
         @NotNull
-        @ColumnInfo(name ="title")
+        @ColumnInfo(name = "title")
         public String title;
 
-        @ColumnInfo(name ="description")
+        @ColumnInfo(name = "description")
         public String description;
 
-        @ColumnInfo(name ="price")
+        @ColumnInfo(name = "price")
         public float price;
 
-        @ColumnInfo(name ="availableAt")
+        @ColumnInfo(name = "availableAt")
         public String availableAt;
-
 }

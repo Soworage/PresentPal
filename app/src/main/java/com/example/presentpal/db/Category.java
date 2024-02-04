@@ -2,13 +2,15 @@ package com.example.presentpal.db;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "category")
 public class Category {
-
     @PrimaryKey
-    @ColumnInfo(name ="name")
+    @ColumnInfo(name = "name")
     public String name;
+
+
 }

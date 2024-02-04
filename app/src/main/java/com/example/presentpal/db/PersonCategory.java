@@ -3,30 +3,25 @@ package com.example.presentpal.db;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
 
-@Entity(tableName = "personcategory",
-    foreignKeys = {
-        @ForeignKey(entity = Person.class,
-            parentColumns = "id",
-            childColumns = "personId",
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        ),
-        @ForeignKey(entity = Category.class,
-            parentColumns = "id",
-            childColumns = "categoryId",
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        )
-    })
+@Entity(tableName = "personCategory",
+        foreignKeys = {
+                @ForeignKey(entity = Person.class,
+                        parentColumns = "id",
+                        childColumns = "personId",
+                        onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Category.class,
+                        parentColumns = "name",
+                        childColumns = "categoryId",
+                        onDelete = ForeignKey.CASCADE)
+        },
+        primaryKeys = {"personId", "categoryId"}
+)
 public class PersonCategory {
 
-    @PrimaryKey
-    @ColumnInfo(name ="personId")
+    @ColumnInfo(name = "personId")
     public int personId;
 
-    @PrimaryKey
-    @ColumnInfo(name ="categoryId")
-    public int categoryId;
+    @ColumnInfo(name = "categoryId")
+    public String categoryId;
 }
