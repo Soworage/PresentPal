@@ -6,22 +6,23 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-@Entity(tableName = "characteristic")
+@Entity(tableName="characteristics")
 public class Characteristics {
+
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name ="id")
     public int id;
 
     @NotNull
-    @ColumnInfo(name = "mainCategory")
-    public String mainCategory;
+    @ColumnInfo(name ="maincategory")
+    public String maincategory;
 
     @NotNull
-    @ColumnInfo(name = "subcategory")
+    @ColumnInfo(name ="subcategory")
     public String subcategory;
 
     @NotNull
-    @ColumnInfo(name = "description")
+    @ColumnInfo(name ="description")
     public String description;
-
 
 }

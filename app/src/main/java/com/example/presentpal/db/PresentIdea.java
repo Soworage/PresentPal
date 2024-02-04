@@ -1,4 +1,3 @@
-
 package com.example.presentpal.db;
 
 import androidx.room.ColumnInfo;
@@ -7,37 +6,43 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
-@Entity(tableName = "presentIdea",
+
+@Entity(tableName = "presentidea",
         foreignKeys = {
                 @ForeignKey(entity = Person.class,
                         parentColumns = "id",
                         childColumns = "personId",
-                        onDelete = ForeignKey.CASCADE),
-                @ForeignKey(entity = Event.class,
+                        onDelete = ForeignKey.CASCADE,
+                        onUpdate = ForeignKey.CASCADE
+                ),
+                @ForeignKey(
+                        entity = Event.class,
                         parentColumns = "id",
                         childColumns = "eventId",
-                        onDelete = ForeignKey.CASCADE)
+                        onDelete = ForeignKey.SET_NULL,
+                        onUpdate = ForeignKey.CASCADE
+                )
         })
 public class PresentIdea {
-    @PrimaryKey(autoGenerate = true)
-    public int id;
 
-    @ColumnInfo(name = "personId")
-    public int personId; // Verbindung zu Person
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name ="id")
+        public int id;
+        @PrimaryKey
+        @ColumnInfo(name ="personId")
+        public int personId;
 
-    @ColumnInfo(name = "eventId")
-    public int eventId; // Verbindung zu Event
+        @NotNull
+        @ColumnInfo(name ="title")
+        public String title;
 
-    @NotNull
-    public String titel;
+        @ColumnInfo(name ="description")
+        public String description;
 
-    @NotNull
-    public String description;
+        @ColumnInfo(name ="price")
+        public float price;
 
-    @NotNull
-    public String whereToBuy;
-
-    public int price;
-
+        @ColumnInfo(name ="availableAt")
+        public String availableAt;
 
 }
