@@ -21,10 +21,10 @@ public interface PersonCategoryDao {
     void delete(PersonCategory personCategory);
 
     // Abfrage, um alle Kategorien für eine bestimmte Person zu erhalten
-    @Query("SELECT * FROM category INNER JOIN personCategory ON category.name = personCategory.categoryName WHERE personCategory.personId = :personId")
+    @Query("SELECT * FROM category INNER JOIN personCategory ON category.name = personCategory.categoryId WHERE personCategory.personId = :personId")
     List<Category> getCategoriesForPerson(int personId);
 
     // Abfrage, um alle Kategorien für eine bestimmte Person zu erhalten bisschen zum testen
-    @Query("SELECT * FROM person INNER JOIN personCategory ON person.id = personCategory.personId WHERE personCategory.categoryName = :categoryName")
+    @Query("SELECT * FROM person INNER JOIN personCategory ON person.id = personCategory.personId WHERE personCategory.categoryId = :categoryId")
     List<Person> getPersonsForCategory(String categoryId);
 }
