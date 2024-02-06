@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="textWhite">#CDCDCD</color> <!--Main Text Color-->
+    <color name="darkGray">#161616</color> <!--Main background Color-->
+    <color name="blueButton">#158CE8</color> <!-- Main button Color-->
 </resources>
