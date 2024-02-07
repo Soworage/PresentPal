@@ -13,6 +13,7 @@ import com.example.presentpal.db.PresentIdea;
 import com.example.presentpal.db.Relationship;
 
 
+import com.example.presentpal.db.dao.LogInDao;
 import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.db.dao.CategoryDao;
 import com.example.presentpal.db.dao.CharacteristicsDao;
@@ -28,7 +29,8 @@ import com.example.presentpal.db.dao.RelationshipDao;
         Event.class,
         PersonCategory.class,
         PresentIdea.class,
-        Relationship.class
+        Relationship.class,
+        LogIn.class
 }, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
   //Abstract für jedes Dao
@@ -39,6 +41,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PersonCategoryDao personCategoryDao();
     public abstract PresentIdeaDao presentIdeaDao();
     public abstract RelationshipDao relationshipDao();
+    public abstract LogInDao logInDao();
 
 
 }

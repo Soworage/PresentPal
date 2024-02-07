@@ -1,4 +1,4 @@
-package com.example.presentpal.ui;
+package com.example.presentpal.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.presentpal.MainActivity;
 import com.example.presentpal.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -18,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, RegisterScreenActivity.class);
                 startActivity(intent);
                 finish();
             }

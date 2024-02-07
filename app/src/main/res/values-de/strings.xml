@@ -6,4 +6,13 @@
     <string name="person_insert_text_lastname">Nachname</string>
     <string name="person_insert_text_firstname">Vorname</string>
     <string name="person_insert_text_title">Neue Person</string>
+    <string name="welcome_message1">Willkommen!</string>
+    <string name="welcome_message2">Erstelle dein Account</string>
+    <string name="register_Text">Registrieren</string>
+    <string name="confirm_password">Passwort bestätigen:</string>
+    <string name="password_Text">Passwort:</string>
+    <string name="confirm_your_password">bestätige dein Passwort</string>
+    <string name="nickname">Spitznamen:</string>
+    <string name="enter_your_password">gib dein Passwort ein</string>
+    <string name="presentpal">PresentPal</string>
 </resources>

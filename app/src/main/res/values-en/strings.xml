@@ -6,4 +6,23 @@
     <string name="person_insert_text_lastname">Lastname</string>
     <string name="person_insert_text_firstname">Firstname</string>
     <string name="person_insert_text_title">Add new person</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Register Screen -->
+    <string name="welcome_message1">Welcome!</string>
+    <string name="welcome_message2">Create your account</string>
+    <string name="register_Text">Register</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="password_Text">Password:</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="nickname">Nickname:</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="presentpal">PresentPal</string>
+    <string name="camera_button_to_add_a_picture">press here to add a picture</string>
+    <string name="enter_your_nickname">enter your nickname</string>
+    <string name="welcome_back">Welcome back,</string>
+
+
+    <string name="log_in">Log in</string>
+    <string name="local_password">Local Password:</string>
+    <string name="enter_your_local_password">enter your local password</string>
 </resources>

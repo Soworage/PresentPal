@@ -2,8 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="textWhite">#CDCDCD</color> <!--Main Text Color-->
-    <color name="darkGray">#161616</color> <!--Main background Color-->
-    <color name="blueButton">#158CE8</color> <!-- Main button Color-->
-    <color name="lightGray">#161616</color> <!--Main background Color-->
+    <color name="textWhite">#CDCDCD</color> <!--Main text color-->
+    <color name="darkGray">#161616</color> <!--Main background color-->
+    <color name="blueButton">#158CE8</color> <!-- Main button color-->
+    <color name="lightGray">#313131</color> <!-- Main background text color-->
+    <color name="backgroundTextColor">#9A9AA0</color> <!-- Main background text-->
+
 </resources>

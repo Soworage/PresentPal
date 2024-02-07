@@ -19,7 +19,7 @@
             android:name=".view.EventActivity"
             android:exported="false" />
         <activity
-            android:name=".view.PersonActivity"
+            android:name=".view.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,16 +37,16 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SettingsScreenActivity"
+            android:name=".view.SettingsScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RegisterScreenActivity"
+            android:name=".view.RegisterScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginScreenActivity"
+            android:name=".view.LoginScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".view.PersonActivity"
             android:exported="true" />
     </application>
 

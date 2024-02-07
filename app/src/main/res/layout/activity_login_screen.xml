@@ -4,6 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginScreenActivity">
+    android:background="#161616"
+    tools:context=".view.LoginScreenActivity">
+
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="337dp"
+        android:layout_height="57dp"
+        android:backgroundTint="@color/blueButton"
+        android:text="@string/log_in"
+        android:textColorLink="@color/blueButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.605" />
+
+    <TextView
+        android:id="@+id/welcome_message1"
+        android:layout_width="248dp"
+        android:layout_height="53dp"
+        android:text="@string/welcome_back"
+        android:textColor="@color/textWhite"
+        android:textColorHighlight="@color/textWhite"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327" />
+
+    <TextView
+        android:id="@+id/welcome_message2"
+        android:layout_width="131dp"
+        android:layout_height="19dp"
+        android:text="Name vom user"
+        android:textColor="@color/textWhite"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="145dp"
+            android:layout_height="139dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profilepicture1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <TextView
+            android:id="@+id/nicknameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/local_password"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.455" />
+
+        <EditText
+            android:id="@+id/nicknameEditText"
+            android:layout_width="348dp"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:background="@drawable/text_input_background"
+            android:ems="10"
+            android:hint="@string/enter_your_local_password"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textWhite"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.417"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/presentpal"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.035" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_image_button"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/blueButton"
+        android:contentDescription="@string/camera_button_to_add_a_picture"
+        android:importantForAccessibility="no"
+        android:src="@drawable/baseline_add_a_photo_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

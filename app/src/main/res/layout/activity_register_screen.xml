@@ -1,9 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.RegisterScreenActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="RegisterScreenViewModel"
+            type="com.example.presentpal.viewmodel.RegisterScreenViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#161616"
+        tools:context=".view.RegisterScreenActivity">
+
+
+        <TextView
+            android:id="@+id/Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.672" />
+
+        <EditText
+            android:id="@+id/passwordCheckEditText"
+            android:layout_width="348dp"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:background="@drawable/text_input_background"
+            android:ems="10"
+            android:hint="@string/confirm_your_password"
+            android:text="@{RegisterScreenViewModel.passwordCheckEditText}"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textWhite"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.412"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.72" />
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password_Text"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.563" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="337dp"
+            android:layout_height="57dp"
+            android:backgroundTint="@color/blueButton"
+            android:text="@string/register_Text"
+            android:textColorLink="@color/blueButton"
+            android:onClick="@{(v)-> RegisterScreenViewModel.addUser(v)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.894" />
+
+
+        <TextView
+            android:id="@+id/welcome_message1"
+            android:layout_width="156dp"
+            android:layout_height="42dp"
+            android:text="@string/welcome_message1"
+            android:textColor="@color/textWhite"
+            android:textColorHighlight="@color/textWhite"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.339" />
+
+        <TextView
+            android:id="@+id/welcome_message2"
+            android:layout_width="131dp"
+            android:layout_height="19dp"
+            android:text="@string/welcome_message2"
+            android:textColor="@color/textWhite"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="145dp"
+            android:layout_height="139dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profilepicture1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <TextView
+            android:id="@+id/nicknameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nickname"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.455" />
+
+        <EditText
+            android:id="@+id/nicknameEditText"
+            android:layout_width="348dp"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:background="@drawable/text_input_background"
+            android:ems="10"
+            android:text="@{RegisterScreenViewModel.nicknameEditText}"
+            android:hint="@string/enter_your_nickname"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textWhite"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.417"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="348dp"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:background="@drawable/text_input_background"
+            android:ems="10"
+            android:hint="@string/enter_your_password"
+            android:text="@{RegisterScreenViewModel.passwordEditText}"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textWhite"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.607" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/presentpal"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.035" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_image_button"
+            android:layout_width="59dp"
+            android:layout_height="54dp"
+            android:backgroundTint="@color/blueButton"
+            android:contentDescription="@string/camera_button_to_add_a_picture"
+            android:importantForAccessibility="no"
+            android:src="@drawable/baseline_add_a_photo_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.669"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.265" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
