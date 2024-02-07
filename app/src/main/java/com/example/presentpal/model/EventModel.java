@@ -30,7 +30,7 @@ public class EventModel {
         return eventDao.getEventsForPerson(person.getId());
     }
 
-    public void addEvent(String title, String description,String date, Integer personId){
+    public void addEvent(String title,String date, Integer personId){
         Event event = new Event(personId, title, date, null, false, null);
         insertEvent(event);
     }

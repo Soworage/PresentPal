@@ -20,7 +20,7 @@ public class EventInsertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_insert);
 
         activityEventInsertBinding = DataBindingUtil.setContentView(this, R.layout.activity_event_insert);
-        eventInsertViewModel = new ViewModelProvider(this).get(EventInsertActivity.class);
+        eventInsertViewModel = new ViewModelProvider(this).get(EventInsertViewModel.class);
 
         activityEventInsertBinding.setLifecycleOwner(this);
         activityEventInsertBinding.setEventInsertViewModel(eventInsertViewModel);

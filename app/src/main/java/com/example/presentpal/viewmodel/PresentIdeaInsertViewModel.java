@@ -20,13 +20,11 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
 
     public MutableLiveData<String> title = new MutableLiveData<>();
     public MutableLiveData<String> description = new MutableLiveData<>();
-    public MutableLiveData<String> date = new MutableLiveData<>();
-
     public MutableLiveData<Integer> personId = new MutableLiveData<>();
 
 
     //private MutableLiveData<>
     public void addPresentIdea(View view){
-        presentIdeaModel.addPresentIdea(title.getValue(), description.getValue(), date.getValue(), personId.getValue());
+        presentIdeaModel.addPresentIdea(personId.getValue(), title.getValue(), description.getValue());
     }
 }
