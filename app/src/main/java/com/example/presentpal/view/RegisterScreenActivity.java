@@ -21,9 +21,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_screen);
         activityRegisterScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_register_screen);
         registerScreenViewModel = new ViewModelProvider(this).get(RegisterScreenViewModel.class);
         activityRegisterScreenBinding.setLifecycleOwner(this);
@@ -31,19 +29,21 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
 
 
-//            @Override
-//            public void onChanged(Boolean success) {
-//                if (success) {
-//                    // Navigate to the login screen
-//                    Intent intent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                } else {
-//
-//                }
-//            }
-//        });
+    // Beobachten des addUserResult LiveData-Objekts
+        registerScreenViewModel.addUserResult.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean success) {
+                if (success) {
+                    // Navigate to the login screen
+                    Intent intent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
 
-        // ...
+                }
+            }
+        });
     }
 }
+
+

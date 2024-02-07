@@ -1,6 +1,7 @@
 package com.example.presentpal.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,8 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
 
     public void addUser(View view) {
-    //    if (Objects.equals(passwordEditText.getValue(), passwordCheckEditText.getValue())) {
+        if (Objects.equals(passwordEditText.getValue(), passwordCheckEditText.getValue())) {
+            Log.d("RegisterScreenVM", "Nickname: " + nicknameEditText.getValue() + ", Passwort: " + passwordEditText.getValue());
             personModel.addUser(nicknameEditText.getValue(), passwordEditText.getValue(),
                     success -> {
                         // Das läuft im Hintergrundthread um sicherzustellen das änderungen am livedata im hauptthread durchgeführt werden
@@ -45,3 +47,4 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
         }
     }
+}

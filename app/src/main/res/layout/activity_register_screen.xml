@@ -39,7 +39,7 @@
             android:background="@drawable/text_input_background"
             android:ems="10"
             android:hint="@string/confirm_your_password"
-            android:text="@{RegisterScreenViewModel.passwordCheckEditText}"
+            android:text="@={RegisterScreenViewModel.passwordCheckEditText}"
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
@@ -83,8 +83,8 @@
 
         <TextView
             android:id="@+id/welcome_message1"
-            android:layout_width="156dp"
-            android:layout_height="42dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/welcome_message1"
             android:textColor="@color/textWhite"
             android:textColorHighlight="@color/textWhite"
@@ -98,8 +98,8 @@
 
         <TextView
             android:id="@+id/welcome_message2"
-            android:layout_width="131dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/welcome_message2"
             android:textColor="@color/textWhite"
             android:textSize="14sp"
@@ -142,7 +142,7 @@
             android:autofillHints=""
             android:background="@drawable/text_input_background"
             android:ems="10"
-            android:text="@{RegisterScreenViewModel.nicknameEditText}"
+            android:text="@={RegisterScreenViewModel.nicknameEditText}"
             android:hint="@string/enter_your_nickname"
             android:inputType="text"
             android:paddingStart="15dp"
@@ -164,7 +164,7 @@
             android:background="@drawable/text_input_background"
             android:ems="10"
             android:hint="@string/enter_your_password"
-            android:text="@{RegisterScreenViewModel.passwordEditText}"
+            android:text="@={RegisterScreenViewModel.passwordEditText}"
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"

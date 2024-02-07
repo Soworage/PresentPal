@@ -18,11 +18,11 @@ import java.util.concurrent.Executors;
 
 public class PersonModel {
 
-    private PersonDao personDao;
+    private final PersonDao personDao;
     private LiveData<List<Person>> allPersons;
-    private LogInDao logInDao;
+    private final LogInDao logInDao;
 
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public PersonModel(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
@@ -38,7 +38,13 @@ public class PersonModel {
 
     public void addUser(String nickname, String password, DataOperationCallback callback) {
         LogIn logIn = new LogIn(password);
-        Person user = new Person(null, null, nickname ,true);
+        if (nickname == null || nickname.trim().isEmpty()) {
+            Log.e("PersonModel", "Nickname ist null oder leer");
+            callback.onCompleted(false);
+            return;
+        }
+
+        Person user = new Person(null, null, nickname, true);
         executor.execute(() -> {
             try {
                 personDao.insert(user);
@@ -46,11 +52,14 @@ public class PersonModel {
                 // Operation erfolgreich
                 callback.onCompleted(true);
             } catch (Exception e) {
+                // Logge die Ausnahme, um den Fehler zu sehen
+                Log.e("PersonModel", "Fehler beim Hinzufügen des Benutzers", e);
                 // Operation fehlgeschlagen
                 callback.onCompleted(false);
             }
         });
     }
+
 
     public interface DataOperationCallback { //für überprüfen ob es geklappt hat für user adden
         void onCompleted(boolean success);
