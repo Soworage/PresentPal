@@ -26,9 +26,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding = true
+    }
 }
 
 dependencies {
+
     implementation 'de.hdodenhof:circleimageview:3.1.0' //Für Bilder damti die Rund sind https://github.com/hdodenhof/CircleImageView - 07.02.2024
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -41,6 +47,22 @@ dependencies {
 
     def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // ViewModel
 
+    def lifecycle_version = "2.7.0"
+    def arch_version = "2.2.0"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+
+    // Annotation processor
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 }

@@ -1,5 +1,6 @@
 package com.example.presentpal.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,11 +24,15 @@ public interface PersonDao {
     void delete(Person person);
 
     @Query("SELECT * FROM person")
-    List<Person> getAllPersons();
+    LiveData<List<Person>> getAllPersons();
 
     // person nach ID finden
     @Query("SELECT * FROM person WHERE id = :id")
     Person getPersonById(int id);
+
+    // Such die Personendaten des Users der App
+    @Query("SELECT * FROM person WHERE user = 1")
+    Person getUser();
 
 
 }

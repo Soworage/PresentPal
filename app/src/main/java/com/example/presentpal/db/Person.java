@@ -20,14 +20,13 @@ public class Person {
     @ColumnInfo(name ="id")
     public int id;
 
-    @NotNull
     @ColumnInfo(name ="firstname")
     public String firstname;
 
-    @NotNull
     @ColumnInfo(name ="lastname")
     public String lastname;
 
+    @NotNull
     @ColumnInfo(name ="nickname")
     public String nickname;
 
@@ -37,10 +36,10 @@ public class Person {
     @ColumnInfo(name ="relationshipName")
     public String relationshipName; // Verweis auf den Primärschlüssel in Relationship
 
-    public Person(int id, @NotNull String firstname, @NotNull String lastname, boolean user) {
-        this.id = id;
+    public Person(String firstname, String lastname,@NotNull String nickname, boolean user) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.nickname = nickname;
         this.user = user;
     }
 
@@ -48,25 +47,19 @@ public class Person {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @NotNull
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(@NotNull String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    @NotNull
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(@NotNull String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
