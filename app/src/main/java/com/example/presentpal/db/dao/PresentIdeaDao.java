@@ -1,5 +1,6 @@
 package com.example.presentpal.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -27,7 +28,10 @@ public interface PresentIdeaDao {
 
     // Finden von Geschenkideen für eine bestimmte Person
     @Query("SELECT * FROM presentidea WHERE personId = :personId")
-    List<PresentIdea> getPresentIdeasForPerson(int personId);
+    LiveData<List<PresentIdea>> getPresentIdeasForPerson(int personId);
+
+    @Query("SELECT * FROM presentidea WHERE eventId = :eventId OR eventId isNull AND personId = :personId")
+    LiveData<List<PresentIdea>> getPresentIdeasByEvent(int eventId, int personId);
 
 
 }

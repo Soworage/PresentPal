@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PresentPal</string>
+    <string name="person_insert_button_add">Hinzufügen</string>
+    <string name="person_insert_text_nickname">Spitzname</string>
+    <string name="person_insert_text_lastname">Nachname</string>
+    <string name="person_insert_text_firstname">Vorname</string>
+    <string name="person_insert_text_title">Neue Person</string>
+</resources>

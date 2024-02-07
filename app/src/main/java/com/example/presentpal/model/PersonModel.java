@@ -10,7 +10,6 @@ import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.PersonDao;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

@@ -46,14 +46,17 @@ public class PresentIdea {
         @ColumnInfo(name = "availableAt")
         public String availableAt;
 
-        public PresentIdea(int id, int personId, Integer eventId, @NotNull String title, String description, float price, String availableAt) {
-                this.id = id;
+        @ColumnInfo(name = "isPresent")
+        public boolean isPresent;
+
+        public PresentIdea(int personId, Integer eventId, @NotNull String title, String description, float price, String availableAt, boolean isPresent) {
                 this.personId = personId;
                 this.eventId = eventId;
                 this.title = title;
                 this.description = description;
                 this.price = price;
                 this.availableAt = availableAt;
+                this.isPresent = isPresent;
         }
 
         public int getId() {

@@ -1,5 +1,6 @@
 package com.example.presentpal.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,10 +24,10 @@ public interface EventDao {
     void delete(Event event);
 
     @Query("SELECT * FROM event")
-    List<Event> getAllEvents();
+    LiveData<List<Event>> getAllEvents();
 
     @Query("SELECT * FROM event WHERE personId = :personId")
-    List<Event> getEventsForPerson(int personId);
+    LiveData<List<Event>> getEventsForPerson(int personId);
 
     @Query("SELECT * FROM event WHERE id = :eventId")
     Event getEventById(int eventId);

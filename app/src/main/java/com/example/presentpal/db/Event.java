@@ -38,12 +38,19 @@ public class Event {
         @ColumnInfo(name = "description")
         public String description;
 
-        public Event(int id, Integer personId, String title, @NotNull String date, String description) {
-                this.id = id;
+        @ColumnInfo(name = "closed")
+        public boolean closed;
+
+        @ColumnInfo(name = "firstYear")
+        public String firstYear;
+
+        public Event(Integer personId, String title, @NotNull String date, String description, boolean closed, String firstYear) {
                 this.personId = personId;
                 this.title = title;
                 this.date = date;
                 this.description = description;
+                this.closed = closed;
+                this.firstYear = firstYear;
         }
 
         public int getId() {
