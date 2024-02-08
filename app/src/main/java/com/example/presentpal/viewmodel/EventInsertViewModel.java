@@ -37,7 +37,7 @@ public class EventInsertViewModel extends AndroidViewModel {
 
     //private MutableLiveData<>
     public void addEvent(View view) {
-        if(selectedPerson.getValue() != null) {
+        if (selectedPerson.getValue() != null) {
             eventModel.addEvent(title.getValue(), date.getValue(), selectedPerson.getValue().getId());
         }
     }
@@ -61,11 +61,10 @@ public class EventInsertViewModel extends AndroidViewModel {
     }
 
     public void setCalendarOpen() {
-        if(calendarOpen.getValue()!= null){
-            if(calendarOpen.getValue()){
+        if (calendarOpen.getValue() != null) {
+            if (calendarOpen.getValue()) {
                 calendarOpen.setValue(false);
-            }
-            else {
+            } else {
                 calendarOpen.setValue(true);
             }
         }

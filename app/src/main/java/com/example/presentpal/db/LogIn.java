@@ -13,7 +13,6 @@ public class LogIn {
     @NotNull
     @PrimaryKey
     @ColumnInfo(name = "password" )
-
     public String password;
 
     public LogIn(@NonNull String password) {

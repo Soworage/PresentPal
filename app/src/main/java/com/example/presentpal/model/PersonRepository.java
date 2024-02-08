@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.presentpal.db.AppDatabase;
 import com.example.presentpal.db.AppDatabaseClient;
+import com.example.presentpal.db.Category;
 import com.example.presentpal.db.LogIn;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.LogInDao;
@@ -19,9 +20,7 @@ import java.util.concurrent.Executors;
 public class PersonRepository {
 
     private final PersonDao personDao;
-    private LiveData<List<Person>> allPersons;
     private final LogInDao logInDao;
-
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public PersonRepository(Application application) {
@@ -76,5 +75,13 @@ public class PersonRepository {
             }
         });
 
+    }
+
+    public LiveData<List<Person>> getAllPersons(){
+        return personDao.getAllPersons();
+    }
+
+    public LiveData<List<Person>> getAllPersonsByCategory(Category category){
+        return personDao.getAllPersonsByCategory(category.name);
     }
 }
