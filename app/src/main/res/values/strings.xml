@@ -23,6 +23,10 @@
     <string name="log_in">Log in</string>
     <string name="local_password">Local Password:</string>
     <string name="enter_your_local_password">enter your local password</string>
+    <string name="event_insert_text_person">Person</string>
+    <string name="event_insert_text_date">Date</string>
+    <string name="event_insert_text_title">Title</string>
+    <string name="event_insert_text_maintitle">Add new event</string>
 
     <!--Register Screen end-->
 

@@ -9,6 +9,7 @@ import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.EventDao;
+import com.example.presentpal.db.dao.PersonDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -17,13 +18,20 @@ import java.util.concurrent.Executors;
 public class EventModel {
 
     private final EventDao eventDao;
+
     private LiveData<List<Event>> allEvents;
+    private LiveData<List<Person>> allPersons;
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
+
+    public LiveData<List<Person>> getAllPersons() {
+        return allPersons;
+    }
 
     public EventModel(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         eventDao = database.eventDao();
+        allPersons = database.personDao().getAllPersons();
     }
 
     public LiveData<List<Event>> getAllEventsByPerson(Person person) {

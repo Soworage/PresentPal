@@ -1,5 +1,5 @@
 
-package com.example.presentpal.view.adapter;
+package com.example.presentpal.view.adapter.viewpager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

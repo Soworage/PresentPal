@@ -1,5 +1,6 @@
 package com.example.presentpal.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -8,13 +9,15 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
+
 @Entity(tableName = "person",
         foreignKeys = @ForeignKey(entity = Relationship.class,
                 parentColumns = "relationshipName",
                 childColumns = "relationshipName",
                 onDelete = ForeignKey.SET_NULL),
         indices = {@Index(value = "relationshipName")})
-public class Person {
+public class Person implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name ="id")
@@ -86,5 +89,11 @@ public class Person {
 
     public void setRelationshipName(String relationshipName) {
         this.relationshipName = relationshipName;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.nickname;
     }
 }

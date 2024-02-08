@@ -31,9 +31,10 @@ public class PersonModel {
 
     }
 
-    public void addPerson(String firstname, String lastname, String nickname) {
+    public Person addPerson(String firstname, String lastname, String nickname) {
         Person person = new Person(firstname, lastname, nickname, false);
         insertPerson(person);
+        return person;
     }
 
     public void addUser(String nickname, String password, DataOperationCallback callback) {
