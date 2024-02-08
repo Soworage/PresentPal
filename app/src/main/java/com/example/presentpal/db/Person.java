@@ -17,7 +17,7 @@ import java.io.Serializable;
                 childColumns = "relationshipName",
                 onDelete = ForeignKey.SET_NULL),
         indices = {@Index(value = "relationshipName")})
-public class Person implements Serializable {
+public class Person implements Serializable  {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name ="id")

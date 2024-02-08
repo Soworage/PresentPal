@@ -40,4 +40,7 @@ public interface PersonDao {
 
     @Query("SELECT * FROM person WHERE nickname = :nickname LIMIT 1")
     LiveData<Person> findUserByNickname(String nickname);
+
+    @Query("SELECT * FROM person INNER JOIN personCategory ON personId = id WHERE categoryId = :category")
+    LiveData<List<Person>> getAllPersonsByCategory(String category);
 }

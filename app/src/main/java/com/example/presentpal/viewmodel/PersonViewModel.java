@@ -10,7 +10,7 @@ import com.example.presentpal.db.Person;
 
 public class PersonViewModel extends AndroidViewModel {
 
-    public MutableLiveData<Person> person = new MutableLiveData<Person>();
+    public MutableLiveData<Person> person = new MutableLiveData<>();
 
     public PersonViewModel(@NonNull Application application) {
         super(application);
