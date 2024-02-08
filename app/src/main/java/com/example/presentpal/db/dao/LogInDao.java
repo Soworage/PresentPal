@@ -1,5 +1,6 @@
 package com.example.presentpal.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,6 +22,7 @@ public interface LogInDao{
     @Delete
     void delete(LogIn logIn);
 
-    @Query("select 1 FROM login where password = :password")
-    public Integer checkPassword(String password);
+
+    @Query("SELECT EXISTS(SELECT 1 FROM LOGIN WHERE password IS NOT NULL)")
+    LiveData<Boolean> isPasswordSet();
 }

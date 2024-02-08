@@ -21,6 +21,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         activityRegisterScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_register_screen);
         registerScreenViewModel = new ViewModelProvider(this).get(RegisterScreenViewModel.class);
@@ -34,7 +35,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean success) {
                 if (success) {
-                    // Navigate to the login screen
+                    // Navigate to the login screend
                     Intent intent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
                     startActivity(intent);
                     finish();

@@ -14,6 +14,8 @@ public class PersonInsertActivity extends AppCompatActivity {
 
     private PersonInsertViewModel personInsertViewModel;
     private ActivityPersonInsertBinding activityPersonInsertBinding;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
