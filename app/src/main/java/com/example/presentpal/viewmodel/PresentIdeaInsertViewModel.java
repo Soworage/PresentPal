@@ -7,14 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.presentpal.model.PresentIdeaModel;
+import com.example.presentpal.model.PresentIdeaRepository;
 
 public class PresentIdeaInsertViewModel extends AndroidViewModel {
 
-    private final PresentIdeaModel presentIdeaModel;
+    private final PresentIdeaRepository presentIdeaRepository;
     public PresentIdeaInsertViewModel(@NonNull Application application) {
         super(application);
-        presentIdeaModel = new PresentIdeaModel(application);
+        presentIdeaRepository = new PresentIdeaRepository(application);
     }
 
 
@@ -25,6 +25,6 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
 
     //private MutableLiveData<>
     public void addPresentIdea(View view){
-        presentIdeaModel.addPresentIdea(personId.getValue(), title.getValue(), description.getValue());
+        presentIdeaRepository.addPresentIdea(personId.getValue(), title.getValue(), description.getValue());
     }
 }

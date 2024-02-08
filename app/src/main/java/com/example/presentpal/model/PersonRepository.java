@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PersonModel {
+public class PersonRepository {
 
     private final PersonDao personDao;
     private LiveData<List<Person>> allPersons;
@@ -24,7 +24,7 @@ public class PersonModel {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public PersonModel(Application application) {
+    public PersonRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         personDao = database.personDao();
         logInDao = database.logInDao();

@@ -3,10 +3,13 @@ package com.example.presentpal.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.presentpal.R;
+import com.example.presentpal.model.LogInRepository;
 import com.example.presentpal.viewmodel.SplashScreenViewModel;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -17,27 +20,24 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_splash_screen); //
+        setContentView(R.layout.activity_splash_screen);
 
         splashScreenViewModel = new ViewModelProvider(this).get(SplashScreenViewModel.class);
 
+        // Nach der SPLASH_SCREEN_DELAY, überprüfen Sie den Passwortstatus
         new Handler().postDelayed(() -> {
-            // LiveData beobachten
-            splashScreenViewModel.getNavigateTo().observe(this, navigateTo -> {
-                if (navigateTo != null) {
-                    if (navigateTo == SplashScreenViewModel.NavigateTo.LOGIN) {
-                        navigateToLoginScreen();
-                    } else if (navigateTo == SplashScreenViewModel.NavigateTo.REGISTER) {
-                        navigateToRegisterScreen();
-                    }
+            // Da wir nicht direkt im ViewModel beobachten, fügen wir den Observer hier hinzu
+
+            splashScreenViewModel.isPasswordSetLiveData().observe(this, isPasswordSet -> {
+                if (isPasswordSet != null && isPasswordSet > 0) {
+
+                    navigateToLoginScreen();
+                } else {
+                    navigateToRegisterScreen();
                 }
             });
-
-            // Überprüfung starten
-            splashScreenViewModel.checkUserRegistration();
         }, SPLASH_SCREEN_DELAY);
     }
-
     private void navigateToLoginScreen() {
         Intent loginIntent = new Intent(this, LoginScreenActivity.class);
         startActivity(loginIntent);

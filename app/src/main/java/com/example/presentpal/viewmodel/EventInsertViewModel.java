@@ -1,7 +1,6 @@
 package com.example.presentpal.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -10,20 +9,18 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.presentpal.db.Person;
-import com.example.presentpal.model.EventModel;
-
-import org.jetbrains.annotations.NotNull;
+import com.example.presentpal.model.EventRepository;
 
 import java.util.List;
 
 public class EventInsertViewModel extends AndroidViewModel {
 
-    private final EventModel eventModel;
+    private final EventRepository eventModel;
     public LiveData<List<Person>> allPersons;
 
     public EventInsertViewModel(@NonNull Application application) {
         super(application);
-        eventModel = new EventModel(application);
+        eventModel = new EventRepository(application);
         allPersons = eventModel.getAllPersons();
         calendarOpen.setValue(false);
     }

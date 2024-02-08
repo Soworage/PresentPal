@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class PresentIdeaModel {
+public class PresentIdeaRepository {
 
     private final PresentIdeaDao presentIdeaDao;
     private LiveData<List<PresentIdea>> allPresentIdeas;
@@ -24,7 +24,7 @@ public class PresentIdeaModel {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
 
-    public PresentIdeaModel(Application application) {
+    public PresentIdeaRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         presentIdeaDao = database.presentIdeaDao();
     }

@@ -1,7 +1,6 @@
 package com.example.presentpal.viewmodel;
 
 import android.app.Application;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,14 +8,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.presentpal.db.Person;
-import com.example.presentpal.model.PersonModel;
+import com.example.presentpal.model.PersonRepository;
 
 public class PersonInsertViewModel extends AndroidViewModel {
 
-    private final PersonModel personModel;
+    private final PersonRepository personRepository;
     public PersonInsertViewModel(@NonNull Application application) {
         super(application);
-        personModel = new PersonModel(application);
+        personRepository = new PersonRepository(application);
     }
 
     public MutableLiveData<String> firstname = new MutableLiveData<>();
@@ -31,7 +30,7 @@ public class PersonInsertViewModel extends AndroidViewModel {
 
     //private MutableLiveData<>
     public void addPerson(){
-        person.setValue(personModel.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
+        person.setValue(personRepository.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
       // ÜBERARBETEIN!!
         personInserted.setValue(true);
     }

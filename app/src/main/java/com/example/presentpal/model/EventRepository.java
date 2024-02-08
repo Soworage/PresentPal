@@ -9,13 +9,12 @@ import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.EventDao;
-import com.example.presentpal.db.dao.PersonDao;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class EventModel {
+public class EventRepository {
 
     private final EventDao eventDao;
 
@@ -28,7 +27,7 @@ public class EventModel {
         return allPersons;
     }
 
-    public EventModel(Application application) {
+    public EventRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         eventDao = database.eventDao();
         allPersons = database.personDao().getAllPersons();

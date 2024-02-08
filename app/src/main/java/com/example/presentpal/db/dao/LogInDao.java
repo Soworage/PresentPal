@@ -23,6 +23,6 @@ public interface LogInDao{
     void delete(LogIn logIn);
 
 
-    @Query("SELECT EXISTS(SELECT 1 FROM LOGIN WHERE password IS NOT NULL)")
-    LiveData<Boolean> isPasswordSet();
+    @Query("SELECT EXISTS(SELECT 1 FROM login)")
+    LiveData<Integer> isPasswordSet();
 }

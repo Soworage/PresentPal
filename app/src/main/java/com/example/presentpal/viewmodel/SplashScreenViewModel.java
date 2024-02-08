@@ -10,37 +10,21 @@ import androidx.lifecycle.Observer;
 import androidx.room.Database;
 
 import com.example.presentpal.db.dao.LogInDao;
+import com.example.presentpal.model.LogInRepository;
 
 public class SplashScreenViewModel extends AndroidViewModel {
 
-    private final LogInDao loginDao;
-    private final MutableLiveData<NavigateTo> navigateTo = new MutableLiveData<>();
+    private LogInRepository logInRepository;
 
-    public SplashScreenViewModel(@NonNull Application application, LogInDao loginDao) {
+    public SplashScreenViewModel(@NonNull Application application) {
         super(application);
-        this.loginDao = loginDao;
+        logInRepository = new LogInRepository(application);
+
     }
-
-    public LiveData<NavigateTo> getNavigateTo() {
-        return navigateTo;
-    }
-
-
-
-    public void checkUserRegistration() {
-        // Observe the isPasswordSet LiveData
-        LiveData<Boolean> ispasswordSet = loginDao.isPasswordSet();
-        if (ispasswordSet.getValue() != null) {
-            navigateTo.setValue(NavigateTo.LOGIN);
-        } else {
-            navigateTo.setValue(NavigateTo.REGISTER);
-        }
-
+    public LiveData<Integer> isPasswordSetLiveData() {
+        return logInRepository.isPasswordSetLiveData();
     }
 
 
-    public enum NavigateTo {
-        LOGIN,
-        REGISTER
-    }
+
 }
