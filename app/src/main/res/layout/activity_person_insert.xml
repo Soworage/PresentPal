@@ -72,7 +72,7 @@
             android:id="@+id/personInsert_button_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{(v)-> PersonInsertViewModel.addPerson(v)}"
+            android:onClick="@{()-> PersonInsertViewModel.addPerson()}"
             android:text="@string/person_insert_button_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

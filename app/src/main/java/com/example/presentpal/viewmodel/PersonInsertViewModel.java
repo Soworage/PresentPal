@@ -5,8 +5,10 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.presentpal.db.Person;
 import com.example.presentpal.model.PersonModel;
 
 public class PersonInsertViewModel extends AndroidViewModel {
@@ -21,8 +23,23 @@ public class PersonInsertViewModel extends AndroidViewModel {
     public MutableLiveData<String> lastname = new MutableLiveData<>();
     public MutableLiveData<String> nickname = new MutableLiveData<>();
 
+    public MutableLiveData<Person> person = new MutableLiveData<>();
+
+
+
+    public MutableLiveData<Boolean> personInserted = new MutableLiveData<>();
+
     //private MutableLiveData<>
-    public void addPerson(View view){
-        personModel.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue());
+    public void addPerson(){
+        person.setValue(personModel.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
+      // ÜBERARBETEIN!!
+        personInserted.setValue(true);
+    }
+
+    public LiveData<Person> getPerson(){
+        if(person.getValue() != null){
+            return person;
+        }
+        return null;
     }
 }
