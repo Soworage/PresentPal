@@ -30,7 +30,7 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
     public void addUser(View view) {
         if (Objects.equals(passwordEditText.getValue(), passwordCheckEditText.getValue())) {
-            Log.d("RegisterScreenVM", "Nickname: " + nicknameEditText.getValue() + ", Passwort: " + passwordEditText.getValue());
+
             personRepository.addUser(nicknameEditText.getValue(), passwordEditText.getValue(),
                     success -> {
                         // Das läuft im Hintergrundthread um sicherzustellen das änderungen am livedata im hauptthread durchgeführt werden

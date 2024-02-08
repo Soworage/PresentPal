@@ -22,6 +22,8 @@ public interface LogInDao{
     @Delete
     void delete(LogIn logIn);
 
+    @Query("SELECT 1 FROM login where password = :password")
+    LiveData<Integer> checkPassword(String password);
 
     @Query("SELECT EXISTS(SELECT 1 FROM login)")
     LiveData<Integer> isPasswordSet();

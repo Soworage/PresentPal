@@ -25,4 +25,7 @@ public class LogInRepository {
         return logInDao.isPasswordSet();
     }
 
+    public LiveData<Integer> checkPassword(String password){
+        return logInDao.checkPassword(password);
+    }
 }
