@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="LoginScreenViewModel"
+            name="loginScreenViewModel"
             type="com.example.presentpal.viewmodel.LoginScreenViewModel" />
     </data>
 
@@ -28,24 +28,24 @@
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:text="@={LoginScreenViewModel.passwordCheckerText}"
+            android:afterTextChanged="@{(edtitable)->loginScreenViewModel.setPasswordCheckerText(edtitable)}"
             android:textColor="@color/white"
             android:textColorHint="@color/textWhite"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.417"
+            app:layout_constraintHorizontal_bias="0.416"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.502" />
 
         <Button
             android:id="@+id/LogInButton"
-            android:layout_width="337dp"
-            android:layout_height="57dp"
+            android:layout_width="318dp"
+            android:layout_height="54dp"
             android:backgroundTint="@color/blueButton"
+            android:onClick="@{()->loginScreenViewModel.loginUser()}"
             android:text="@string/log_in"
-            android:onClick="@{()->LoginScreenViewModel.loginUser()}"
             android:textColorLink="@color/blueButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,23 +55,23 @@
 
         <TextView
             android:id="@+id/welcome_message1"
-            android:layout_width="248dp"
-            android:layout_height="53dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/welcome_back"
             android:textColor="@color/textWhite"
             android:textColorHighlight="@color/textWhite"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.576"
+            app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.327" />
+            app:layout_constraintVertical_bias="0.326" />
 
         <TextView
             android:id="@+id/welcome_message2"
-            android:layout_width="131dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Name vom user"
             android:textColor="@color/textWhite"
             android:textSize="14sp"
@@ -80,20 +80,21 @@
             app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.386" />
+            app:layout_constraintVertical_bias="0.372" />
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            android:layout_width="145dp"
-            android:layout_height="139dp"
+            android:layout_width="177dp"
+            android:layout_height="154dp"
             android:scaleType="centerCrop"
             android:src="@drawable/profilepicture1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.564"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.141" />
+            app:layout_constraintVertical_bias="0.121" />
 
         <TextView
             android:id="@+id/nicknameTextd"
@@ -103,11 +104,10 @@
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.094"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.455" />
-
+            app:layout_constraintVertical_bias="0.453" />
 
         <TextView
             android:id="@+id/textView"
@@ -125,18 +125,53 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_image_button"
-            android:layout_width="59dp"
-            android:layout_height="54dp"
+            android:layout_width="60dp"
+            android:layout_height="56dp"
             android:backgroundTint="@color/blueButton"
             android:contentDescription="@string/camera_button_to_add_a_picture"
             android:importantForAccessibility="no"
-            android:src="@drawable/baseline_add_a_photo_24"
+            android:src="@drawable/round_add_a_photo_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintHorizontal_bias="0.901"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976" />
+            app:tint="@color/white"
+            app:layout_constraintVertical_bias="0.961" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blueButton"
+            android:contentDescription="if you want to edit something press here"
+            android:importantForAccessibility="no"
+            android:src="@drawable/baseline_edit_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.673"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            app:layout_constraintVertical_bias="0.961" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/questionmark_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blueButton"
+            android:contentDescription="if you need help, press this button"
+            android:importantForAccessibility="no"
+            android:src="@drawable/baseline_question_mark_24"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.961"
+            app:tint="@color/white"
+            app:useCompatPadding="false" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

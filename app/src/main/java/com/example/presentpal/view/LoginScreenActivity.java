@@ -8,20 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.presentpal.MainActivity;
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityLoginScreenBinding;
 import com.example.presentpal.viewmodel.LoginScreenViewModel;
 
-public class LoginScreenActivity extends AppCompatActivity {
 
+public class LoginScreenActivity extends AppCompatActivity {
+    //    private LoginScreenViewModel loginScreenViewModel;
+//    private ActivityLoginScreenBinding activityLoginScreenBinding;
     private LoginScreenViewModel loginScreenViewModel;
     private ActivityLoginScreenBinding activityLoginScreenBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_screen);
+//        activityLoginScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_screen);
+//        loginScreenViewModel = new ViewModelProvider(this).get(LoginScreenViewModel.class);
+//        activityLoginScreenBinding.setLifecycleOwner(this);
+//        activityLoginScreenBinding.setLoginScreenViewModel(loginScreenViewModel);
         activityLoginScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_screen);
         loginScreenViewModel = new ViewModelProvider(this).get(LoginScreenViewModel.class);
         activityLoginScreenBinding.setLifecycleOwner(this);
@@ -29,19 +33,18 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         loginScreenViewModel.getIsPasswordCorrect().observe(this, isPasswordCorrect -> {
 
-            if (isPasswordCorrect != null && isPasswordCorrect) {
-                Intent loginIntent = new Intent(LoginScreenActivity.this, MainActivity.class);
+            if (isPasswordCorrect != null && isPasswordCorrect > 0) {
+
+                Intent loginIntent = new Intent(this, RegisterScreenActivity.class);
                 startActivity(loginIntent);
                 finish();
             } else {
-                CharSequence text = "Password wrong, please try again!";
+                CharSequence text = "Password wrong";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(LoginScreenActivity.this, text, duration);
                 toast.show();
             }
         });
 
-        loginScreenViewModel.login.observe(this, logIn -> {
-        });
     }
 }

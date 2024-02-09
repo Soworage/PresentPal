@@ -199,7 +199,7 @@
             android:backgroundTint="@color/blueButton"
             android:contentDescription="@string/camera_button_to_add_a_picture"
             android:importantForAccessibility="no"
-            android:src="@drawable/baseline_add_a_photo_24"
+            android:src="@drawable/round_add_a_photo_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.669"

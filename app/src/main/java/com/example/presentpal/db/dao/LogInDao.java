@@ -1,6 +1,7 @@
 package com.example.presentpal.db.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,7 +12,7 @@ import androidx.room.Update;
 import com.example.presentpal.db.LogIn;
 
 @Dao
-public interface LogInDao {
+public interface LogInDao{
 
     @Insert
     void insert(LogIn logIn);
@@ -22,12 +23,12 @@ public interface LogInDao {
     @Delete
     void delete(LogIn logIn);
 
-    @Query("SELECT 1 FROM login WHERE password = :password")
-    LiveData<Boolean> checkPassword(String password);
+    @Query("SELECT COUNT(password) FROM login WHERE password = :password")
+    LiveData<Integer> checkPassword(String password);
+
+    @Query("SELECT COUNT(*) FROM login WHERE password = :password")
+    Integer  checkPasswordLiveData(String password); // New method to return MutableLiveData
 
     @Query("SELECT EXISTS(SELECT 1 FROM login)")
     LiveData<Integer> isPasswordSet();
-
-    @Query("SELECT * FROM login LIMIT 1")
-    LiveData<LogIn> getLogIn();
 }
