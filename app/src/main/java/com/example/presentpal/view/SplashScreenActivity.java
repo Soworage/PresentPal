@@ -15,7 +15,7 @@ import com.example.presentpal.viewmodel.SplashScreenViewModel;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private SplashScreenViewModel splashScreenViewModel;
-    private final long SPLASH_SCREEN_DELAY = 3000;
+    private final long SPLASH_SCREEN_DELAY = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             splashScreenViewModel.isPasswordSetLiveData().observe(this, isPasswordSet -> {
                 if (isPasswordSet != null && isPasswordSet > 0) {
-
+                    Log.i("To Login Screen", "Wert: "+ isPasswordSet);
                     navigateToLoginScreen();
                 } else {
                     navigateToRegisterScreen();

@@ -30,15 +30,14 @@ public class PersonInsertActivity extends AppCompatActivity {
 
         activityPersonInsertBinding = DataBindingUtil.setContentView(this, R.layout.activity_person_insert);
         personInsertViewModel = new ViewModelProvider(this).get(PersonInsertViewModel.class);
-
         activityPersonInsertBinding.setLifecycleOwner(this);
         activityPersonInsertBinding.setPersonInsertViewModel(personInsertViewModel);
 
         personInsertViewModel.personInserted.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    Person person =  personInsertViewModel.getPerson().getValue();
+                if (aBoolean) {
+                    Person person = personInsertViewModel.getPerson().getValue();
                     Intent intent = new Intent(PersonInsertActivity.this, PersonActivity.class);
                     intent.putExtra("person", person);
                     startActivity(intent);

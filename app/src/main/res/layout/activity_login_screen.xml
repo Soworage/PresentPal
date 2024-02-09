@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="loginScreenViewModel"
+            name="LoginScreenViewModel"
             type="com.example.presentpal.viewmodel.LoginScreenViewModel" />
     </data>
 
@@ -28,7 +28,7 @@
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:text="@={loginScreenViewModel.passwordCheckerText}"
+            android:text="@={LoginScreenViewModel.passwordCheckerText}"
             android:textColor="@color/white"
             android:textColorHint="@color/textWhite"
             android:textColorLink="#FFFFFF"
@@ -45,7 +45,7 @@
             android:layout_height="57dp"
             android:backgroundTint="@color/blueButton"
             android:text="@string/log_in"
-            android:onClick="@{()->loginScreenViewModel.loginUser()}"
+            android:onClick="@{()->LoginScreenViewModel.loginUser()}"
             android:textColorLink="@color/blueButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

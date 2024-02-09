@@ -24,14 +24,13 @@ public class EventInsertActivity extends AppCompatActivity {
 
     private EventInsertViewModel eventInsertViewModel;
     private ActivityEventInsertBinding activityEventInsertBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_insert);
-
         activityEventInsertBinding = DataBindingUtil.setContentView(this, R.layout.activity_event_insert);
         eventInsertViewModel = new ViewModelProvider(this).get(EventInsertViewModel.class);
-
         activityEventInsertBinding.setLifecycleOwner(this);
         activityEventInsertBinding.setEventInsertViewModel(eventInsertViewModel);
 
@@ -53,11 +52,6 @@ public class EventInsertActivity extends AppCompatActivity {
         eventInsertViewModel.getCalendarOpen().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                CharSequence text = "CalendarOpen changed!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(EventInsertActivity.this, text, duration);
-                toast.show();
                     if(aBoolean){
                         // https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
                         final Calendar calendar = Calendar.getInstance();

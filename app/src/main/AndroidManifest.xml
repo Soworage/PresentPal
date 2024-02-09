@@ -22,7 +22,7 @@
             android:name=".view.EventActivity"
             android:exported="false" />
         <activity
-            android:name=".view.EventInsertActivity"
+            android:name=".view.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.SplashScreenActivity"
+            android:name=".view.EventInsertActivity"
             android:exported="true" />
         <activity
             android:name=".view.PersonInsertActivity"

@@ -11,7 +11,7 @@ import androidx.room.Update;
 import com.example.presentpal.db.LogIn;
 
 @Dao
-public interface LogInDao{
+public interface LogInDao {
 
     @Insert
     void insert(LogIn logIn);
@@ -22,9 +22,12 @@ public interface LogInDao{
     @Delete
     void delete(LogIn logIn);
 
-    @Query("SELECT 1 FROM login where password = :password")
-    LiveData<Integer> checkPassword(String password);
+    @Query("SELECT 1 FROM login WHERE password = :password")
+    LiveData<Boolean> checkPassword(String password);
 
     @Query("SELECT EXISTS(SELECT 1 FROM login)")
     LiveData<Integer> isPasswordSet();
+
+    @Query("SELECT * FROM login LIMIT 1")
+    LiveData<LogIn> getLogIn();
 }
