@@ -43,6 +43,7 @@ public class CategoryViewModel extends AndroidViewModel {
     }
 
 
+
     public static class PersonWithEvents{
         private String name;
         private String dateA;
@@ -51,6 +52,8 @@ public class CategoryViewModel extends AndroidViewModel {
         private String titleB;
         private int number;
         private String more;
+
+        private Person person;
 
         public PersonWithEvents(String name, String dateA, String titleA, String dateB, String titleB, int number) {
             this.name = name;
@@ -65,6 +68,9 @@ public class CategoryViewModel extends AndroidViewModel {
 
         public PersonWithEvents(List<EventJoinPerson> eventJoinPersonList){
             if(eventJoinPersonList != null){
+
+                this.person = eventJoinPersonList.get(0).person;
+
                 if (eventJoinPersonList.size() < 2){
                     this.name = eventJoinPersonList.get(0).person.nickname;
                     this.dateA = eventJoinPersonList.get(0).event.date;
@@ -142,6 +148,10 @@ public class CategoryViewModel extends AndroidViewModel {
 
         public void setMore(String more) {
             this.more = more;
+        }
+
+        public Person getPerson() {
+            return person;
         }
     }
 

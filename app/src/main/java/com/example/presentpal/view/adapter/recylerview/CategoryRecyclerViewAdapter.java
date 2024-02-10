@@ -1,12 +1,17 @@
 package com.example.presentpal.view.adapter.recylerview;
 
+
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.presentpal.databinding.ActivityCategoryRowBinding;
+import com.example.presentpal.view.CatergoryActivity;
+import com.example.presentpal.view.PersonActivity;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 
 import java.util.List;
@@ -33,6 +38,17 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         CategoryViewModel.PersonWithEvents personWE = personWithEvents.get(position);
         holder.activityCategoryRowBinding.setPersonWithEvents(personWE);
         holder.activityCategoryRowBinding.executePendingBindings();
+
+        // Keine Ahnung ob das auch anders geht
+        // https://www.youtube.com/watch?v=0eV7iB109ME
+        holder.activityCategoryRowBinding.categoryRowCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PersonActivity.class);
+                intent.putExtra("person", personWE.getPerson());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
