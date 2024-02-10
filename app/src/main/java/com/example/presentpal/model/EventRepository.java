@@ -106,6 +106,7 @@ public class EventRepository {
                 }else {
                     returnList.add(new CategoryViewModel.PersonWithEvents(temporaryList));
                     temporaryList.clear();
+                    currentName =returnListFuture.get(i).person.nickname;
                     temporaryList.add(returnListFuture.get(i));
                 }
                 if(i == returnListFuture.size() -1 ){
