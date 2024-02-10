@@ -84,31 +84,42 @@ public class EventRepository {
             else {
                 List<EventJoinPerson> returnListWithoutC = eventDao.getAllEventsWithPerson();
                 Log.d("EventRepo", "without Category");
+                Log.d("EventRepo", returnListWithoutC.get(0).person.nickname);
                 return returnListWithoutC;
             }
         });
 
         try {
             List<EventJoinPerson> returnListFuture = future.get();
+            Log.d("EventRepo-Future", "size: "+ returnListFuture.size());
             String currentName = null;
             List<EventJoinPerson> temporaryList = new ArrayList<>();
-            for (EventJoinPerson mainListElement : returnListFuture) {
+            for (int i = 0; i < returnListFuture.size(); i++) {
+                Log.d("EventRepo-Future", "Element: "+ returnListFuture.get(i).event.title);
                 if(currentName == null){
-                    currentName = mainListElement.person.nickname;
-                    temporaryList.add(mainListElement);
-                }else if (currentName.equals(mainListElement.person.nickname)){
-                    temporaryList.add(mainListElement);
+                    currentName = returnListFuture.get(i).person.nickname;
+                    temporaryList.add(returnListFuture.get(i));
+                    Log.d("EventRepo-Future", "TemporaryList size: "+ temporaryList.size());
+                }else if (currentName.equals(returnListFuture.get(i).person.nickname)){
+                    temporaryList.add(returnListFuture.get(i));
+                    Log.d("EventRepo-Future", "TemporaryList size: "+ temporaryList.size());
                 }else {
                     returnList.add(new CategoryViewModel.PersonWithEvents(temporaryList));
                     temporaryList.clear();
-                    temporaryList.add(mainListElement);
+                    temporaryList.add(returnListFuture.get(i));
                 }
+                if(i == returnListFuture.size() -1 ){
+                    returnList.add(new CategoryViewModel.PersonWithEvents(temporaryList));
+                }
+
             }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
         Log.d("EventRepo", "return");
+        if (returnList.size()!=0){      Log.d("EventRepo", returnList.get(0).getTitleA());}
+        else {Log.d("EventRepo","return is empty");}
 
         return returnList;
 

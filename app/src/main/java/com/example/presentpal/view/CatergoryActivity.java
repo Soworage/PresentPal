@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityCatergoryBinding;
@@ -33,6 +34,9 @@ public class CatergoryActivity extends AppCompatActivity {
             CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(personWithEvents);
             binding.catergoryRecyclerView.setAdapter(categoryRecyclerViewAdapter);
             binding.catergoryRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+            Log.i("CatActivity", "Triggered Biuld Rycycler View");
+            if (personWithEvents.size() == 0){Log.i("CatActivity", "PersonWithEvents is Null");}
+            else{Log.i("CatActivity", personWithEvents.get(0).getName());}
         });
 
 
