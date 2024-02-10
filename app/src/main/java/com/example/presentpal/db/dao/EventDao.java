@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.presentpal.db.Event;
+import com.example.presentpal.db.EventJoinPerson;
 
 import java.util.List;
 
@@ -32,4 +33,10 @@ public interface EventDao {
     @Query("SELECT * FROM event WHERE id = :eventId")
     Event getEventById(int eventId);
 
+    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id INNER JOIN personCategory pc ON p.id = pc.personId WHERE pc.categoryId = :categoryId AND e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
+    List<EventJoinPerson> getAllEventsWithPersonByCategory(String categoryId);
+
+    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
+    List<EventJoinPerson> getAllEventsWithPerson();
 }
+
