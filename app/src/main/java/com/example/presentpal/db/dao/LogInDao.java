@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 
 import com.example.presentpal.db.LogIn;
+import com.example.presentpal.db.User;
 
 @Dao
 public interface LogInDao{
@@ -31,4 +32,7 @@ public interface LogInDao{
 
     @Query("SELECT EXISTS(SELECT 1 FROM login)")
     LiveData<Integer> isPasswordSet();
+
+    @Query("SELECT p.*, l.* FROM person p, login l WHERE p.user = 1 ")
+    LiveData<User> getUser();
 }

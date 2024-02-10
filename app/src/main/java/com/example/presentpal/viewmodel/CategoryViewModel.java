@@ -72,6 +72,7 @@ public class CategoryViewModel extends AndroidViewModel {
                     this.dateB = "-";
                     this.titleB = "-";
                     this.number = eventJoinPersonList.size();
+                   this.more = "";
                 }
                 else {
                     this.name = eventJoinPersonList.get(0).person.nickname;

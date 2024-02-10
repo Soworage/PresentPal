@@ -33,7 +33,7 @@ public class CatergoryActivity extends AppCompatActivity {
         categoryViewModel.getAllEventsWithPersonByCategory().observe(this,  personWithEvents -> {
             CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(personWithEvents);
             binding.catergoryRecyclerView.setAdapter(categoryRecyclerViewAdapter);
-            binding.catergoryRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+   //         binding.catergoryRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
             Log.i("CatActivity", "Triggered Biuld Rycycler View");
             if (personWithEvents.size() == 0){Log.i("CatActivity", "PersonWithEvents is Null");}
             else{Log.i("CatActivity", personWithEvents.get(0).getName());}

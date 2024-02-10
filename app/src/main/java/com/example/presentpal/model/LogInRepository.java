@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.presentpal.db.AppDatabase;
 import com.example.presentpal.db.AppDatabaseClient;
+import com.example.presentpal.db.User;
 import com.example.presentpal.db.dao.LogInDao;
 
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,9 @@ public class LogInRepository {
         logInDao = database.logInDao();
     }
 
-
+    public LiveData<User> getUser(){
+        return logInDao.getUser();
+    }
 
     public LiveData<Integer> isPasswordSetLiveData(){
         return logInDao.isPasswordSet();
