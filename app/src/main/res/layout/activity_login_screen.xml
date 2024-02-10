@@ -68,6 +68,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.326" />
 
+
         <TextView
             android:id="@+id/welcome_message2"
             android:layout_width="wrap_content"
@@ -77,11 +78,9 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.372" />
-
+            app:layout_constraintVertical_bias="0.377" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
@@ -91,10 +90,10 @@
             android:src="@drawable/profilepicture1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.564"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.121" />
+            app:layout_constraintVertical_bias="0.105" />
 
         <TextView
             android:id="@+id/nicknameTextd"
@@ -162,7 +161,7 @@
             android:backgroundTint="@color/blueButton"
             android:contentDescription="if you need help, press this button"
             android:importantForAccessibility="no"
-            android:src="@drawable/baseline_question_mark_24"
+            android:src="@drawable/baseline_border_color_24"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
