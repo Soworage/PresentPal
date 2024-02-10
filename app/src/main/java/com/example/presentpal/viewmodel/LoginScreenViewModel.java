@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.example.presentpal.db.User;
 import com.example.presentpal.db.dao.LogInDao;
 import com.example.presentpal.model.LogInRepository;
 
@@ -20,13 +21,14 @@ public class LoginScreenViewModel extends AndroidViewModel {
 
     public MutableLiveData<String> passwordCheckerText = new MutableLiveData<>();
 
-
+    public LiveData<User> User;
     public MutableLiveData<Integer> isPasswordCorrect = new MutableLiveData<>();
     private LogInRepository logInRepository;
 
     public LoginScreenViewModel(@NonNull Application application) {
         super(application);
         logInRepository = new LogInRepository(application);
+        User = logInRepository.getUser();
     }
 
 
