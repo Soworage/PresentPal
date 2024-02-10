@@ -47,13 +47,13 @@
         android:contentDescription="@string/camera_button_to_add_a_picture"
         android:importantForAccessibility="no"
         android:src="@drawable/baseline_add_24"
-        app:fabCustomSize="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.975"
+        app:fabCustomSize="90dp"
         app:maxImageSize="60dp"
         app:tint="@color/white" />
 
