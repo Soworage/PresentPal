@@ -22,8 +22,8 @@ import org.jetbrains.annotations.NotNull;
 public class Event {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    public int id;
+    @ColumnInfo(name = "eid")
+    public int eid;
 
     @ColumnInfo(name = "personId")
     public Integer personId;
@@ -55,11 +55,11 @@ public class Event {
     }
 
     public int getId() {
-        return id;
+        return eid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int eid) {
+        this.eid = eid;
     }
 
     public Integer getPersonId() {
