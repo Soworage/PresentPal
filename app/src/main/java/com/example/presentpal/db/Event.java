@@ -21,76 +21,93 @@ import org.jetbrains.annotations.NotNull;
         indices = {@Index(value = "personId")})
 public class Event {
 
-        @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "id")
-        public int id;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "eid")
+    public int eid;
 
-        @ColumnInfo(name = "personId")
-        public Integer personId;
+    @ColumnInfo(name = "personId")
+    public Integer personId;
 
-        @ColumnInfo(name = "title")
-        public String title;
+    @ColumnInfo(name = "title")
+    public String title;
 
-        @NotNull
-        @ColumnInfo(name = "date")
-        public String date;
+    @NotNull
+    @ColumnInfo(name = "date")
+    public String date;
 
-        @ColumnInfo(name = "description")
-        public String description;
+    @ColumnInfo(name = "description")
+    public String description;
 
-        @ColumnInfo(name = "closed")
-        public boolean closed;
 
-        @ColumnInfo(name = "firstYear")
-        public String firstYear;
+    @ColumnInfo(name = "closed")
+    public int closed;
 
-        public Event(Integer personId, String title, @NotNull String date, String description, boolean closed, String firstYear) {
-                this.personId = personId;
-                this.title = title;
-                this.date = date;
-                this.description = description;
-                this.closed = closed;
-                this.firstYear = firstYear;
-        }
+    @ColumnInfo(name = "firstYear")
+    public String firstYear;
 
-        public int getId() {
-                return id;
-        }
+    public Event(Integer personId, String title, @NotNull String date, String description, int closed, String firstYear) {
+        this.personId = personId;
+        this.title = title;
+        this.date = date;
+        this.description = description;
+        this.closed = closed;
+        this.firstYear = firstYear;
+    }
 
-        public void setId(int id) {
-                this.id = id;
-        }
+    public int getId() {
+        return eid;
+    }
 
-        public Integer getPersonId() {
-                return personId;
-        }
+    public void setId(int eid) {
+        this.eid = eid;
+    }
 
-        public void setPersonId(Integer personId) {
-                this.personId = personId;
-        }
+    public Integer getPersonId() {
+        return personId;
+    }
 
-        public String getTitle() {
-                return title;
-        }
+    public void setPersonId(Integer personId) {
+        this.personId = personId;
+    }
 
-        public void setTitle(String title) {
-                this.title = title;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        @NotNull
-        public String getDate() {
-                return date;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public void setDate(@NotNull String date) {
-                this.date = date;
-        }
+    @NotNull
+    public String getDate() {
+        return date;
+    }
 
-        public String getDescription() {
-                return description;
-        }
+    public void setDate(@NotNull String date) {
+        this.date = date;
+    }
 
-        public void setDescription(String description) {
-                this.description = description;
-        }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getClosed() {
+        return closed;
+    }
+
+    public void setClosed(int closed) {
+        this.closed = closed;
+    }
+
+    public String getFirstYear() {
+        return firstYear;
+    }
+
+    public void setFirstYear(String firstYear) {
+        this.firstYear = firstYear;
+    }
 }

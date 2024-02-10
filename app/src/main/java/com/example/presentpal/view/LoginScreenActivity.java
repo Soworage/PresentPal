@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.presentpal.MainActivity;
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityLoginScreenBinding;
 import com.example.presentpal.viewmodel.LoginScreenViewModel;
@@ -35,7 +36,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
             if (isPasswordCorrect != null && isPasswordCorrect > 0) {
 
-                Intent loginIntent = new Intent(this, RegisterScreenActivity.class);
+                Intent loginIntent = new Intent(this, CatergoryActivity.class);
                 startActivity(loginIntent);
                 finish();
             } else {

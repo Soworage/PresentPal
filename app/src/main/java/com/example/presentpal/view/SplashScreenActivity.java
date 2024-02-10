@@ -15,7 +15,7 @@ import com.example.presentpal.viewmodel.SplashScreenViewModel;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private SplashScreenViewModel splashScreenViewModel;
-    private final long SPLASH_SCREEN_DELAY = 1500;
+    private final long SPLASH_SCREEN_DELAY = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

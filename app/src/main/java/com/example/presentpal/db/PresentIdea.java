@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
                         childColumns = "personId",
                         onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity = Event.class,
-                        parentColumns = "id",
+                        parentColumns = "eid",
                         childColumns = "eventId",
                         onDelete = ForeignKey.SET_NULL)
         },
