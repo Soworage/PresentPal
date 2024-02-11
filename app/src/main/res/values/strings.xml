@@ -28,6 +28,9 @@
     <string name="event_insert_text_title">Title</string>
     <string name="event_insert_text_maintitle">Add new event</string>
     <string name="categories">categories</string>
+    <string name="family">Family</string>
+    <string name="colleagues">Colleagues</string>
+    <string name="favorites">Favorites</string>
 
     <!--Register Screen end-->
 
