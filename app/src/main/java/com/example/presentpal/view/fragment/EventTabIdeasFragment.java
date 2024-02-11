@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.presentpal.databinding.FragmentEventTabIdeasBinding;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.view.adapter.recylerview.EventPresentsRecyclerViewAdapter;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ public class EventTabIdeasFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "presentIdeas";
 
-    private List<PresentIdeaJoinPerson> presetIdeas;
+    private List<PresentIdeaJoinPerson> presentIdeas;
 
     private FragmentEventTabIdeasBinding fragmentEventTabIdeasBinding;
     private EventPresentsRecyclerViewAdapter eventPresentsRecyclerViewAdapter;
@@ -33,20 +35,12 @@ public class EventTabIdeasFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EventTabIdeasFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EventTabIdeasFragment newInstance(String param1, String param2) {
+
+    public static EventTabIdeasFragment newInstance(List<PresentIdeaJoinPerson> presentIdeas) {
         EventTabIdeasFragment fragment = new EventTabIdeasFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
 
+        args.putSerializable("presentIdeas", (Serializable) presentIdeas);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,15 +49,34 @@ public class EventTabIdeasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
+            if (getArguments().containsKey("presentIdeas")) {
 
+                Serializable serializable = getArguments().getSerializable("presentIdeas");
+
+                if (serializable instanceof List<?>) {
+                    presentIdeas = (List<PresentIdeaJoinPerson>) serializable;
+                    if (presentIdeas == null) {
+                        Log.i("PresentTabFrag", "get presentIdeas is null");
+                    } else {
+                        Log.i("PresentTabFrag", "get presentIdeas not null");
+                    }
+                }
+            }
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        fragmentEventTabIdeasBinding = FragmentEventTabIdeasBinding.inflate(inflater,container,false);
+        View rootView = fragmentEventTabIdeasBinding.getRoot();
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_tab_ideas, container, false);
+        eventPresentsRecyclerViewAdapter = new EventPresentsRecyclerViewAdapter(presentIdeas);
+        fragmentEventTabIdeasBinding.fragmentEventIdeasRecyclerView.setAdapter(eventPresentsRecyclerViewAdapter);
+
+        return rootView;
     }
 }

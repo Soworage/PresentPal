@@ -45,9 +45,11 @@ public class EventViewModel extends AndroidViewModel {
         return readyState;
     }
     public void getAllPresentIdeasAndPresents() {
+
         if(event.getValue() != null) {
             allPresentIdeas.setValue(presentIdeaRepository.getAllPresentIdeasWithPersonByPersonByEvent(event.getValue().personId, event.getValue().eid));
             allPresents.setValue(presentIdeaRepository.getAllPresentWithPersonByPersonByEvent(event.getValue().personId, event.getValue().eid));
         }
+        else{  Log.d("EventViewMode", "event is null!");}
     }
 }

@@ -78,15 +78,6 @@ public class EventRepository {
         });
     }
 
-   /* public LiveData<List<EventJoinPerson>> getAllEventsWithPersonByCategory(Category category){
-        return eventDao.getAllEventsWithPersonByCategory(category.name);
-    }*/
-
-    /*public LiveData<List<EventJoinPerson>> getAllEventsWithPerson(){
-        return eventDao.getAllEventsWithPerson();
-    }*/
-
-
     public List<CategoryViewModel.PersonWithEvents> getAllPersonsWithEventsByCategory(Category category){
 
 

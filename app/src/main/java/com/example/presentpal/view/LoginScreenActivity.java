@@ -29,7 +29,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
             if (isPasswordCorrect != null && isPasswordCorrect > 0) {
 
-                Intent loginIntent = new Intent(this, CatergoryActivity.class);
+                Intent loginIntent = new Intent(this, MainActivity.class);
                 startActivity(loginIntent);
                 finish();
             } else {

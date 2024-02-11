@@ -6,316 +6,319 @@
             name="mainActivityViewModel"
             type="com.example.presentpal.viewmodel.MainActivityViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:background="@color/darkGray"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Good Evening kay"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.278"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkGray"
+        android:outlineProvider="paddedBounds">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/profilepicture1"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.285"
-        tools:srcCompat="@tools:sample/avatars"
-
-        />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
-        android:layout_height="563dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/darkGray"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="Good Evening kay"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.278"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.063" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
-                android:layout_marginTop="5dp"
-                android:text="categories"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/profilepicture1"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.285"
+            tools:srcCompat="@tools:sample/avatars"
 
-            </TextView>
+            />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:id="@+id/frameLayout34"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.075"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.189">
-
-
-                    <ImageButton
-                        android:id="@+id/imageButton12"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button"
-                        android:onClick="@{() -> mainActivityViewModel.selectFriendsCategory()}"
-                        android:padding="150dp" />
-
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginBottom="30dp"
-                        app:srcCompat="@drawable/baseline_person_24" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center"
-                        android:layout_marginTop="30dp"
-                        android:text="Friends"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameLayout3"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.075"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.189">
-
-
-                    <ImageButton
-                        android:id="@+id/imageButton112"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button"
-                        android:onClick="@{() -> mainActivityViewModel.selectFamilyCategory()}"
-                        android:padding="150dp" />
-                    />
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginBottom="30dp"
-                        app:srcCompat="@drawable/baseline_groups_24" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center"
-                        android:layout_marginTop="30dp"
-                        android:text="@string/family"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-
-            </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="563dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:outlineProvider="background"
+            app:cardBackgroundColor="@color/darkGray"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.619">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:id="@+id/frameLayout344"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.075"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.189">
-
-
-                    <ImageButton
-                        android:id="@+id/imageButton152"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button"
-                        android:onClick="@{() -> mainActivityViewModel.selectColleagueCategory()}"
-                        android:padding="150dp" />
-                    />
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginBottom="30dp"
-                        app:srcCompat="@drawable/baseline_work_24" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center"
-                        android:layout_marginTop="30dp"
-                        android:text="@string/colleagues"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameLayout53"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.075"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.189">
-
-
-                    <ImageButton
-                        android:id="@+id/imageButton1512"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button"
-                        android:onClick="@{() -> mainActivityViewModel.selectFavoriteCategory()}"
-                        android:padding="150dp" />
-                    />
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center|bottom"
-                        android:layout_marginBottom="30dp"
-                        app:srcCompat="@drawable/baseline_favorite_24" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center"
-                        android:layout_marginTop="30dp"
-                        android:text="@string/favorites"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="15dp"
-                android:padding="5dp"
-                android:text="view All">
-
-            </Button>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:text="next Events"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/lightGray"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="12.3.2024(Birthday) best friend"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="5dp"
+                    android:text="categories"
                     android:textColor="@color/white"
-                    android:textSize="15sp">
+                    android:textSize="22sp"
+                    android:textStyle="bold">
 
                 </TextView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout34"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.075"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.189">
+
+
+                        <ImageButton
+                            android:id="@+id/imageButton12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/round_button"
+                            android:onClick="@{() -> mainActivityViewModel.selectFriendsCategory()}"
+                            android:padding="150dp" />
+
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginBottom="30dp"
+                            app:srcCompat="@drawable/baseline_person_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|center"
+                            android:layout_marginTop="30dp"
+                            android:text="Friends"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout3"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.075"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.189">
+
+
+                        <ImageButton
+                            android:id="@+id/imageButton112"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/round_button"
+                            android:onClick="@{() -> mainActivityViewModel.selectFamilyCategory()}"
+                            android:padding="150dp" />
+                        />
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginBottom="30dp"
+                            app:srcCompat="@drawable/baseline_groups_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|center"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/family"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout344"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.075"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.189">
+
+
+                        <ImageButton
+                            android:id="@+id/imageButton152"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/round_button"
+                            android:onClick="@{() -> mainActivityViewModel.selectColleagueCategory()}"
+                            android:padding="150dp" />
+                        />
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginBottom="30dp"
+                            app:srcCompat="@drawable/baseline_work_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|center"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/colleagues"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout53"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.075"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.189">
+
+
+                        <ImageButton
+                            android:id="@+id/imageButton1512"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/round_button"
+                            android:onClick="@{() -> mainActivityViewModel.selectFavoriteCategory()}"
+                            android:padding="150dp" />
+                        />
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginBottom="30dp"
+                            app:srcCompat="@drawable/baseline_favorite_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|center"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/favorites"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
+                    android:padding="5dp"
+                    android:text="view All">
+
+                </Button>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="12.3.2024(Birthday) wedding day wife"
+                    android:layout_marginStart="9dp"
+                    android:text="next Events"
                     android:textColor="@color/white"
-
-                    android:textSize="15sp">
+                    android:textSize="15sp"
+                    android:textStyle="bold">
 
                 </TextView>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/lightGray"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="12.3.2024(Birthday) best friend"
+                        android:textColor="@color/white"
+                        android:textSize="15sp">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="12.3.2024(Birthday) wedding day wife"
+                        android:textColor="@color/white"
+
+                        android:textSize="15sp">
+
+                    </TextView>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

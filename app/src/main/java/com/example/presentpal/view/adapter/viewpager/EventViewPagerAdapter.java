@@ -30,9 +30,9 @@ public class EventViewPagerAdapter extends FragmentStateAdapter {
 
         switch (position) {
             case 0:
-                //return EventTabIdeasFragment.newInstance(presentIdeasList);
+                return EventTabIdeasFragment.newInstance(presentIdeasList);
             case 1:
-               // return new EventTabPresentsFragment.newInstance(presentList);
+                return EventTabIdeasFragment.newInstance(presentList);
             case 2:
                 return new EventTabEditFragment();
             default:

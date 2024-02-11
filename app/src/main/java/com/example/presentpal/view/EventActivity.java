@@ -36,8 +36,7 @@ public class EventActivity extends AppCompatActivity {
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
         eventViewModel.event.setValue((Event) getIntent().getSerializableExtra("event"));
-
-
+        eventViewModel.getAllPresentIdeasAndPresents();
         activityEventBinding.setLifecycleOwner(this);
         activityEventBinding.setEventViewModel(eventViewModel);
 
@@ -56,7 +55,7 @@ public class EventActivity extends AppCompatActivity {
 
 
         eventViewModel.getReadyState().observe(this, readyState -> {
-
+            Log.d("EventActivity", "readyState: "+ readyState);
             if (readyState == 2 && eventViewModel.getAllPresentIdeas() != null && eventViewModel.getAllPresents() != null) {
 
                 List<PresentIdeaJoinPerson> presentIdeasWithPersonList = eventViewModel.getAllPresentIdeas().getValue();

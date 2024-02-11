@@ -35,7 +35,7 @@ public interface PresentIdeaDao {
     @Query("SELECT * FROM presentidea WHERE eventId = :eventId OR eventId isNull AND personId = :personId")
     LiveData<List<PresentIdea>> getPresentIdeasByEvent(int eventId, int personId);
 
-    @Query("SELECT pi.*, p.*  FROM presentIdea pi INNER JOIN person p ON pi.personId = p.id WHERE p.id = :personId AND pi.eventId is null OR pi.eventId = :eventId ORDER BY pi.eventId DESC")
+    @Query("SELECT pi.*, p.*  FROM presentIdea pi INNER JOIN person p ON pi.personId = p.id WHERE p.id = :personId AND pi.isPresent = 0 AND (pi.eventId is null OR pi.eventId = :eventId) ORDER BY pi.eventId DESC")
     List<PresentIdeaJoinPerson> getAllPresentIdeasWithPersonByPersonByEvent(int personId, int eventId);
 
     @Query("SELECT pi.*, p.*  FROM presentIdea pi INNER JOIN person p ON pi.personId = p.id WHERE p.id = :personId AND pi.eventId = :eventId AND pi.isPresent = 1 ORDER BY pi.title ASC")

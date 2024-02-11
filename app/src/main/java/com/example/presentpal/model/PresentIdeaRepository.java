@@ -1,20 +1,26 @@
 package com.example.presentpal.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
 import com.example.presentpal.db.AppDatabase;
 import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Event;
+import com.example.presentpal.db.EventJoinPerson;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.PresentIdea;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.db.dao.PresentIdeaDao;
+import com.example.presentpal.viewmodel.CategoryViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 
 public class PresentIdeaRepository {
@@ -30,13 +36,13 @@ public class PresentIdeaRepository {
         presentIdeaDao = database.presentIdeaDao();
     }
 
-    public LiveData<List<PresentIdea>> getAllPresentIdeasByEvent(Event event, Person person){
+    public LiveData<List<PresentIdea>> getAllPresentIdeasByEvent(Event event, Person person) {
         return presentIdeaDao.getPresentIdeasByEvent(event.getId(), person.getId());
     }
 
 
-    public void addPresentIdea(int personId, String title, String description){
-        PresentIdea presentIdea = new PresentIdea(personId, null, title, description, 0f, null,false);
+    public void addPresentIdea(int personId, String title, String description) {
+        PresentIdea presentIdea = new PresentIdea(personId, null, title, description, 0f, null, false);
         insertPresentIdea(presentIdea);
     }
 
@@ -50,10 +56,44 @@ public class PresentIdeaRepository {
         });
     }
 
-    public List<PresentIdeaJoinPerson> getAllPresentIdeasWithPersonByPersonByEvent(int personId, int eventId){
-            return null;
+    public List<PresentIdeaJoinPerson> getAllPresentIdeasWithPersonByPersonByEvent(int personId, int eventId) {
+
+        List<PresentIdeaJoinPerson> returnList = new ArrayList<>();
+        Log.d("TAG", "checkPassword: test start");
+
+        Future<List<PresentIdeaJoinPerson>> future = executor.submit(() -> {
+            List<PresentIdeaJoinPerson> returnListWithC = presentIdeaDao.getAllPresentIdeasWithPersonByPersonByEvent(personId, eventId);
+
+            return returnListWithC;
+        });
+
+        try {
+            returnList = future.get();
+            Log.d("PresentIdeaRepo", "get future Ideas");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return returnList;
     }
-    public List<PresentIdeaJoinPerson> getAllPresentWithPersonByPersonByEvent(int personId, int eventId){
-            return null;
+
+    public List<PresentIdeaJoinPerson> getAllPresentWithPersonByPersonByEvent(int personId, int eventId) {
+        List<PresentIdeaJoinPerson> returnList = new ArrayList<>();
+        Log.d("TAG", "checkPassword: test start");
+
+        Future<List<PresentIdeaJoinPerson>> future = executor.submit(() -> {
+            List<PresentIdeaJoinPerson> returnListWithC = presentIdeaDao.getAllPresentsWithPersonByPersonByEvent(personId, eventId);
+            Log.d("EventRepo", "with Category");
+            return returnListWithC;
+        });
+
+        try {
+            returnList = future.get();
+            Log.d("PresentIdeaRepo", "get future Presents");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return returnList;
     }
 }
