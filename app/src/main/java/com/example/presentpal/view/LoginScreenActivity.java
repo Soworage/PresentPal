@@ -8,25 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.presentpal.MainActivity;
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityLoginScreenBinding;
 import com.example.presentpal.viewmodel.LoginScreenViewModel;
 
 
 public class LoginScreenActivity extends AppCompatActivity {
-    //    private LoginScreenViewModel loginScreenViewModel;
-//    private ActivityLoginScreenBinding activityLoginScreenBinding;
     private LoginScreenViewModel loginScreenViewModel;
     private ActivityLoginScreenBinding activityLoginScreenBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        activityLoginScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_screen);
-//        loginScreenViewModel = new ViewModelProvider(this).get(LoginScreenViewModel.class);
-//        activityLoginScreenBinding.setLifecycleOwner(this);
-//        activityLoginScreenBinding.setLoginScreenViewModel(loginScreenViewModel);
         activityLoginScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_screen);
         loginScreenViewModel = new ViewModelProvider(this).get(LoginScreenViewModel.class);
         activityLoginScreenBinding.setLifecycleOwner(this);

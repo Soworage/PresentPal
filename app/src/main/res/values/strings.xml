@@ -27,6 +27,7 @@
     <string name="event_insert_text_date">Date</string>
     <string name="event_insert_text_title">Title</string>
     <string name="event_insert_text_maintitle">Add new event</string>
+    <string name="categories">categories</string>
 
     <!--Register Screen end-->
 
