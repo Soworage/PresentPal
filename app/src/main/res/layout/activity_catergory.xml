@@ -16,14 +16,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/catergory_recycler_view"
-        android:layout_width="350dp"
-        android:layout_height="610dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
 
     <TextView
         android:id="@+id/textView7"

@@ -9,6 +9,7 @@ import androidx.room.Update;
 
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventJoinPerson;
+import com.example.presentpal.db.EventPlus;
 
 import java.util.List;
 
@@ -38,5 +39,13 @@ public interface EventDao {
 
     @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
     List<EventJoinPerson> getAllEventsWithPerson();
+
+    @Query("SELECT  \n" +
+            "    e.*,\n" +
+            "     (SELECT COUNT(*) FROM presentIdea pi1 WHERE pi1.personId = :personId AND pi1.eventId is Null OR pi1.eventId = e.eid AND pi1.isPresent = 0 ) as ideas,  \n" +
+            "      (SELECT COUNT(*) FROM presentIdea pi2 WHERE pi2.personId = :personId AND pi2.eventId = e.eid AND pi2.isPresent = 1) as presents \n" +
+            "FROM event e\n" +
+            "WHERE e.personId = :personId")
+    List<EventPlus> getAllEventsByPerson(int personId);
 }
 

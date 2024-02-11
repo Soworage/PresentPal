@@ -18,13 +18,12 @@ import java.util.List;
 
 public class CategoryViewModel extends AndroidViewModel {
 
-    private PersonRepository personRepository;
     private EventRepository eventRepository;
+
     public CategoryViewModel(@NonNull Application application) {
         super(application);
-        personRepository = new PersonRepository(application);
         eventRepository = new EventRepository(application);
-       getEventsWithPerson();
+        getEventsWithPerson();
     }
 
     public MutableLiveData<Category> category = new MutableLiveData<>();
@@ -36,14 +35,14 @@ public class CategoryViewModel extends AndroidViewModel {
     public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
 
-    public void getEventsWithPerson(){
+    public void getEventsWithPerson() {
 
-            allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
+        allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
 
     }
 
 
-    public static class PersonWithEvents{
+    public static class PersonWithEvents {
         private String name;
         private String dateA;
         private String titleA;
@@ -52,6 +51,8 @@ public class CategoryViewModel extends AndroidViewModel {
         private int number;
         private String more;
 
+        private Person person;
+
         public PersonWithEvents(String name, String dateA, String titleA, String dateB, String titleB, int number) {
             this.name = name;
             this.dateA = dateA;
@@ -59,30 +60,38 @@ public class CategoryViewModel extends AndroidViewModel {
             this.dateB = dateB;
             this.titleB = titleB;
             this.number = number;
-            if (number > 2){this.more = "...";}
-            else {this.more = "";}
+            if (number > 2) {
+                this.more = "...";
+            } else {
+                this.more = "";
+            }
         }
 
-        public PersonWithEvents(List<EventJoinPerson> eventJoinPersonList){
-            if(eventJoinPersonList != null){
-                if (eventJoinPersonList.size() < 2){
+        public PersonWithEvents(List<EventJoinPerson> eventJoinPersonList) {
+            if (eventJoinPersonList != null) {
+
+                this.person = eventJoinPersonList.get(0).person;
+
+                if (eventJoinPersonList.size() < 2) {
                     this.name = eventJoinPersonList.get(0).person.nickname;
                     this.dateA = eventJoinPersonList.get(0).event.date;
                     this.titleA = eventJoinPersonList.get(0).event.title;
                     this.dateB = "-";
                     this.titleB = "-";
                     this.number = eventJoinPersonList.size();
-                   this.more = "";
-                }
-                else {
+                    this.more = "";
+                } else {
                     this.name = eventJoinPersonList.get(0).person.nickname;
                     this.dateA = eventJoinPersonList.get(0).event.date;
                     this.titleA = eventJoinPersonList.get(0).event.title;
                     this.dateB = eventJoinPersonList.get(1).event.date;
                     this.titleB = eventJoinPersonList.get(1).event.title;
                     this.number = eventJoinPersonList.size();
-                    if (number > 2){this.more = "...";}
-                    else {this.more = "";}
+                    if (number > 2) {
+                        this.more = "...";
+                    } else {
+                        this.more = "";
+                    }
                 }
             }
 
@@ -142,6 +151,10 @@ public class CategoryViewModel extends AndroidViewModel {
 
         public void setMore(String more) {
             this.more = more;
+        }
+
+        public Person getPerson() {
+            return person;
         }
     }
 
