@@ -10,6 +10,8 @@ import com.example.presentpal.db.Person;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
+
 @Entity(tableName = "event",
         foreignKeys = {
                 @ForeignKey(entity = Person.class,
@@ -19,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
         },
         indices = {@Index(value = "personId")})
-public class Event {
+public class Event implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "eid")

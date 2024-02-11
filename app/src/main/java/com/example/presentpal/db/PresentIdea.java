@@ -24,8 +24,8 @@ import org.jetbrains.annotations.NotNull;
 public class PresentIdea {
 
         @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "id")
-        public int id;
+        @ColumnInfo(name = "piid")
+        public int piid;
 
         @ColumnInfo(name = "personId")
         public int personId;
@@ -60,11 +60,11 @@ public class PresentIdea {
         }
 
         public int getId() {
-                return id;
+                return piid;
         }
 
-        public void setId(int id) {
-                this.id = id;
+        public void setId(int piid) {
+                this.piid = piid;
         }
 
         public int getPersonId() {

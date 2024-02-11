@@ -43,9 +43,4 @@ public class CatergoryActivity extends AppCompatActivity {
 
     }
 
-    public void buildRecycler(){
-
-        //CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter();
-        //activityCategoryBinding.setAd(CategoryRecyclerViewAdapter );
-    }
 }

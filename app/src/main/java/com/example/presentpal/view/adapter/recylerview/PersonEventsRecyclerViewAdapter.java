@@ -1,5 +1,6 @@
 package com.example.presentpal.view.adapter.recylerview;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.presentpal.databinding.FragmentPersonTabEventsRowsBinding;
 import com.example.presentpal.db.EventPlus;
+import com.example.presentpal.view.EventActivity;
+import com.example.presentpal.view.PersonActivity;
 import com.example.presentpal.view.fragment.PersonTabEventsFragment;
 
 import java.util.List;
@@ -34,6 +37,15 @@ public class PersonEventsRecyclerViewAdapter extends RecyclerView.Adapter<Person
         EventPlus eventPlus = eventsByPerson.get(position);
         holder.fragmentPersonTabEventsRowsBinding.setEventsByPerson(eventPlus);
         holder.fragmentPersonTabEventsRowsBinding.executePendingBindings();
+
+        holder.fragmentPersonTabEventsRowsBinding.personEventRowCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EventActivity.class);
+                intent.putExtra("event", eventPlus.getEvent());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

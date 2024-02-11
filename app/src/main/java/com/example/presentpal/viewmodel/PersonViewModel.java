@@ -30,7 +30,6 @@ public class PersonViewModel extends AndroidViewModel {
     public PersonViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
-        //getEventsByPerson();
     }
 
 
