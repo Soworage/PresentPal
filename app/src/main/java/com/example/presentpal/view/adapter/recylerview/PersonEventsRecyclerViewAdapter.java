@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.presentpal.databinding.FragmentPersonTabEventsRowsBinding;
 import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.view.EventActivity;
-import com.example.presentpal.view.PersonActivity;
-import com.example.presentpal.view.fragment.PersonTabEventsFragment;
+
 
 import java.util.List;
 

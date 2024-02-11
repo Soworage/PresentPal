@@ -9,6 +9,7 @@ import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.PresentIdea;
+import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.db.dao.PresentIdeaDao;
 
 import java.util.List;
@@ -47,5 +48,12 @@ public class PresentIdeaRepository {
                 presentIdeaDao.insert(presentIdea);
             }
         });
+    }
+
+    public List<PresentIdeaJoinPerson> getAllPresentIdeasWithPersonByPersonByEvent(int personId, int eventId){
+            return null;
+    }
+    public List<PresentIdeaJoinPerson> getAllPresentWithPersonByPersonByEvent(int personId, int eventId){
+            return null;
     }
 }

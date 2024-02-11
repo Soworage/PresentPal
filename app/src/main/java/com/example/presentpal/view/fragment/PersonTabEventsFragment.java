@@ -29,7 +29,6 @@ import java.util.List;
  */
 public class PersonTabEventsFragment extends Fragment {
 
-
     private static final String ARG_PARAM1 = "eventsByPerson";
 
     private List<EventPlus> eventsByPerson;
@@ -68,8 +67,11 @@ public class PersonTabEventsFragment extends Fragment {
 
                 if (serializable instanceof List<?>) {
                     eventsByPerson = (List<EventPlus>) serializable;
-                    if(eventsByPerson == null){Log.i("EventTabFrag", "get eventsByPerson is null");}
-                    else{Log.i("EventTabFrag", "get eventsByPerson not null");}
+                    if (eventsByPerson == null) {
+                        Log.i("EventTabFrag", "get eventsByPerson is null");
+                    } else {
+                        Log.i("EventTabFrag", "get eventsByPerson not null");
+                    }
                 }
             }
         }
@@ -85,7 +87,6 @@ public class PersonTabEventsFragment extends Fragment {
         fragmentPersonTabEventsBinding = FragmentPersonTabEventsBinding.inflate(inflater, container, false);
         View rootView = fragmentPersonTabEventsBinding.getRoot();
 
-        //fragmentPersonTabEventsBinding.fragmentPersonIdeasRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Inflate the layout for this fragment
         personEventsRecyclerViewAdapter = new PersonEventsRecyclerViewAdapter(eventsByPerson);

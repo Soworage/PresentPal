@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.presentpal.R;
+import com.example.presentpal.databinding.FragmentEventTabIdeasBinding;
+import com.example.presentpal.db.PresentIdeaJoinPerson;
+import com.example.presentpal.view.adapter.recylerview.EventPresentsRecyclerViewAdapter;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,14 +22,12 @@ import com.example.presentpal.R;
  */
 public class EventTabIdeasFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "presentIdeas";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private List<PresentIdeaJoinPerson> presetIdeas;
+
+    private FragmentEventTabIdeasBinding fragmentEventTabIdeasBinding;
+    private EventPresentsRecyclerViewAdapter eventPresentsRecyclerViewAdapter;
 
     public EventTabIdeasFragment() {
         // Required empty public constructor
@@ -43,7 +46,7 @@ public class EventTabIdeasFragment extends Fragment {
         EventTabIdeasFragment fragment = new EventTabIdeasFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,8 +55,8 @@ public class EventTabIdeasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mParam1 = getArguments().getString(ARG_PARAM1);
+
         }
     }
 

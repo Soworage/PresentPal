@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
+
 @Entity(tableName = "presentIdea",
         foreignKeys = {
                 @ForeignKey(entity = Person.class,
@@ -21,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
         },
         indices = {@Index(value = "personId"),@Index(value = "eventId")})
 
-public class PresentIdea {
+public class PresentIdea implements Serializable {
 
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "piid")
