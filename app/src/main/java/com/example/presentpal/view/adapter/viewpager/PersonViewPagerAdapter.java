@@ -5,13 +5,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.view.fragment.PerosnTabEditFragment;
 import com.example.presentpal.view.fragment.PersonTabEventsFragment;
 import com.example.presentpal.view.fragment.PersonTabCharacteristicsFragment;
 
+import java.util.List;
+
 public class PersonViewPagerAdapter extends FragmentStateAdapter {
-    public PersonViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+
+    private List<EventPlus> eventsByPerson;
+    public PersonViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<EventPlus> eventsByPerson) {
         super(fragmentActivity);
+        this.eventsByPerson = eventsByPerson;
     }
 
     @NonNull
@@ -20,7 +26,7 @@ public class PersonViewPagerAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 0:
-                return new PersonTabEventsFragment();
+                return PersonTabEventsFragment.newInstance(eventsByPerson);
             case 1:
                 return new PersonTabCharacteristicsFragment();
             case 2:

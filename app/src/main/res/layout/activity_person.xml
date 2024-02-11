@@ -17,14 +17,16 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/person_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.343"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/person_tabs" />
+            app:layout_constraintTop_toBottomOf="@+id/person_tabs"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/person_button_favorites"

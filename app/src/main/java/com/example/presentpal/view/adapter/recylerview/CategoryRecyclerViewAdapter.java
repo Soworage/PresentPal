@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.presentpal.databinding.ActivityCategoryRowBinding;
-import com.example.presentpal.view.CatergoryActivity;
 import com.example.presentpal.view.PersonActivity;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 

@@ -2,13 +2,25 @@ package com.example.presentpal.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.presentpal.R;
+import com.example.presentpal.databinding.FragmentPersonTabEventsBinding;
+import com.example.presentpal.db.EventPlus;
+import com.example.presentpal.view.adapter.recylerview.PersonEventsRecyclerViewAdapter;
+import com.example.presentpal.viewmodel.PersonViewModel;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,50 +29,69 @@ import com.example.presentpal.R;
  */
 public class PersonTabEventsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String ARG_PARAM1 = "eventsByPerson";
+
+    private List<EventPlus> eventsByPerson;
+
+
+    private FragmentPersonTabEventsBinding fragmentPersonTabEventsBinding;
+
+    private PersonEventsRecyclerViewAdapter personEventsRecyclerViewAdapter;
 
     public PersonTabEventsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PersonTabAFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PersonTabEventsFragment newInstance(String param1, String param2) {
+
+    // prompt: this is the newInstance function, is there a way to use a List<> for param1?
+    // prompt: and if i have a list of objects?
+    // prompt: can i use Serializable instead?
+    public static PersonTabEventsFragment newInstance(List<EventPlus> eventsByPerson) {
         PersonTabEventsFragment fragment = new PersonTabEventsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
+        args.putSerializable("eventsByPersonFragment", (Serializable) eventsByPerson);
         fragment.setArguments(args);
         return fragment;
     }
 
+    //prompt: if i use Serializable, how do I retrieve my arguments?
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+            if (getArguments().containsKey("eventsByPersonFragment")) {
+
+                Serializable serializable = getArguments().getSerializable("eventsByPersonFragment");
+
+                if (serializable instanceof List<?>) {
+                    eventsByPerson = (List<EventPlus>) serializable;
+                    if(eventsByPerson == null){Log.i("EventTabFrag", "get eventsByPerson is null");}
+                    else{Log.i("EventTabFrag", "get eventsByPerson not null");}
+                }
+            }
         }
     }
+
+    // promt: is it possible to have an recycler view inside of a fragment?
+    // promt: is it possible to use databinding on this Fragment class?
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        fragmentPersonTabEventsBinding = FragmentPersonTabEventsBinding.inflate(inflater, container, false);
+        View rootView = fragmentPersonTabEventsBinding.getRoot();
+
+        //fragmentPersonTabEventsBinding.fragmentPersonIdeasRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_person_tab_events, container, false);
+        personEventsRecyclerViewAdapter = new PersonEventsRecyclerViewAdapter(eventsByPerson);
+        fragmentPersonTabEventsBinding.fragmentPersonIdeasRecyclerView.setAdapter(personEventsRecyclerViewAdapter);
+
+        return rootView;
     }
+
 }

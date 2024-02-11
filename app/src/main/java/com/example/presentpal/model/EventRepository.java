@@ -10,6 +10,7 @@ import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Category;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventJoinPerson;
+import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.EventDao;
 import com.example.presentpal.viewmodel.CategoryViewModel;
@@ -40,8 +41,26 @@ public class EventRepository {
         allPersons = database.personDao().getAllPersons();
     }
 
-    public LiveData<List<Event>> getAllEventsByPerson(Person person) {
-        return eventDao.getEventsForPerson(person.getId());
+    public List<EventPlus> getAllEventsByPerson(int personId) {
+
+        List<EventPlus> returnList = new ArrayList<>();
+        Log.d("TAG", "checkPassword: test start");
+
+        Future<List<EventPlus>> future = executor.submit(() -> {
+            List<EventPlus> listEvents = eventDao.getAllEventsByPerson(personId);
+            Log.d("TAG", "checkPassword: ");
+            return listEvents;
+        });
+
+        try {
+            returnList = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("TAG", "checkPassword: test end");
+
+        return returnList;
     }
 
     public void addEvent(String title,String date, Integer personId){
