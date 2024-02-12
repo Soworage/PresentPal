@@ -13,6 +13,7 @@ import com.example.presentpal.db.EventJoinPerson;
 import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.EventDao;
+import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 
 import java.util.ArrayList;
@@ -25,43 +26,32 @@ import java.util.concurrent.Future;
 public class EventRepository {
 
     private final EventDao eventDao;
+    private final PersonDao personDao;
 
-    private LiveData<List<Event>> allEvents;
-    private LiveData<List<Person>> allPersons;
+
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public LiveData<List<Person>> getAllPersons() {
-        return allPersons;
-    }
 
     public EventRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         eventDao = database.eventDao();
-        allPersons = database.personDao().getAllPersons();
+        personDao = database.personDao();
     }
 
-    public List<EventPlus> getAllEventsByPerson(int personId) {
+    public LiveData<List<EventPlus>> getAllEventsByPerson(int personId) {
 
-        List<EventPlus> returnList = new ArrayList<>();
-        Log.d("TAG", "checkPassword: test start");
+     return eventDao.getAllEventsByPerson(personId);
 
-        Future<List<EventPlus>> future = executor.submit(() -> {
-            List<EventPlus> listEvents = eventDao.getAllEventsByPerson(personId);
-            Log.d("TAG", "checkPassword: ");
-            return listEvents;
-        });
-
-        try {
-            returnList = future.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        Log.d("TAG", "checkPassword: test end");
-
-        return returnList;
     }
+    public LiveData<List<Person>> getAllPersons() {
+        return personDao.getAllPersons();
+    }
+
+    public LiveData<Person> getPersonById(int id){
+        return personDao.getPersonById(id);
+    }
+
 
     public void addEvent(String title,String date, Integer personId){
         Event event = new Event(personId, title, date, null, 0, null);

@@ -56,6 +56,10 @@ public class PresentIdeaRepository {
         });
     }
 
+    public LiveData<PresentIdea> getPresentIdeaById(int presentIdeaId){
+        return presentIdeaDao.getPresentIdeaById(presentIdeaId);
+    }
+
     public List<PresentIdeaJoinPerson> getAllPresentIdeasWithPersonByPersonByEvent(int personId, int eventId) {
 
         List<PresentIdeaJoinPerson> returnList = new ArrayList<>();

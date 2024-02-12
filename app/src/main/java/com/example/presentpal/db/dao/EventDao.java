@@ -46,6 +46,6 @@ public interface EventDao {
             "      (SELECT COUNT(*) FROM presentIdea pi2 WHERE pi2.personId = :personId AND pi2.eventId = e.eid AND pi2.isPresent = 1) as presents \n" +
             "FROM event e\n" +
             "WHERE e.personId = :personId")
-    List<EventPlus> getAllEventsByPerson(int personId);
+    LiveData<List<EventPlus>> getAllEventsByPerson(int personId);
 }
 

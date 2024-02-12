@@ -36,6 +36,10 @@ public class PersonRepository {
         return person;
     }
 
+    public LiveData<Person> getPersonById(int id){
+        return personDao.getPersonById(id);
+    }
+
     public void addUser(String nickname, String password, DataOperationCallback callback) {
         LogIn logIn = new LogIn(password);
         if (nickname == null || nickname.trim().isEmpty()) {

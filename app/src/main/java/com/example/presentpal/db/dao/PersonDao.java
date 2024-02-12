@@ -28,7 +28,7 @@ public interface PersonDao {
 
     // person nach ID finden
     @Query("SELECT * FROM person WHERE id = :id")
-    Person getPersonById(int id);
+    LiveData<Person> getPersonById(int id);
 
     // Such die Personendaten des Users der App
     @Query("SELECT * FROM person WHERE user = 1")
