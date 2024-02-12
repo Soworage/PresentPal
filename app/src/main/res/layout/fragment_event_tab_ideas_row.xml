@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="180dp">
 
 
         <androidx.cardview.widget.CardView
@@ -21,7 +21,10 @@
             android:id="@+id/event_ideas_row_card_view1"
             android:layout_width="match_parent"
             android:layout_height="160dp"
+            android:backgroundTint="@android:color/transparent"
+            android:outlineProvider="none"
             app:cardCornerRadius="20dp"
+            android:layout_margin="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,13 +32,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/cardview_border"
+                android:outlineProvider="none">
 
                 <androidx.cardview.widget.CardView
 
                     android:id="@+id/event_ideas_row_card_view2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:outlineProvider="none"
                     app:cardBackgroundColor="@color/blueButton"
                     app:cardCornerRadius="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +63,8 @@
                             app:layout_constraintEnd_toStartOf="@+id/event_ideas_row_title"
                             app:layout_constraintHorizontal_bias="0.472"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/white" />
 
                         <TextView
 
@@ -69,8 +76,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.286"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/event_ideas_row_picture"
@@ -96,7 +102,8 @@
                     app:layout_constraintHorizontal_bias="0.137"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.58" />
+                    app:layout_constraintVertical_bias="0.58"
+                    app:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/event_ideas_row_image3"
@@ -108,7 +115,8 @@
                     app:layout_constraintHorizontal_bias="0.138"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.869" />
+                    app:layout_constraintVertical_bias="0.869"
+                    app:tint="@color/white" />
 
 
                 <TextView
@@ -136,7 +144,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.856" />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

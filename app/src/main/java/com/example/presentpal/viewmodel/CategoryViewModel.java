@@ -23,10 +23,9 @@ public class CategoryViewModel extends AndroidViewModel {
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
-        getEventsWithPerson();
     }
 
-    public MutableLiveData<Category> category = new MutableLiveData<>();
+    public MutableLiveData<String> category = new MutableLiveData<>();
 
     public MutableLiveData<List<PersonWithEvents>> getAllEventsWithPersonByCategory() {
         return allEventsWithPersonByCategory;

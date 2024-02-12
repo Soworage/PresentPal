@@ -47,7 +47,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         onCategorySelected("colleague");
     }
     public void selectFavoriteCategory() {
-        onCategorySelected("favorite");
+        onCategorySelected("favorites");
     }
 
 }

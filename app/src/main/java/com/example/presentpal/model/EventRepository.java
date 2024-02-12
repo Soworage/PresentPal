@@ -78,7 +78,7 @@ public class EventRepository {
         });
     }
 
-    public List<CategoryViewModel.PersonWithEvents> getAllPersonsWithEventsByCategory(Category category){
+    public List<CategoryViewModel.PersonWithEvents> getAllPersonsWithEventsByCategory(String category){
 
 
         List<CategoryViewModel.PersonWithEvents> returnList = new ArrayList<>();
@@ -87,7 +87,7 @@ public class EventRepository {
         Future<List<EventJoinPerson>> future = executor.submit(() -> {
             if(category != null){
 
-            List<EventJoinPerson> returnListWithC = eventDao.getAllEventsWithPersonByCategory(category.name);
+            List<EventJoinPerson> returnListWithC = eventDao.getAllEventsWithPersonByCategory(category);
             Log.d("EventRepo", "with Category");
                 return returnListWithC;
             }

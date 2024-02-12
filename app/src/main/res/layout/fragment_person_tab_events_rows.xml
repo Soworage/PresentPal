@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="180dp">
 
 
         <androidx.cardview.widget.CardView
@@ -21,6 +21,9 @@
             android:id="@+id/person_event_row_cardView"
             android:layout_width="match_parent"
             android:layout_height="160dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:outlineProvider="none"
             app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +32,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/cardview_border">
 
                 <androidx.cardview.widget.CardView
 
@@ -57,7 +61,8 @@
                             app:layout_constraintEnd_toStartOf="@+id/person_event_row_title"
                             app:layout_constraintHorizontal_bias="0.472"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/white" />
 
                         <TextView
 
@@ -69,8 +74,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.286"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/textView5"
@@ -96,7 +100,8 @@
                     app:layout_constraintHorizontal_bias="0.138"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.581" />
+                    app:layout_constraintVertical_bias="0.581"
+                    app:tint="@color/white"/>
 
                 <ImageView
                     android:id="@+id/category_row_image2"
@@ -108,7 +113,8 @@
                     app:layout_constraintHorizontal_bias="0.138"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.869" />
+                    app:layout_constraintVertical_bias="0.869"
+                    app:tint="@color/white"/>
 
                 <TextView
 

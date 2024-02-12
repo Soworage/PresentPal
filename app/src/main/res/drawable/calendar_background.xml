@@ -7,7 +7,7 @@
         </shape>
     </item>
     <!-- Inner rectangle -->
-    <item   android:top="35dp"
+    <item   android:top="40dp"
             android:left="0dp"
             android:right="0dp"
             android:bottom="0dp">
@@ -22,8 +22,8 @@
     </item>
     <item
         android:top="0dp"
-        android:left="8dp"
-        android:right="8dp"
+        android:left="16dp"
+        android:right="16dp"
         android:height="10dp">
 
     <shape android:shape="rectangle">
@@ -33,8 +33,8 @@
 </item>
     <item
         android:top="0dp"
-        android:left="16dp"
-        android:right="16dp"
+        android:left="24dp"
+        android:right="24dp"
         android:height="10dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/blueButton" />

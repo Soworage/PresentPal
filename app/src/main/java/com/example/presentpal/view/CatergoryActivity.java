@@ -12,6 +12,8 @@ import android.util.Log;
 
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityCatergoryBinding;
+import com.example.presentpal.db.Category;
+import com.example.presentpal.db.Event;
 import com.example.presentpal.view.adapter.recylerview.CategoryRecyclerViewAdapter;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 
@@ -25,7 +27,8 @@ public class CatergoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_catergory);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_catergory);
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
-
+        categoryViewModel.category.setValue(getIntent().getStringExtra("category"));
+        categoryViewModel.getEventsWithPerson();
         binding.setLifecycleOwner(this);
         binding.setCategoryViewModel(categoryViewModel);
 
