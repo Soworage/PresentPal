@@ -7,47 +7,63 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
+
+import com.example.presentpal.db.Event;
+import com.example.presentpal.db.EventJoinPerson;
+import com.example.presentpal.db.Person;
+import com.example.presentpal.db.User;
+import com.example.presentpal.model.EventRepository;
+import com.example.presentpal.model.LogInRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
-//    public static class NavigationEvent {
-//        private String data; // Die Daten, die übermittelt werden sollen
-//
-//        public NavigationEvent(String data) {
-//            this.data = data;
-//        }
-//
-//        public String getData() {
-//            return data;
-//        }
-//    }
+
 
     private MutableLiveData<String> _selectedCategory = new MutableLiveData<>();
     public MutableLiveData<String> selectedCategory = _selectedCategory;
+    public LiveData<User> User;
+    private EventRepository eventRepository;
+    private LogInRepository logInRepository;
+
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
+        logInRepository = new LogInRepository(application);
+        eventRepository = new EventRepository(application);
+        User = logInRepository.getUser();
+
     }
 
-//    public LiveData<NavigationEvent> getNavigateToCategoryScreen() {
-//        return navigateToCategoryScreen;
-//    }
+
 
     public void onCategorySelected(String category) {
         _selectedCategory.setValue(category);
-        Log.d("category", category);
+
     }
 
     public void selectFriendsCategory() {
         onCategorySelected("friends");
 
     }
-    public void selectFamilyCategory() {
-        onCategorySelected("family");
-    }
-    public void selectColleagueCategory() {
-        onCategorySelected("colleague");
-    }
-    public void selectFavoriteCategory() {
-        onCategorySelected("favorites");
+    public void selectAllCategory(){
+        onCategorySelected(null);
+
     }
 
-}
+
+        public void selectFamilyCategory () {
+            onCategorySelected("family");
+        }
+
+        public void selectColleagueCategory () {
+            onCategorySelected("colleague");
+        }
+
+        public void selectFavoriteCategory () {
+            onCategorySelected("favorites");
+        }
+
+
+    }

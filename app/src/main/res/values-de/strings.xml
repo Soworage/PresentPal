@@ -15,5 +15,23 @@
     <string name="nickname">Spitznamen:</string>
     <string name="enter_your_password">gib dein Passwort ein</string>
     <string name="presentpal">PresentPal</string>
-    <string name="person_no_interests_hint">"Keine Einträge...\n\n(Über \"Profil bearbeiten\" können Sie weitere Informationen hinzufügen) "</string>
+    <string name="camera_button_to_add_a_picture">drücke hier um ein Bild hinzuzufügen</string>
+    <string name="enter_your_nickname">gebe hier dein Spitznamen ein</string>
+    <string name="welcome_back">Willkommen zurück,</string>
+    <string name="log_in">Einloggen</string>
+    <string name="local_password">Lokales Passwort:</string>
+    <string name="enter_your_local_password">gibt dein lokales Passwort ein</string>
+    <string name="event_insert_text_person">Person</string>
+    <string name="event_insert_text_date">Datum</string>
+    <string name="event_insert_text_title">Titel</string>
+    <string name="event_insert_text_maintitle">Füge ein neues Event hinzu</string>
+    <string name="categories">Kategorien</string>
+    <string name="family">Familie</string>
+    <string name="colleagues">Arbeitskollegen</string>
+    <string name="favorites">Favoriten</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="insert_a_new_person">Füge eine neue Person hinzu</string>
+    <string name="insert_a_new_event">Füge ein neues Event hinzu</string>
+    <string name="insert_a_new_present_idea">Füge eine neue Geschenkidee hinzu</string>
+    <string name="choose_an_action">Wähle eine Aktion</string>
 </resources>

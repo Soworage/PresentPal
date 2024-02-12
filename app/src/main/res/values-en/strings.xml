@@ -25,5 +25,18 @@
     <string name="log_in">Log in</string>
     <string name="local_password">Local Password:</string>
     <string name="enter_your_local_password">enter your local password</string>
-    <string name="person_no_interests_hint">"No entries...\n\n(You can add further information via \"Edit profile\") "</string>
+    <string name="event_insert_text_person">Person</string>
+    <string name="event_insert_text_date">Date</string>
+    <string name="event_insert_text_title">Title</string>
+    <string name="event_insert_text_maintitle">Add new event</string>
+    <string name="categories">categories</string>
+    <string name="family">Family</string>
+    <string name="colleagues">Colleagues</string>
+    <string name="favorites">Favorites</string>
+    <string name="cancel">cancel</string>
+    <string name="insert_a_new_person">Insert a new person</string>
+    <string name="insert_a_new_event">Insert a new event</string>
+    <string name="insert_a_new_present_idea">Insert a new present idea</string>
+    <string name="choose_an_action">choose an action</string>
+    <string name="person_no_interests_hint">person has no interests\n</string>
 </resources>

@@ -112,4 +112,24 @@ public class Event implements Serializable {
     public void setFirstYear(String firstYear) {
         this.firstYear = firstYear;
     }
+
+    public String integerToDate(int dateInt) {
+        String tmp = String.valueOf(dateInt);
+        String year = tmp.substring(0, 4);
+        String month = tmp.substring(4, 6);
+        String day = tmp.substring(6, 8);
+        return day + "." + month + "." + year;
+
+
+    }
+
+    public int dateToInteger(String dateString) {
+
+        String year = dateString.substring(6, 10);
+        String month = dateString.substring(3, 5);
+        String day = dateString.substring(0, 2);
+        String date = day + month + year;
+        return Integer.parseInt(date);
+
+    }
 }

@@ -40,6 +40,10 @@ public interface EventDao {
     @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
     List<EventJoinPerson> getAllEventsWithPerson();
 
+        @Query("SELECT * FROM event INNER JOIN person ON event.personID = person.id ORDER BY date ASC")
+        LiveData<List<EventJoinPerson>> getUpcomingEvents();
+
+
     @Query("SELECT  \n" +
             "    e.*,\n" +
             "     (SELECT COUNT(*) FROM presentIdea pi1 WHERE pi1.personId = :personId AND pi1.eventId is Null OR pi1.eventId = e.eid AND pi1.isPresent = 0 ) as ideas,  \n" +

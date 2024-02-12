@@ -31,7 +31,17 @@
     <string name="family">Family</string>
     <string name="colleagues">Colleagues</string>
     <string name="favorites">Favorites</string>
-    <string name="person_no_interests_hint">"No entries...\n\n(You can add further information via \"Edit profile\") "</string>
+    <string name="home" translatable="false">Home\n</string>
+    <string name="cancel">cancel</string>
+    <string name="insert_a_new_person">Insert a new person</string>
+    <string name="insert_a_new_event">Insert a new event</string>
+    <string name="insert_a_new_present_idea">Insert a new present idea</string>
+    <string name="choose_an_action">choose an action</string>
+    <string name="good_evening">Good Evening,</string>
+    <string name="view_all">view all</string>
+    <string name="friends">Friends</string>
+    <string name="next_events">next events</string>
+    <string name="person_no_interests_hint">person has no interests\n</string>
 
     <!--Register Screen end-->
 

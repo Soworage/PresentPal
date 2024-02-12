@@ -1,7 +1,11 @@
 package com.example.presentpal.view.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,58 +13,75 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.presentpal.R;
+import com.example.presentpal.databinding.FragmentNavbarBinding;
+import com.example.presentpal.navigation.NavigationHandler;
+import com.example.presentpal.view.EventInsertActivity;
+import com.example.presentpal.view.MainActivity;
+import com.example.presentpal.view.PersonInsertActivity;
+import com.example.presentpal.view.PresentIdeaActivity;
+import com.example.presentpal.viewmodel.PresentIdeaInsertViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NavbarFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class NavbarFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class NavbarFragment extends Fragment implements NavigationHandler {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+private FragmentNavbarBinding binding;
     public NavbarFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment navbar.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NavbarFragment newInstance(String param1, String param2) {
-        NavbarFragment fragment = new NavbarFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navbar, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_navbar, container, false);
+
+        // Setzt die NavigationHandler-Instanz für das Binding
+        binding.setNavigationHandler(this);
+
+        // Gibt die Root-View des Bindings zurück
+        return binding.getRoot();
     }
+
+    @Override
+    public void navigateToMainScreenActivity() {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToShowOptionsDialog() {
+
+        final CharSequence[] options = {getString(R.string.insert_a_new_person), getString(R.string.insert_a_new_event), getString(R.string.insert_a_new_present_idea)};
+
+        // AlertDialog Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.choose_an_action);
+
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent;
+                switch (which) {
+                    case 0: // Person einfügen
+                        intent = new Intent(getActivity(), PersonInsertActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1: // Termin einfügen
+                        intent = new Intent(getActivity(), EventInsertActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2: // Geschenkidee einfügen
+
+                        break;
+                }
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel, null);
+
+        // Erstelle und zeige den AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }
