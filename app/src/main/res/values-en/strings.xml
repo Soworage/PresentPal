@@ -25,4 +25,5 @@
     <string name="log_in">Log in</string>
     <string name="local_password">Local Password:</string>
     <string name="enter_your_local_password">enter your local password</string>
+    <string name="person_no_interests_hint">"No entries...\n\n(You can add further information via \"Edit profile\") "</string>
 </resources>

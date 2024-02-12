@@ -31,6 +31,7 @@
     <string name="family">Family</string>
     <string name="colleagues">Colleagues</string>
     <string name="favorites">Favorites</string>
+    <string name="person_no_interests_hint">"No entries...\n\n(You can add further information via \"Edit profile\") "</string>
 
     <!--Register Screen end-->
 

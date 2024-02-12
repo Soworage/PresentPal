@@ -20,9 +20,13 @@ public class CategoryViewModel extends AndroidViewModel {
 
     private EventRepository eventRepository;
 
+    private MutableLiveData<Boolean> finish =new MutableLiveData<>();
+
+
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
+        finish.setValue(false);
     }
 
     public MutableLiveData<String> category = new MutableLiveData<>();
@@ -33,12 +37,20 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
-
     public void getEventsWithPerson() {
 
         allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
 
     }
+
+    public void goBack(){
+        finish.setValue(true);
+    }
+
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
+
 
 
     public static class PersonWithEvents {

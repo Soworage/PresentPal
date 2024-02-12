@@ -3,12 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.PersonTabCharacteristicsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment B" />
-
+        android:layout_height="wrap_content"
+        android:background="@drawable/cardview_border"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:hint="@string/person_no_interests_hint"
+        android:text=""
+        android:drawablePadding="10dp"
+        app:drawableLeftCompat="@drawable/baseline_info_outline_24"
+        app:drawableTint="@color/white" />
 </FrameLayout>

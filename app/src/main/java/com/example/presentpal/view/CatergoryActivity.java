@@ -41,6 +41,12 @@ public class CatergoryActivity extends AppCompatActivity {
             else{Log.i("CatActivity", personWithEvents.get(0).getName());}
         });
 
+        categoryViewModel.getFinish().observe(this, finish ->{
+            if(finish){
+                finish();
+            }
+        });
+
 
 
 
