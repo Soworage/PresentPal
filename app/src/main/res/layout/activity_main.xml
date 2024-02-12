@@ -5,6 +5,12 @@
         <variable
             name="mainActivityViewModel"
             type="com.example.presentpal.viewmodel.MainActivityViewModel" />
+        <variable
+            name="EventJoinPersonA"
+            type="com.example.presentpal.db.EventJoinPerson" />
+        <variable
+            name="EventJoinPersonB"
+            type="com.example.presentpal.db.EventJoinPerson" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -331,13 +337,12 @@
 
                     <TextView
                         android:id="@+id/event1TextView"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        android:text="hallo"
+                        android:text="@{EventJoinPersonA.event.date + ` - ` + EventJoinPersonA.event.title + ` (`+ EventJoinPersonA.person.nickname + `)`}"
                         android:drawablePadding="10dp"
                         app:drawableLeftCompat="@drawable/baseline_lightbulb_24"
                         >
@@ -346,13 +351,12 @@
 
                     <TextView
                         android:id="@+id/event2TextView"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:drawablePadding="10dp"
                         android:textColor="@color/white"
-                        android:text="Hallo"
+                        android:text="@{EventJoinPersonB.event.date + ` - ` + EventJoinPersonB.event.title + ` (`+ EventJoinPersonB.person.nickname + `)`}"
                         app:drawableLeftCompat="@drawable/baseline_lightbulb_24"
                         android:textSize="15sp">
 

@@ -40,7 +40,7 @@ public interface EventDao {
     @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
     List<EventJoinPerson> getAllEventsWithPerson();
 
-        @Query("SELECT * FROM event INNER JOIN person ON event.personID = person.id ORDER BY date ASC")
+        @Query("SELECT * FROM event INNER JOIN person ON event.personID = person.id ORDER BY dateSortable ASC")
         LiveData<List<EventJoinPerson>> getUpcomingEvents();
 
 

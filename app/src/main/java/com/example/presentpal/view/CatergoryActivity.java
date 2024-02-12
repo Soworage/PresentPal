@@ -28,7 +28,7 @@ public class CatergoryActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_catergory);
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
         categoryViewModel.category.setValue(getIntent().getStringExtra("category"));
-      //  categoryViewModel.getEventsWithPerson();
+       categoryViewModel.getEventsWithPerson();
         binding.setLifecycleOwner(this);
         binding.setCategoryViewModel(categoryViewModel);
 

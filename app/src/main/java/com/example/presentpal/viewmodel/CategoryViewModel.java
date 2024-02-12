@@ -37,11 +37,11 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
-//    public void getEventsWithPerson() {
-//
-//        allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
-//
-//    }
+    public void getEventsWithPerson() {
+
+        allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
+
+   }
 
     public void goBack(){
         finish.setValue(true);

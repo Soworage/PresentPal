@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.presentpal.R;
@@ -22,6 +23,7 @@ import com.example.presentpal.viewmodel.LoginScreenViewModel;
 import com.example.presentpal.viewmodel.MainActivityViewModel;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+
+        mainActivityViewModel.getUpcomingEvents();
+
         activityMainBinding.setMainActivityViewModel(mainActivityViewModel);
         activityMainBinding.setLifecycleOwner(this);
         if (savedInstanceState == null) {
@@ -43,9 +48,22 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
         mainActivityViewModel.selectedCategory.observe(this, category -> {
-            if (category != null) {
-                navigateToCategoryActivity(category);
-            }
+            navigateToCategoryActivity(category);
+        });
+
+        mainActivityViewModel.getUpcomingEvents().observe(this, new Observer<List<EventJoinPerson>>() {
+                    @Override
+                    public void onChanged(List<EventJoinPerson> upcomingEvents) {
+                        if(upcomingEvents != null) {
+                            Log.i("MainActivity", "Test" + upcomingEvents.size());
+                            if(upcomingEvents.size() > 0) {
+                            activityMainBinding.setEventJoinPersonA(upcomingEvents.get(0));
+                            }
+                            if(upcomingEvents.size() > 1) {
+                                activityMainBinding.setEventJoinPersonB(upcomingEvents.get(1));
+                            }
+                        }
+                    }
         });
     }
 
@@ -55,17 +73,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//        public LiveData<String> getFormattedEvent ( int eventIndex){
-//            MutableLiveData<String> formattedEvent = new MutableLiveData<>();
-//            upcomingEvents.observeForever(events -> {
-//                if (events != null && events.size() > eventIndex) {
-//                    Event event = events.get(eventIndex);
-//                    String formatted = event.getTitle() + ", " + event.integerToDate(event.getDate()) + " (" + event.getPersonNickname() + ")";
-//                    formattedEvent.setValue(formatted);
-//                } else {
-//                    formattedEvent.setValue("Keine weiteren Events");
-//                }
-//            });
-//            return formattedEvent;
-//        }
+
 }

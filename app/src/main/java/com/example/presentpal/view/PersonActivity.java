@@ -16,6 +16,7 @@ import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.PresentIdea;
 import com.example.presentpal.view.adapter.viewpager.PersonViewPagerAdapter;
+import com.example.presentpal.view.fragment.NavbarFragment;
 import com.example.presentpal.viewmodel.PersonViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -32,11 +33,20 @@ public class PersonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_person);
         activityPersonBinding = DataBindingUtil.setContentView(this, R.layout.activity_person);
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
-       // https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
-       Person intentPerson = (Person) getIntent().getSerializableExtra("person");
+
+        // https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
+        Person intentPerson = (Person) getIntent().getSerializableExtra("person");
         personViewModel.getEventsByPerson(intentPerson.getId());
         activityPersonBinding.setLifecycleOwner(this);
         activityPersonBinding.setPersonViewModel(personViewModel);
+
+        //Navbar
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.navbar_person, new NavbarFragment())
+                    .commit();
+        }
+
 
         TabLayout tabLayout = findViewById(R.id.person_tabs);
         ViewPager2 viewPager = findViewById(R.id.person_viewpager);
@@ -44,6 +54,7 @@ public class PersonActivity extends AppCompatActivity {
 
         personViewModel.getPersonById(intentPerson.getId()).observe(this,  personById -> {
             activityPersonBinding.setPerson(personById);
+
         });
 
         personViewModel.getEventsByPerson(intentPerson.getId()).observe(this,  eventsByPerson -> {

@@ -37,33 +37,31 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
 
-
     public void onCategorySelected(String category) {
         _selectedCategory.setValue(category);
+    }
 
+    public void selectAllCategory() {
+        onCategorySelected(null);
+    }
+
+    public void selectFamilyCategory() {
+        onCategorySelected("family");
+    }
+
+    public void selectColleagueCategory() {
+        onCategorySelected("colleague");
+    }
+
+    public void selectFavoriteCategory() {
+        onCategorySelected("favorites");
     }
 
     public void selectFriendsCategory() {
         onCategorySelected("friends");
-
-    }
-    public void selectAllCategory(){
-        onCategorySelected(null);
-
     }
 
-
-        public void selectFamilyCategory () {
-            onCategorySelected("family");
-        }
-
-        public void selectColleagueCategory () {
-            onCategorySelected("colleague");
-        }
-
-        public void selectFavoriteCategory () {
-            onCategorySelected("favorites");
-        }
-
-
+    public LiveData<List<EventJoinPerson>> getUpcomingEvents(){
+        return eventRepository.getUpcomingEvents();
     }
+}

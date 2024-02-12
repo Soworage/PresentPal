@@ -37,9 +37,11 @@ public class Event implements Serializable {
     @ColumnInfo(name = "date")
     public String date;
 
+    @ColumnInfo(name="dateSortable")
+    public int dateSortable;
+
     @ColumnInfo(name = "description")
     public String description;
-
 
     @ColumnInfo(name = "closed")
     public int closed;
@@ -47,13 +49,18 @@ public class Event implements Serializable {
     @ColumnInfo(name = "firstYear")
     public String firstYear;
 
-    public Event(Integer personId, String title, @NotNull String date, String description, int closed, String firstYear) {
+    @ColumnInfo(name="budget")
+    public float budget;
+
+    public Event(Integer personId, String title, @NotNull String date,int dateSortable, String description, int closed, String firstYear, float budget) {
         this.personId = personId;
         this.title = title;
         this.date = date;
+        this.dateSortable = dateSortable;
         this.description = description;
         this.closed = closed;
         this.firstYear = firstYear;
+        this.budget = budget;
     }
 
     public int getId() {
@@ -113,7 +120,15 @@ public class Event implements Serializable {
         this.firstYear = firstYear;
     }
 
-    public String integerToDate(int dateInt) {
+    public int getDateSortable() {
+        return dateSortable;
+    }
+
+    public void setDateSortable(int dateSortable) {
+        this.dateSortable = dateSortable;
+    }
+
+    public static String integerToDate(int dateInt) {
         String tmp = String.valueOf(dateInt);
         String year = tmp.substring(0, 4);
         String month = tmp.substring(4, 6);
@@ -123,7 +138,7 @@ public class Event implements Serializable {
 
     }
 
-    public int dateToInteger(String dateString) {
+    public static int dateToInteger(String dateString) {
 
         String year = dateString.substring(6, 10);
         String month = dateString.substring(3, 5);

@@ -54,7 +54,7 @@ public class EventRepository {
 
 
     public void addEvent(String title,String date, Integer personId){
-        Event event = new Event(personId, title, date, null, 0, null);
+        Event event = new Event(personId, title, date, Event.dateToInteger(date),null, 0, null, 0f);
         insertEvent(event);
     }
 
@@ -125,5 +125,9 @@ public class EventRepository {
         return returnList;
 
 
+    }
+
+    public LiveData<List<EventJoinPerson>> getUpcomingEvents(){
+        return eventDao.getUpcomingEvents();
     }
 }
