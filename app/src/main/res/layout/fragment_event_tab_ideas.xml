@@ -13,11 +13,17 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.EventTabIdeasFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_event_ideas_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
+
+
+
+
+
 </FrameLayout>
 </layout>

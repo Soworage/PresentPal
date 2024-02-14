@@ -33,14 +33,15 @@ public class PersonInsertActivity extends AppCompatActivity {
         activityPersonInsertBinding.setLifecycleOwner(this);
         activityPersonInsertBinding.setPersonInsertViewModel(personInsertViewModel);
 
-        personInsertViewModel.personInserted.observe(this, new Observer<Boolean>() {
+        personInsertViewModel.personInsertOk.observe(this, new Observer<Long>() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Person person = personInsertViewModel.getPerson().getValue();
-                    Intent intent = new Intent(PersonInsertActivity.this, PersonActivity.class);
-                    intent.putExtra("person", person);
-                    startActivity(intent);
+            public void onChanged(Long isInserted) {
+                if (isInserted > -1) {
+                    Toast.makeText(getApplication(), getResources().getString(R.string.person_insert_ok), Toast.LENGTH_SHORT).show();
+                 finish();
+                }
+                else {
+                    Toast.makeText(getApplication(), getResources().getString(R.string.person_insert_failed), Toast.LENGTH_SHORT).show();
                 }
 
             }

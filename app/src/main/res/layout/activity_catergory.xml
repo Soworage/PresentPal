@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="75dp"
+        android:layout_marginBottom="80dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -28,18 +29,24 @@
         android:layout_marginLeft="5dp"
         android:background="@drawable/cardview_border"/>
 
+    <!-- benötigt BindingAdapter -->
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        app:tint="@color/white"
+        android:drawablePadding="10dp"
+        android:text="@{CategoryViewModel.categoryText}"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@{CategoryViewModel.categorySymbol}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:drawablePadding="10dp"
-        app:drawableLeftCompat="@drawable/baseline_lightbulb_24"/>
+
+        />
 
     <ImageButton
      android:id="@+id/category_button_back"
@@ -52,5 +59,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="@{()->CategoryViewModel.goBack()}"/>
+
+    <FrameLayout
+        android:id="@+id/navbar_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

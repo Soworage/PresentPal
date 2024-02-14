@@ -1,6 +1,7 @@
 package com.example.presentpal.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -15,30 +16,31 @@ import java.util.List;
 
 public class EventInsertViewModel extends AndroidViewModel {
 
-    private final EventRepository eventModel;
+    private final EventRepository eventRepository;
     public LiveData<List<Person>> allPersons;
+
+    public MutableLiveData<String> title = new MutableLiveData<>();
+    public MutableLiveData<String> date = new MutableLiveData<>();
+    public MutableLiveData<Integer> position = new MutableLiveData<>();
+    public MutableLiveData<Person> selectedPerson = new MutableLiveData<>();
+    public MutableLiveData<Boolean> calendarOpen = new MutableLiveData<>();
+    public MutableLiveData<Long> eventInsertOk = new MutableLiveData<>();
+
+
 
     public EventInsertViewModel(@NonNull Application application) {
         super(application);
-        eventModel = new EventRepository(application);
-        allPersons = eventModel.getAllPersons();
+        eventRepository = new EventRepository(application);
+        allPersons = eventRepository.getAllPersons();
+        position.setValue(0);
         calendarOpen.setValue(false);
     }
 
-    public MutableLiveData<String> title = new MutableLiveData<>();
-
-    public MutableLiveData<String> date = new MutableLiveData<>();
-    public MutableLiveData<Integer> position = new MutableLiveData<>();
-
-    public MutableLiveData<Person> selectedPerson = new MutableLiveData<>();
-
-    public MutableLiveData<Boolean> calendarOpen = new MutableLiveData<>();
-
 
     //private MutableLiveData<>
-    public void addEvent(View view) {
+    public void addEvent() {
         if (selectedPerson.getValue() != null) {
-            eventModel.addEvent(title.getValue(), date.getValue(), selectedPerson.getValue().getId());
+            eventInsertOk.setValue(eventRepository.addEvent(title.getValue(), date.getValue(), selectedPerson.getValue().getId()));
         }
     }
 
@@ -46,13 +48,9 @@ public class EventInsertViewModel extends AndroidViewModel {
         return selectedPerson;
     }
 
-    public void setSelectedPerson(Person person) {
-        selectedPerson.setValue(person);
-    }
-
-    public void onPersonSelected() {
-        if (position.getValue() != null && allPersons.getValue() != null) {
-            setSelectedPerson(allPersons.getValue().get(position.getValue()));
+    public void setSelectedPerson(int personPosition) {
+        if (allPersons.getValue() != null){
+            selectedPerson.setValue(allPersons.getValue().get(personPosition));
         }
     }
 
@@ -79,4 +77,11 @@ public class EventInsertViewModel extends AndroidViewModel {
         calendarOpen.setValue(false);
     }
 
+    public MutableLiveData<Integer> getPosition() {
+        return position;
+    }
+
+    public void setPosition(MutableLiveData<Integer> position) {
+        this.position = position;
+    }
 }

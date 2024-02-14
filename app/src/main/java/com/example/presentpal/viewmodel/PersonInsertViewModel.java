@@ -22,23 +22,12 @@ public class PersonInsertViewModel extends AndroidViewModel {
     public MutableLiveData<String> lastname = new MutableLiveData<>();
     public MutableLiveData<String> nickname = new MutableLiveData<>();
 
-    public MutableLiveData<Person> person = new MutableLiveData<>();
-
-
-
-    public MutableLiveData<Boolean> personInserted = new MutableLiveData<>();
+    public MutableLiveData<Long> personInsertOk = new MutableLiveData<>();
 
     //private MutableLiveData<>
     public void addPerson(){
-        person.setValue(personRepository.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
-      // ÜBERARBETEIN!!
-        personInserted.setValue(true);
+        personInsertOk.setValue(personRepository.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
     }
 
-    public LiveData<Person> getPerson(){
-        if(person.getValue() != null){
-            return person;
-        }
-        return null;
-    }
+
 }

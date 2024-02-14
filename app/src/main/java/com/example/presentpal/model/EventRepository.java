@@ -12,6 +12,7 @@ import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventJoinPerson;
 import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.db.Person;
+import com.example.presentpal.db.dao.CategoryDao;
 import com.example.presentpal.db.dao.EventDao;
 import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.viewmodel.CategoryViewModel;
@@ -28,7 +29,7 @@ public class EventRepository {
     private final EventDao eventDao;
     private final PersonDao personDao;
 
-
+    private final CategoryDao categoryDao;
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -37,6 +38,7 @@ public class EventRepository {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         eventDao = database.eventDao();
         personDao = database.personDao();
+        categoryDao = database.categoryDao();
     }
 
     public LiveData<List<EventPlus>> getAllEventsByPerson(int personId) {
@@ -53,19 +55,22 @@ public class EventRepository {
     }
 
 
-    public void addEvent(String title,String date, Integer personId){
+    public long addEvent(String title,String date, Integer personId){
         Event event = new Event(personId, title, date, Event.dateToInteger(date),null, 0, null, 0f);
-        insertEvent(event);
+        return insertEvent(event);
     }
 
-    private void insertEvent(Event event) {
+    private long insertEvent(Event event) {
 
+        final long[] returnValue = new long[1];
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                eventDao.insert(event);
+                returnValue[0] =   eventDao.insert(event);
             }
         });
+
+        return returnValue[0];
     }
 
     public List<CategoryViewModel.PersonWithEvents> getAllPersonsWithEventsByCategory(String category){
@@ -129,5 +134,9 @@ public class EventRepository {
 
     public LiveData<List<EventJoinPerson>> getUpcomingEvents(){
         return eventDao.getUpcomingEvents();
+    }
+
+    public LiveData<List<Category>> getCategoryByPerson(int personId){
+        return categoryDao.getAllCategoriesByPerson(personId);
     }
 }

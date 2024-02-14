@@ -1,7 +1,12 @@
 package com.example.presentpal.viewmodel;
 
+import android.app.AlertDialog;
 import android.app.Application;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.text.InputType;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.InverseMethod;
@@ -13,6 +18,7 @@ import androidx.lifecycle.Observer;
 import com.example.presentpal.db.User;
 import com.example.presentpal.db.dao.LogInDao;
 import com.example.presentpal.model.LogInRepository;
+import com.example.presentpal.view.MainActivity;
 
 import java.util.Objects;
 
@@ -25,12 +31,16 @@ public class LoginScreenViewModel extends AndroidViewModel {
     public MutableLiveData<Integer> isPasswordCorrect = new MutableLiveData<>();
     private LogInRepository logInRepository;
 
+    public MutableLiveData<Boolean> openIdeaInsert = new MutableLiveData<>();
+    public MutableLiveData<Boolean> openInfo = new MutableLiveData<>();
+
+
+
     public LoginScreenViewModel(@NonNull Application application) {
         super(application);
         logInRepository = new LogInRepository(application);
         User = logInRepository.getUser();
     }
-
 
 
     public void setPasswordCheckerText(CharSequence s) {
@@ -40,7 +50,6 @@ public class LoginScreenViewModel extends AndroidViewModel {
     public LiveData<Integer> getIsPasswordCorrect() {
         return isPasswordCorrect;
     }
-
 
 
     public void loginUser() {
@@ -54,5 +63,38 @@ public class LoginScreenViewModel extends AndroidViewModel {
             Log.e("LoginUser", "passwordCheckerText is null");
         }
     }
+
+    //https://stackoverflow.com/questions/10903754/input-text-dialog-android
+    public void showInfo() {
+        openInfo.setValue(true);
+    }
+
+    public void quickIdea(){
+      openIdeaInsert.setValue(true);
+    }
+
+    public String getInfoText() {
+        return infoText;
+    }
+
+    private String infoText =  "\n" +
+            "Autoren:" +
+            "\n" +
+            "Alex Mihel, Kay Schindler  \n" +
+            "\n" +
+            "Matrikelnummer: " +
+            "\n" +
+            " 1016076, 588005 \n" +
+            "\n" +
+            "E-Mail: " +
+            "\n" +
+            "alex.mihel@hs-osnabrueck.de, aay.schindler@hs-osnabrueck.de\n" +
+            "\n" +
+            "Dozent: " +
+            "\n" +
+            "Prof. Dr. Rainer Roosmann \n" +
+            "\n";
+
+
 
 }

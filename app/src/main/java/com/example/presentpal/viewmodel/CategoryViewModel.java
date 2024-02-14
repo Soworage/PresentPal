@@ -1,12 +1,15 @@
 package com.example.presentpal.viewmodel;
 
 import android.app.Application;
+import android.content.res.Resources;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.presentpal.R;
 import com.example.presentpal.db.Category;
 import com.example.presentpal.db.EventJoinPerson;
 import com.example.presentpal.db.Person;
@@ -19,14 +22,25 @@ import java.util.List;
 public class CategoryViewModel extends AndroidViewModel {
 
     private EventRepository eventRepository;
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
 
-    private MutableLiveData<Boolean> finish =new MutableLiveData<>();
+    private final Resources resources;
+    public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
+
+
+    public MutableLiveData<Integer> categorySymbol = new MutableLiveData<>();
+    public MutableLiveData<String> categoryText = new MutableLiveData<>();
 
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
         finish.setValue(false);
+
+        resources = application.getResources();
+
+        categoryText.setValue(resources.getString(R.string.view_all));
+        categorySymbol.setValue(R.drawable.baseline_groups_3_24);
     }
 
     public MutableLiveData<String> category = new MutableLiveData<>();
@@ -35,12 +49,9 @@ public class CategoryViewModel extends AndroidViewModel {
         return allEventsWithPersonByCategory;
     }
 
-    public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
     public void getEventsWithPerson() {
-
         allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
-
    }
 
     public void goBack(){
@@ -50,6 +61,46 @@ public class CategoryViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> getFinish() {
         return finish;
     }
+
+    public MutableLiveData<String> getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category.setValue(category);
+    }
+
+    public void setCategoryString(){
+        if(getCategory().getValue() != null){
+            Log.i("CategoryViewModel", "in setCategoryString()");
+            switch (getCategory().getValue()){
+                case "friends":
+                    categoryText.setValue(resources.getString(R.string.friends));
+                    categorySymbol.setValue(R.drawable.baseline_person_24);
+                    break;
+                case "family":
+                    categoryText.setValue(resources.getString(R.string.family));
+                    categorySymbol.setValue(R.drawable.baseline_groups_24);
+                    break;
+                case "colleague":
+                    categoryText.setValue(resources.getString(R.string.colleagues));
+                    categorySymbol.setValue(R.drawable.baseline_work_24);
+                    break;
+                case "favorites":
+                    categoryText.setValue(resources.getString(R.string.favorites));
+                    categorySymbol.setValue(R.drawable.baseline_favorite_24);
+                    break;
+                default:
+                    categoryText.setValue(resources.getString(R.string.categories));
+                    categorySymbol.setValue(R.drawable.baseline_groups_3_24);
+            }
+        }
+    }
+
+    public MutableLiveData<Integer> getCategorySymbol() {
+        return categorySymbol;
+    }
+
 
 
 

@@ -36,6 +36,7 @@
             android:importantForAccessibility="no"
             android:src="@drawable/baseline_people_24"
             app:elevation="0dp"
+            android:onClick="@{()-> navigationHandler.navigateToViewAll()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.763"

@@ -28,16 +28,16 @@ public interface EventDao {
     @Query("SELECT * FROM event")
     LiveData<List<Event>> getAllEvents();
 
-    @Query("SELECT * FROM event WHERE personId = :personId")
+    @Query("SELECT * FROM event WHERE personId = :personId AND closed = 0 ORDER BY dateSortable ASC")
     LiveData<List<Event>> getEventsForPerson(int personId);
 
     @Query("SELECT * FROM event WHERE eid = :eventId")
     Event getEventById(int eventId);
 
-    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id INNER JOIN personCategory pc ON p.id = pc.personId WHERE pc.categoryId = :categoryId AND e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
+    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id INNER JOIN personCategory pc ON p.id = pc.personId WHERE pc.categoryId = :categoryId AND e.closed = 0 ORDER BY e.personId ASC, e.dateSortable ASC")
     List<EventJoinPerson> getAllEventsWithPersonByCategory(String categoryId);
 
-    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.date ASC")
+    @Query("SELECT e.*, p.*  FROM event e INNER JOIN person p ON e.personId = p.id WHERE e.closed = 0 ORDER BY e.personId ASC, e.dateSortable ASC")
     List<EventJoinPerson> getAllEventsWithPerson();
 
         @Query("SELECT * FROM event INNER JOIN person ON event.personID = person.id ORDER BY dateSortable ASC")

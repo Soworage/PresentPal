@@ -143,7 +143,7 @@ public class Event implements Serializable {
         String year = dateString.substring(6, 10);
         String month = dateString.substring(3, 5);
         String day = dateString.substring(0, 2);
-        String date = day + month + year;
+        String date = year + month + day;
         return Integer.parseInt(date);
 
     }

@@ -33,19 +33,23 @@ public class EventPresentsRecyclerViewAdapter extends RecyclerView.Adapter<Event
 
     @Override
     public void onBindViewHolder(@NonNull PresentIdeasViewHolder holder, int position) {
-        PresentIdeaJoinPerson presentIdeaJoinPerson = presentIdeas.get(position);
-        holder.fragmentEventTabIdeasRowBinding.setPresentIdeaJoinPerson(presentIdeaJoinPerson);
-        holder.fragmentEventTabIdeasRowBinding.executePendingBindings();
 
-        holder.fragmentEventTabIdeasRowBinding.eventIdeasRowCardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PresentIdeaActivity.class);
-                intent.putExtra("presentIdea", presentIdeaJoinPerson.getPresentIdea());
-                v.getContext().startActivity(intent);
-            }
-        });
+        if (presentIdeas != null) {
+            PresentIdeaJoinPerson presentIdeaJoinPerson = presentIdeas.get(position);
 
+            holder.fragmentEventTabIdeasRowBinding.setPresentIdeaJoinPerson(presentIdeaJoinPerson);
+            holder.fragmentEventTabIdeasRowBinding.executePendingBindings();
+
+            holder.fragmentEventTabIdeasRowBinding.eventIdeasRowCardView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), PresentIdeaActivity.class);
+                    intent.putExtra("presentIdea", presentIdeaJoinPerson.getPresentIdea());
+                    v.getContext().startActivity(intent);
+                }
+            });
+
+        }
     }
 
     @Override

@@ -16,13 +16,15 @@
         android:background="#161616"
         tools:context=".view.LoginScreenActivity">
 
-
+<!-- android:background="@drawable/text_input_background" -->
         <EditText
             android:id="@+id/passwordCheckerText"
-            android:layout_width="351dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_height="49dp"
             android:autofillHints=""
-            android:background="@drawable/text_input_background"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/enter_your_local_password"
             android:inputType="textPassword"
@@ -30,7 +32,7 @@
             android:paddingEnd="15dp"
             android:afterTextChanged="@{(edtitable)->loginScreenViewModel.setPasswordCheckerText(edtitable)}"
             android:textColor="@color/white"
-            android:textColorHint="@color/textWhite"
+            android:textColorHint="@color/darkGray"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +49,7 @@
             android:onClick="@{()->loginScreenViewModel.loginUser()}"
             android:text="@string/log_in"
             android:textColorLink="@color/blueButton"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +92,7 @@
             android:layout_width="177dp"
             android:layout_height="154dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/profilepicture1"
+            android:src="@drawable/presentpal_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
@@ -105,7 +108,7 @@
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.453" />
@@ -130,8 +133,10 @@
             android:layout_height="56dp"
             android:backgroundTint="@color/blueButton"
             android:contentDescription="@string/camera_button_to_add_a_picture"
+
+            android:onClick="@{() -> loginScreenViewModel.quickIdea()}"
             android:importantForAccessibility="no"
-            android:src="@drawable/round_add_a_photo_24"
+            android:src="@drawable/baseline_list_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.901"
@@ -139,7 +144,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white"
             app:layout_constraintVertical_bias="0.961" />
-
+<!--
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_button"
             android:layout_width="wrap_content"
@@ -154,7 +159,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white"
-            app:layout_constraintVertical_bias="0.961" />
+            app:layout_constraintVertical_bias="0.961" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/questionmark_button"
@@ -165,6 +170,7 @@
             android:importantForAccessibility="no"
             android:src="@drawable/baseline_question_mark_24"
             app:fabSize="normal"
+            android:onClick="@{() -> loginScreenViewModel.showInfo()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.107"

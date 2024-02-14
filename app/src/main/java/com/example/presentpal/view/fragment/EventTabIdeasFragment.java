@@ -2,7 +2,9 @@ package com.example.presentpal.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,11 +39,13 @@ public class EventTabIdeasFragment extends Fragment {
 
 
     public static EventTabIdeasFragment newInstance(List<PresentIdeaJoinPerson> presentIdeas) {
+
         EventTabIdeasFragment fragment = new EventTabIdeasFragment();
         Bundle args = new Bundle();
 
         args.putSerializable("presentIdeas", (Serializable) presentIdeas);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -50,15 +54,10 @@ public class EventTabIdeasFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             if (getArguments().containsKey("presentIdeas")) {
-
                 Serializable serializable = getArguments().getSerializable("presentIdeas");
-
-                if (serializable instanceof List<?>) {
-                    presentIdeas = (List<PresentIdeaJoinPerson>) serializable;
-                    if (presentIdeas == null) {
-                        Log.i("PresentTabFrag", "get presentIdeas is null");
-                    } else {
-                        Log.i("PresentTabFrag", "get presentIdeas not null");
+                if (serializable != null) {
+                    if (serializable instanceof List<?>) {
+                        presentIdeas = (List<PresentIdeaJoinPerson>) serializable;
                     }
                 }
             }
@@ -66,10 +65,10 @@ public class EventTabIdeasFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        fragmentEventTabIdeasBinding = FragmentEventTabIdeasBinding.inflate(inflater,container,false);
+        fragmentEventTabIdeasBinding = FragmentEventTabIdeasBinding.inflate(inflater, container, false);
         View rootView = fragmentEventTabIdeasBinding.getRoot();
 
 

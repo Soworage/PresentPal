@@ -6,6 +6,7 @@
     <string name="person_insert_text_lastname">Nachname</string>
     <string name="person_insert_text_firstname">Vorname</string>
     <string name="person_insert_text_title">Neue Person</string>
+    <string name="hello_blank_fragment">Hallo leere Fragment</string>
     <string name="welcome_message1">Willkommen!</string>
     <string name="welcome_message2">Erstelle dein Account</string>
     <string name="register_Text">Registrieren</string>
@@ -24,14 +25,60 @@
     <string name="event_insert_text_person">Person</string>
     <string name="event_insert_text_date">Datum</string>
     <string name="event_insert_text_title">Titel</string>
-    <string name="event_insert_text_maintitle">Füge ein neues Event hinzu</string>
-    <string name="categories">Kategorien</string>
+    <string name="event_insert_text_maintitle">Neuer Termin</string>
+    <string name="categories">"Kategorien: "</string>
     <string name="family">Familie</string>
-    <string name="colleagues">Arbeitskollegen</string>
+    <string name="colleagues">Arbeit</string>
     <string name="favorites">Favoriten</string>
     <string name="cancel">Abbrechen</string>
-    <string name="insert_a_new_person">Füge eine neue Person hinzu</string>
-    <string name="insert_a_new_event">Füge ein neues Event hinzu</string>
-    <string name="insert_a_new_present_idea">Füge eine neue Geschenkidee hinzu</string>
+    <string name="insert_a_new_person">Person hinzufügen</string>
+    <string name="insert_a_new_event">Termin hinzufügen</string>
+    <string name="insert_a_new_present_idea">Geschenkidee hinzufügen</string>
     <string name="choose_an_action">Wähle eine Aktion</string>
+    <string name="good_evening">"Hallo "</string>
+    <string name="view_all">Alle anzeigen</string>
+    <string name="friends">Freunde</string>
+    <string name="next_events">Nächste Termine</string>
+    <string name="person_no_interests_hint">"Noch keine Einträge...\n\nUm weitere Details zur Person einzutragen, wechseln Sie zum Reiter \"Bearbeiten\". "</string>
+    <string name="person_insert_failed">Etwas ist schiefgelaufen...</string>
+    <string name="person_insert_ok">Neue Person wurde angelegt</string>
+    <string name="present_idea_insert_title">Titel</string>
+    <string name="present_idea_insert_short_description">Kurze Beschreibung</string>
+    <string name="present_idea_insert_person">Person</string>
+    <string name="present_idea_insert_maintitle">Neue Geschenkidee</string>
+    <string name="present_idea_insert_button">Hinzufügen</string>
+    <string name="event_insert_ok">Neuer Termin wurde angelegt</string>
+    <string name="event_insert_failed">Etwas ist schiefgelaufen...</string>
+    <string name="present_idea_insert_ok">Neue Geschenkidee wurde hinzugefügt</string>
+    <string name="present_idea_insert_failed">Etwas ist schiefgelaufen...</string>
+    <string name="ideas">Ideen</string>
+    <string name="presents">Geschenke</string>
+    <string name="interests">Interessen</string>
+    <string name="edit_profile">Bearbeiten</string>
+    <string name="events">Termine</string>
+    <string name="edit_event">Bearbeiten</string>
+    <string name="edit_idea">Bearbeiten</string>
+    <string name="details">Details</string>
+
+    <string-array name="months_array">
+        <item>Januar</item>
+        <item>Februar</item>
+        <item>März</item>
+        <item>April</item>
+        <item>Mai</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>August</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Dezember</item>
+    </string-array>
+    <string name="in_days">"in "</string>
+    <string name="days">" Tagen"</string>
+    <string name="since_days">"vor "</string>
+    <string name="app_slogan">Behalte deine  Geschenkideen immer und überall im Auge</string>
+    <string name="categories_mainAct">Kategorien</string>
+    <string name="mark_as_present">Als Geschenk markieren</string>
+
 </resources>

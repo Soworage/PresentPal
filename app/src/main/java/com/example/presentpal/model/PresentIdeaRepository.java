@@ -7,11 +7,14 @@ import androidx.lifecycle.LiveData;
 
 import com.example.presentpal.db.AppDatabase;
 import com.example.presentpal.db.AppDatabaseClient;
+import com.example.presentpal.db.Category;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventJoinPerson;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.PresentIdea;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
+import com.example.presentpal.db.dao.CategoryDao;
+import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.db.dao.PresentIdeaDao;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 
@@ -26,6 +29,9 @@ import java.util.concurrent.Future;
 public class PresentIdeaRepository {
 
     private final PresentIdeaDao presentIdeaDao;
+
+    private final PersonDao personDao;
+
     private LiveData<List<PresentIdea>> allPresentIdeas;
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -34,6 +40,8 @@ public class PresentIdeaRepository {
     public PresentIdeaRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         presentIdeaDao = database.presentIdeaDao();
+        personDao = database.personDao();
+
     }
 
     public LiveData<List<PresentIdea>> getAllPresentIdeasByEvent(Event event, Person person) {
@@ -41,19 +49,27 @@ public class PresentIdeaRepository {
     }
 
 
-    public void addPresentIdea(int personId, String title, String description) {
-        PresentIdea presentIdea = new PresentIdea(personId, null, title, description, 0f, null, false);
-        insertPresentIdea(presentIdea);
+    public long addPresentIdea(int personId, String title, String shortDescription) {
+        PresentIdea presentIdea = new PresentIdea(personId, null, title, "", shortDescription, 0f, null, false);
+        return insertPresentIdea(presentIdea);
     }
 
-    private void insertPresentIdea(PresentIdea presentIdea) {
+    public LiveData<List<Person>> getAllPersons() {
+        return personDao.getAllPersons();
+    }
 
+    public LiveData<Person> getPersonById(int id){return personDao.getPersonById(id);}
+    private long insertPresentIdea(PresentIdea presentIdea) {
+
+        final long[] returnValue = new long[1];
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                presentIdeaDao.insert(presentIdea);
+                returnValue[0] =presentIdeaDao.insert(presentIdea);
             }
         });
+
+        return returnValue[0];
     }
 
     public LiveData<PresentIdea> getPresentIdeaById(int presentIdeaId){
@@ -100,4 +116,6 @@ public class PresentIdeaRepository {
 
         return returnList;
     }
+
+
 }

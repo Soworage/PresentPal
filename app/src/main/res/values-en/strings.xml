@@ -29,14 +29,58 @@
     <string name="event_insert_text_date">Date</string>
     <string name="event_insert_text_title">Title</string>
     <string name="event_insert_text_maintitle">Add new event</string>
-    <string name="categories">categories</string>
+    <string name="categories">"Categories: "</string>
     <string name="family">Family</string>
     <string name="colleagues">Colleagues</string>
     <string name="favorites">Favorites</string>
     <string name="cancel">cancel</string>
-    <string name="insert_a_new_person">Insert a new person</string>
-    <string name="insert_a_new_event">Insert a new event</string>
-    <string name="insert_a_new_present_idea">Insert a new present idea</string>
+    <string name="insert_a_new_person">Add new person</string>
+    <string name="insert_a_new_event">Add new event</string>
+    <string name="insert_a_new_present_idea">Add new present idea</string>
     <string name="choose_an_action">choose an action</string>
-    <string name="person_no_interests_hint">person has no interests\n</string>
+    <string name="good_evening">"Hello "</string>
+    <string name="view_all">View all</string>
+    <string name="friends">Friends</string>
+    <string name="next_events">Next events</string>
+    <string name="person_no_interests_hint">"No entries yet...\n\nTo enter further details about the person, switch to the \"Edit profile\" tab. "</string>
+    <string name="person_insert_failed">Something went wrong...</string>
+    <string name="person_insert_ok">New person has been created</string>
+    <string name="present_idea_insert_title">Title</string>
+    <string name="present_idea_insert_short_description">Short description</string>
+    <string name="present_idea_insert_person">Person</string>
+    <string name="present_idea_insert_maintitle">Add new present idea</string>
+    <string name="present_idea_insert_button">ADD</string>
+    <string name="event_insert_ok">New event has been created</string>
+    <string name="event_insert_failed">Something went wrong...</string>
+    <string name="present_idea_insert_ok">New present idea has been created</string>
+    <string name="present_idea_insert_failed">Something went wrong...</string>
+    <string name="ideas">Ideas</string>
+    <string name="presents">Presents</string>
+    <string name="interests">Interests</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="events">Events</string>
+    <string name="edit_event">Edit event</string>
+    <string name="edit_idea">Edit idea</string>
+    <string name="details">Details</string>
+
+    <string-array name="months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string name="in_days">"in "</string>
+    <string name="days">" days"</string>
+    <string name="since_days">"since "</string>
+    <string name="app_slogan">Organize and track present ideas easily</string>
+    <string name="categories_mainAct">Categories</string>
+    <string name="mark_as_present">Mark as present</string>
 </resources>

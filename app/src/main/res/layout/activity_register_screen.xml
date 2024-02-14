@@ -26,17 +26,19 @@
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.672" />
 
         <EditText
             android:id="@+id/passwordCheckEditText"
-            android:layout_width="348dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_height="40dp"
             android:autofillHints=""
-            android:background="@drawable/text_input_background"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/confirm_your_password"
             android:text="@={RegisterScreenViewModel.passwordCheckEditText}"
@@ -44,7 +46,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/textWhite"
+            android:textColorHint="@color/darkGray"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +63,7 @@
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.563" />
@@ -73,6 +75,7 @@
             android:backgroundTint="@color/blueButton"
             android:text="@string/register_Text"
             android:textColorLink="@color/blueButton"
+            android:textColor="@color/white"
             android:onClick="@{(v)-> RegisterScreenViewModel.addUser(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +117,7 @@
             android:layout_width="145dp"
             android:layout_height="139dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/profilepicture1"
+            android:src="@drawable/presentpal_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -130,17 +133,21 @@
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.455" />
 
+
+        <!-- android:background="@drawable/text_input_background" -->
         <EditText
             android:id="@+id/nicknameEditText"
-            android:layout_width="348dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_height="40dp"
             android:autofillHints=""
-            android:background="@drawable/text_input_background"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:text="@={RegisterScreenViewModel.nicknameEditText}"
             android:hint="@string/enter_your_nickname"
@@ -148,20 +155,23 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/textWhite"
+            android:textColorHint="@color/darkGray"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.417"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="348dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_height="40dp"
             android:autofillHints=""
-            android:background="@drawable/text_input_background"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/enter_your_password"
             android:text="@={RegisterScreenViewModel.passwordEditText}"
@@ -169,7 +179,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/textWhite"
+            android:textColorHint="@color/darkGray"
             android:textColorLink="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +202,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.035" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+       <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_image_button"
             android:layout_width="59dp"
             android:layout_height="54dp"
@@ -205,6 +215,6 @@
             app:layout_constraintHorizontal_bias="0.669"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.265" />
+            app:layout_constraintVertical_bias="0.265" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -48,37 +48,55 @@
             android:layout_height="wrap_content"
             android:text="@{mainActivityViewModel.User.person.nickname}"
             android:textColor="@color/white"
+            android:gravity="left"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.584"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.063" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="!"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView66"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.063"
+            />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView3"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/profilepicture1"
+            android:src="@drawable/presentpal_logo"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.285"
+            app:layout_constraintVertical_bias="0.6"
             tools:srcCompat="@tools:sample/avatars"
 
             />
+
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="350dp"
             android:layout_height="563dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:outlineProvider="background"
+
             app:cardBackgroundColor="@color/darkGray"
             app:cardCornerRadius="20dp"
             app:strokeWidth="4dp"
@@ -89,26 +107,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.619"
+            android:outlineProvider="none"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="553dp"
                 android:orientation="vertical"
-                android:outlineProvider="none">
+                android:outlineProvider="none"
+                android:background="@drawable/cardview_border"
+                >
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
-                    android:background="@color/lightGray" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/categories"
+                    android:text="@string/categories_mainAct"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold">
@@ -305,9 +322,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="9dp"
                     android:backgroundTint="@color/white"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:text="@string/view_all"
                     android:onClick="@{() -> mainActivityViewModel.selectAllCategory()}"
                     android:textColor="@color/black"
@@ -325,6 +342,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginStart="9dp"
                     android:text="@string/next_events"
                     android:textColor="@color/white"
@@ -346,12 +364,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
+                        android:drawablePadding="10dp"
+                        android:text="@{EventJoinPersonA.event.date + ` - ` + EventJoinPersonA.event.title + ` (`+ EventJoinPersonA.person.nickname + `)`}"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        android:text="@{EventJoinPersonA.event.date + ` - ` + EventJoinPersonA.event.title + ` (`+ EventJoinPersonA.person.nickname + `)`}"
-                        android:drawablePadding="10dp"
-                        app:drawableLeftCompat="@drawable/baseline_lightbulb_24"
-                        >
+                        app:drawableLeftCompat="@drawable/baseline_calendar_month_24"
+                        app:drawableTint="@color/white">
 
                     </TextView>
 
@@ -359,12 +377,14 @@
                         android:id="@+id/event2TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:drawablePadding="10dp"
-                        android:textColor="@color/white"
                         android:text="@{EventJoinPersonB.event.date + ` - ` + EventJoinPersonB.event.title + ` (`+ EventJoinPersonB.person.nickname + `)`}"
-                        app:drawableLeftCompat="@drawable/baseline_lightbulb_24"
-                        android:textSize="15sp">
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:drawableLeftCompat="@drawable/baseline_calendar_month_24"
+                        app:drawableTint="@color/white">
 
                     </TextView>
 

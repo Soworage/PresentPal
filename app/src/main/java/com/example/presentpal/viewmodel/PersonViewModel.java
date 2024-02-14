@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.presentpal.db.Category;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventPlus;
 import com.example.presentpal.db.Person;
@@ -20,10 +21,11 @@ public class PersonViewModel extends AndroidViewModel {
 
     private EventRepository eventRepository;
 
+    public MutableLiveData<String> categories =new MutableLiveData<>();
+
     public PersonViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
-
     }
 
 
@@ -34,5 +36,9 @@ public class PersonViewModel extends AndroidViewModel {
 
     public LiveData<Person> getPersonById(int id){
         return eventRepository.getPersonById(id);
+    }
+
+    public LiveData<List<Category>> getCategoryByPerson(int id){
+      return  eventRepository.getCategoryByPerson(id);
     }
 }

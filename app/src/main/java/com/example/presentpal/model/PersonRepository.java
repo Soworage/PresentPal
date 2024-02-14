@@ -30,10 +30,9 @@ public class PersonRepository {
 
     }
 
-    public Person addPerson(String firstname, String lastname, String nickname) {
+    public long addPerson(String firstname, String lastname, String nickname) {
         Person person = new Person(firstname, lastname, nickname, false);
-        insertPerson(person);
-        return person;
+        return insertPerson(person);
     }
 
     public LiveData<Person> getPersonById(int id){
@@ -70,14 +69,17 @@ public class PersonRepository {
     }
 
 
-    private void insertPerson(Person person) {
+    private long insertPerson(Person person) {
 
+        final long[] returnValue = new long[1];
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                personDao.insert(person);
+               returnValue[0] = personDao.insert(person);
             }
         });
+
+        return returnValue[0];
 
     }
 

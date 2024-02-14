@@ -34,13 +34,9 @@ public interface PersonDao {
     @Query("SELECT * FROM person WHERE user = 1")
     Person getUser();
 
-
-//    @Query("SELECT EXISTS(SELECT 1 FROM person WHERE Nickname IS NOT NULL)") // TODO glaube die abfrage ist unnötig, da nickname nie null ist um das zum registrieren zu benutzen
-//    boolean isUserRegistered();
-
     @Query("SELECT * FROM person WHERE nickname = :nickname LIMIT 1")
     LiveData<Person> findUserByNickname(String nickname);
 
-    @Query("SELECT * FROM person INNER JOIN personCategory ON personId = id WHERE categoryId = :category")
+    @Query("SELECT person.* FROM person INNER JOIN personCategory ON personId = id WHERE categoryId = :category")
     LiveData<List<Person>> getAllPersonsByCategory(String category);
 }

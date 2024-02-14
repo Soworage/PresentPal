@@ -1,9 +1,11 @@
 package com.example.presentpal.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,6 +41,22 @@ public class LoginScreenActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+
+        loginScreenViewModel.openIdeaInsert.observe(this, open -> {
+            Intent intent = new Intent(this, PresentIdeaInsertActivity.class);
+            startActivity(intent);
+        });
+
+
+        loginScreenViewModel.openInfo.observe(this, openInfo -> {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("App-Info")
+                    .setMessage(loginScreenViewModel.getInfoText())
+                    .setPositiveButton("OK", (dialog, which) -> {})
+                    .show();
+        });
+
 
     }
 }

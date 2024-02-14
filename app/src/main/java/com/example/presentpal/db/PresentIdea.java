@@ -42,6 +42,9 @@ public class PresentIdea implements Serializable {
         @ColumnInfo(name = "description")
         public String description;
 
+        @ColumnInfo(name = "shortDescription")
+        public String shortDescription;
+
         @ColumnInfo(name = "price")
         public float price;
 
@@ -51,11 +54,12 @@ public class PresentIdea implements Serializable {
         @ColumnInfo(name = "isPresent")
         public boolean isPresent;
 
-        public PresentIdea(int personId, Integer eventId, @NotNull String title, String description, float price, String availableAt, boolean isPresent) {
+        public PresentIdea(int personId, Integer eventId, @NotNull String title, String description, String shortDescription, float price, String availableAt, boolean isPresent) {
                 this.personId = personId;
                 this.eventId = eventId;
                 this.title = title;
                 this.description = description;
+                this.shortDescription = shortDescription;
                 this.price = price;
                 this.availableAt = availableAt;
                 this.isPresent = isPresent;
@@ -116,5 +120,21 @@ public class PresentIdea implements Serializable {
 
         public void setAvailableAt(String availableAt) {
                 this.availableAt = availableAt;
+        }
+
+        public String getShortDescription() {
+                return shortDescription;
+        }
+
+        public void setShortDescription(String shortDescription) {
+                this.shortDescription = shortDescription;
+        }
+
+        public boolean isPresent() {
+                return isPresent;
+        }
+
+        public void setPresent(boolean present) {
+                isPresent = present;
         }
 }

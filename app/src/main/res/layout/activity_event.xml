@@ -7,12 +7,17 @@
         <variable
             name="EventViewModel"
             type="com.example.presentpal.viewmodel.EventViewModel" />
+
+        <variable
+            name="Person"
+            type="com.example.presentpal.db.Person" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.EventActivity">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -29,7 +34,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dezember"
+                android:text="@{EventViewModel.monthString}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +53,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
-                android:text="15"
-                android:textSize="45dp"
+                android:text="@{String.valueOf(EventViewModel.dayInt)}"
+                android:textSize="45sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
@@ -62,28 +67,32 @@
             android:id="@+id/event_viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginBottom="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.343"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/event_tabs"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <Button
+        </androidx.viewpager2.widget.ViewPager2>
+<!--
+        <ImageButton
             android:id="@+id/event_button_info"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="120dp"
-            app:icon="@drawable/baseline_info_outline_24"
+            android:background="@drawable/round_button"
+            android:src="@drawable/baseline_info_outline_24"
+            android:padding="7dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+-->
         <TextView
             android:id="@+id/event_title"
             android:layout_width="wrap_content"
@@ -101,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{EventViewModel.allPresentIdeas.get(0).person.nickname}"
+            android:text="@{Person.nickname}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.08"
@@ -112,7 +121,7 @@
             android:id="@+id/event_daysleft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="196dp"
+            android:layout_marginTop="200dp"
             android:text="@{EventViewModel.daysLeft}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.08"
@@ -126,9 +135,21 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/baseline_arrow_back_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/event_button_close"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/baseline_event_available_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
 
 
 
@@ -137,9 +158,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{EventViewModel.price}"
+            android:gravity="end"
             app:layout_constraintBottom_toTopOf="@+id/event_tabs"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toEndOf="@+id/event_daysleft"
             app:layout_constraintTop_toBottomOf="@+id/event_button_info"
             app:layout_constraintVertical_bias="0.653" />
@@ -155,6 +177,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/event_daysleft" />
 
+        <FrameLayout
+          android:id="@+id/navbar_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

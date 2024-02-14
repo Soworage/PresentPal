@@ -1,5 +1,6 @@
 package com.example.presentpal.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -20,4 +21,7 @@ public interface CategoryDao {
 
     @Query("SELECT * FROM category")
     List<Category> getAllCategories();
+
+    @Query("SELECT categoryId as name FROM personCategory WHERE personId = :personId ORDER BY categoryId DESC")
+    LiveData<List<Category>> getAllCategoriesByPerson(int personId);
 }

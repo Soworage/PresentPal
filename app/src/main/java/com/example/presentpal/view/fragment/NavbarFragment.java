@@ -15,10 +15,12 @@ import android.view.ViewGroup;
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.FragmentNavbarBinding;
 import com.example.presentpal.navigation.NavigationHandler;
+import com.example.presentpal.view.CatergoryActivity;
 import com.example.presentpal.view.EventInsertActivity;
 import com.example.presentpal.view.MainActivity;
 import com.example.presentpal.view.PersonInsertActivity;
 import com.example.presentpal.view.PresentIdeaActivity;
+import com.example.presentpal.view.PresentIdeaInsertActivity;
 import com.example.presentpal.viewmodel.PresentIdeaInsertViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -46,6 +48,15 @@ private FragmentNavbarBinding binding;
     @Override
     public void navigateToMainScreenActivity() {
         Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigateToViewAll() {
+        String category = null;
+        Intent intent = new Intent(getActivity(), CatergoryActivity.class);
+        intent.putExtra("category", category);
         startActivity(intent);
     }
 
@@ -71,7 +82,8 @@ private FragmentNavbarBinding binding;
                         startActivity(intent);
                         break;
                     case 2: // Geschenkidee einfügen
-
+                        intent = new Intent(getActivity(), PresentIdeaInsertActivity.class);
+                        startActivity(intent);
                         break;
                 }
             }

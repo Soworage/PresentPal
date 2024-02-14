@@ -11,6 +11,7 @@ import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityPresentIdeaBinding;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.PresentIdea;
+import com.example.presentpal.view.fragment.NavbarFragment;
 import com.example.presentpal.viewmodel.PresentIdeaViewModel;
 
 public class PresentIdeaActivity extends AppCompatActivity {
@@ -26,12 +27,17 @@ public class PresentIdeaActivity extends AppCompatActivity {
         activityPresentIdeaBinding = DataBindingUtil.setContentView(this, R.layout.activity_present_idea);
         presentIdeaViewModel = new ViewModelProvider(this).get(PresentIdeaViewModel.class);
 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.navbar_present_idea, new NavbarFragment())
+                    .commit();
+        }
         PresentIdea presentIdeaId = (PresentIdea) getIntent().getSerializableExtra("presentIdea");
 
         presentIdeaViewModel.getPresentIdeaById(presentIdeaId.piid).observe(this, new Observer<PresentIdea>() {
             @Override
             public void onChanged(PresentIdea presentIdea) {
-                activityPresentIdeaBinding.setPresentIdeas(presentIdea);
+                activityPresentIdeaBinding.setPresentIdea(presentIdea);
             }
         });
 

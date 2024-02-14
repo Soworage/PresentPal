@@ -34,17 +34,11 @@ public class EventInsertActivity extends AppCompatActivity {
         activityEventInsertBinding.setLifecycleOwner(this);
         activityEventInsertBinding.setEventInsertViewModel(eventInsertViewModel);
 
-        eventInsertViewModel.getSelectedPerson().observe(this, new Observer<Person>() {
+        eventInsertViewModel.getPosition().observe(this, new Observer<Integer>() {
             @Override
-            public void onChanged(Person selectedPerson) {
-                CharSequence text = "Hello toast!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(EventInsertActivity.this, text, duration);
-                toast.show();
-                Log.i("EventInsertActivity", "Toast");
-                if (selectedPerson != null) {
-
+            public void onChanged(Integer positionSelect) {
+                if (positionSelect != null) {
+                   eventInsertViewModel.setSelectedPerson(positionSelect);
                 }
             }
         });
@@ -62,6 +56,20 @@ public class EventInsertActivity extends AppCompatActivity {
                                 (view, year1, monthOfYear, dayOfMonth) -> eventInsertViewModel.setDate(String.format("%02d",dayOfMonth) + "." + String.format("%02d", monthOfYear + 1) + "." + year1), year, month, day);
                         picker.show();
                     }
+            }
+        });
+
+        eventInsertViewModel.eventInsertOk.observe(this, new Observer<Long>() {
+            @Override
+            public void onChanged(Long isInserted) {
+                if (isInserted > -1) {
+                    Toast.makeText(getApplication(), getResources().getString(R.string.event_insert_ok), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplication(), getResources().getString(R.string.event_insert_failed), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
