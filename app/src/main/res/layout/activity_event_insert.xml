@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:ems="10"
+                android:textColor="@color/white"
                 android:focusable="false"
                 android:inputType="date"
                 android:onClick="@{()->EventInsertViewModel.setCalendarOpen()}"
@@ -64,7 +65,7 @@
                 android:text="@string/person_insert_button_add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
@@ -116,7 +117,9 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                android:popupBackground="@color/darkGray"/>
+                android:popupBackground="@color/darkGray"
+                android:textColor="@color/white"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

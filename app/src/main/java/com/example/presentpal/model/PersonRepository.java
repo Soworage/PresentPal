@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.example.presentpal.db.AppDatabase;
 import com.example.presentpal.db.AppDatabaseClient;
 import com.example.presentpal.db.Category;
+import com.example.presentpal.db.Event;
 import com.example.presentpal.db.LogIn;
 import com.example.presentpal.db.Person;
 import com.example.presentpal.db.dao.LogInDao;
@@ -33,6 +34,13 @@ public class PersonRepository {
     public long addPerson(String firstname, String lastname, String nickname) {
         Person person = new Person(firstname, lastname, nickname, false);
         return insertPerson(person);
+    }
+
+    public void updatePerson(Person person){
+        executor.execute(new Runnable() {
+            @Override
+            public void run(){ personDao.update(person);}
+        });
     }
 
     public LiveData<Person> getPersonById(int id){

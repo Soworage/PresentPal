@@ -60,6 +60,13 @@ public class EventRepository {
         return insertEvent(event);
     }
 
+    public void updateEvent(Event event){
+        executor.execute(new Runnable() {
+            @Override
+            public void run(){ eventDao.update(event);}
+        });
+    }
+
     private long insertEvent(Event event) {
 
         final long[] returnValue = new long[1];

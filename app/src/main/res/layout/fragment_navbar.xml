@@ -17,7 +17,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/materialToolbar"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="60dp"
             android:background="@color/lightGray"
             android:theme="?attr/actionBarTheme"
             app:elevation="0dp"
@@ -34,16 +34,17 @@
             android:backgroundTint="@color/lightGray"
             android:contentDescription="@string/camera_button_to_add_a_picture"
             android:importantForAccessibility="no"
+            android:onClick="@{()-> navigationHandler.navigateToViewAll()}"
             android:src="@drawable/baseline_people_24"
             app:elevation="0dp"
-            android:onClick="@{()-> navigationHandler.navigateToViewAll()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintHorizontal_bias="0.769"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976"
+            app:layout_constraintVertical_bias="1.0"
             app:tint="@color/white" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_event_button"
@@ -54,16 +55,15 @@
             android:importantForAccessibility="no"
             android:onClick="@{() -> navigationHandler.navigateToShowOptionsDialog()}"
             android:src="@drawable/baseline_add_24"
-            app:fabCustomSize="80dp"
+            app:fabCustomSize="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.975"
-            app:maxImageSize="48dp"
+            app:layout_constraintVertical_bias="1.0"
+            app:maxImageSize="49dp"
             app:tint="@color/white" />
-
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/setting_button"
@@ -79,7 +79,7 @@
             app:layout_constraintHorizontal_bias="0.954"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976"
+            app:layout_constraintVertical_bias="1.0"
             app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -94,10 +94,10 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.239"
+            app:layout_constraintHorizontal_bias="0.242"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976"
+            app:layout_constraintVertical_bias="1.0"
             app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -107,16 +107,16 @@
             android:backgroundTint="@color/lightGray"
             android:contentDescription="@string/camera_button_to_add_a_picture"
             android:importantForAccessibility="no"
-            app:elevation="0dp"
-
             android:onClick="@{() -> navigationHandler.navigateToMainScreenActivity()}"
+
             android:src="@drawable/baseline_home_24"
+            app:elevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976"
+            app:layout_constraintVertical_bias="1.0"
             app:tint="@color/white" />
 
 

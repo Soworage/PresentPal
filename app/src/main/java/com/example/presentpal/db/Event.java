@@ -3,6 +3,7 @@ package com.example.presentpal.db;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -52,6 +53,19 @@ public class Event implements Serializable {
     @ColumnInfo(name="budget")
     public float budget;
 
+    @Ignore
+    public Event(int eid, Integer personId, String title, @NotNull String date,int dateSortable, String description, int closed, String firstYear, float budget) {
+        this.eid = eid;
+        this.personId = personId;
+        this.title = title;
+        this.date = date;
+        this.dateSortable = dateSortable;
+        this.description = description;
+        this.closed = closed;
+        this.firstYear = firstYear;
+        this.budget = budget;
+    }
+
     public Event(Integer personId, String title, @NotNull String date,int dateSortable, String description, int closed, String firstYear, float budget) {
         this.personId = personId;
         this.title = title;
@@ -62,6 +76,7 @@ public class Event implements Serializable {
         this.firstYear = firstYear;
         this.budget = budget;
     }
+
 
     public int getId() {
         return eid;
@@ -126,6 +141,22 @@ public class Event implements Serializable {
 
     public void setDateSortable(int dateSortable) {
         this.dateSortable = dateSortable;
+    }
+
+    public int getEid() {
+        return eid;
+    }
+
+    public void setEid(int eid) {
+        this.eid = eid;
+    }
+
+    public float getBudget() {
+        return budget;
+    }
+
+    public void setBudget(float budget) {
+        this.budget = budget;
     }
 
     public static String integerToDate(int dateInt) {

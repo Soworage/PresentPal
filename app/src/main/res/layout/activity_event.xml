@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.343"
@@ -152,26 +152,26 @@
             app:layout_constraintVertical_bias="0.0"/>
 
 
-
         <TextView
             android:id="@+id/event_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{EventViewModel.price}"
             android:gravity="end"
+            android:text="@{EventViewModel.price}"
             app:layout_constraintBottom_toTopOf="@+id/event_tabs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toEndOf="@+id/event_daysleft"
-            app:layout_constraintTop_toBottomOf="@+id/event_button_info"
-            app:layout_constraintVertical_bias="0.653" />
+            app:layout_constraintTop_toBottomOf="@+id/event_button_close"
+            app:layout_constraintVertical_bias="0.89" />
 
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/event_tabs"
-            android:layout_width="388dp"
+            android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/border_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"

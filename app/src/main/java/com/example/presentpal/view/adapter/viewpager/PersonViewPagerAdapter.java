@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.presentpal.db.EventPlus;
-import com.example.presentpal.view.fragment.PerosnTabEditFragment;
+import com.example.presentpal.view.fragment.PersonTabEditFragment;
 import com.example.presentpal.view.fragment.PersonTabEventsFragment;
 import com.example.presentpal.view.fragment.PersonTabCharacteristicsFragment;
 
@@ -30,7 +30,7 @@ public class PersonViewPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new PersonTabCharacteristicsFragment();
             case 2:
-                return new PerosnTabEditFragment();
+                return PersonTabEditFragment.newInstance();
             default:
                 return new PersonTabEventsFragment();
         }

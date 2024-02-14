@@ -26,7 +26,6 @@
             android:autofillHints=""
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="@string/enter_your_local_password"
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"

@@ -127,7 +127,7 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/categories_mainAct"
                     android:textColor="@color/white"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -342,7 +342,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginStart="9dp"
                     android:text="@string/next_events"
                     android:textColor="@color/white"
@@ -353,17 +353,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/lightGray"
+                    android:layout_height="match_parent"
                     android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/event1TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="15dp"
                         android:drawablePadding="10dp"
                         android:text="@{EventJoinPersonA.event.date + ` - ` + EventJoinPersonA.event.title + ` (`+ EventJoinPersonA.person.nickname + `)`}"
                         android:textColor="@color/white"
@@ -378,7 +377,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:drawablePadding="10dp"
                         android:text="@{EventJoinPersonB.event.date + ` - ` + EventJoinPersonB.event.title + ` (`+ EventJoinPersonB.person.nickname + `)`}"
                         android:textColor="@color/white"

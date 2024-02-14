@@ -84,11 +84,11 @@ public class LoginScreenViewModel extends AndroidViewModel {
             "\n" +
             "Matrikelnummer: " +
             "\n" +
-            " 1016076, 588005 \n" +
+            "1016076, 588005 \n" +
             "\n" +
             "E-Mail: " +
             "\n" +
-            "alex.mihel@hs-osnabrueck.de, aay.schindler@hs-osnabrueck.de\n" +
+            "alex.mihel@hs-osnabrueck.de, kay.schindler@hs-osnabrueck.de\n" +
             "\n" +
             "Dozent: " +
             "\n" +

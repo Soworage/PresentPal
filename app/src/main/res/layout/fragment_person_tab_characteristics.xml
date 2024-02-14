@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/cardview_border"
-        android:layout_margin="15dp"
+        android:layout_margin="8dp"
         android:padding="10dp"
         android:hint="@string/person_no_interests_hint"
         android:text=""

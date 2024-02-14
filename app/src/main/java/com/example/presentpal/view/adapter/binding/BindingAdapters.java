@@ -3,6 +3,7 @@ package com.example.presentpal.view.adapter.binding;
 import android.widget.TextView;
         import androidx.core.content.ContextCompat;
         import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
 
 public class BindingAdapters {
 
@@ -16,5 +17,20 @@ public class BindingAdapters {
         } else {
             textView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
+    }
+
+
+    // https://stackoverflow.com/questions/57555280/android-two-way-databinding-float-to-edittext
+    @BindingAdapter("android:text")
+    public static void setText(TextView view, Float value) {
+        if (value == null)
+            return;
+
+        view.setText(String.valueOf(value));
+    }
+
+    @InverseBindingAdapter(attribute = "android:text", event = "android:textAttrChanged")
+    public static Float getTextString(TextView view) {
+        return Float.valueOf(view.getText().toString());
     }
 }

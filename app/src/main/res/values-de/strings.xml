@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">PresentPal</string>
     <string name="person_insert_button_add">Hinzufügen</string>
-    <string name="person_insert_text_nickname">Spitzname</string>
-    <string name="person_insert_text_lastname">Nachname</string>
-    <string name="person_insert_text_firstname">Vorname</string>
+    <string name="person_insert_text_nickname">Spitzname:</string>
+    <string name="person_insert_text_lastname">Nachname:</string>
+    <string name="person_insert_text_firstname">Vorname:</string>
     <string name="person_insert_text_title">Neue Person</string>
     <string name="hello_blank_fragment">Hallo leere Fragment</string>
     <string name="welcome_message1">Willkommen!</string>
@@ -22,8 +22,8 @@
     <string name="log_in">Einloggen</string>
     <string name="local_password">Lokales Passwort:</string>
     <string name="enter_your_local_password">gibt dein lokales Passwort ein</string>
-    <string name="event_insert_text_person">Person</string>
-    <string name="event_insert_text_date">Datum</string>
+    <string name="event_insert_text_person">Person:</string>
+    <string name="event_insert_text_date">Datum:</string>
     <string name="event_insert_text_title">Titel</string>
     <string name="event_insert_text_maintitle">Neuer Termin</string>
     <string name="categories">"Kategorien: "</string>
@@ -42,9 +42,9 @@
     <string name="person_no_interests_hint">"Noch keine Einträge...\n\nUm weitere Details zur Person einzutragen, wechseln Sie zum Reiter \"Bearbeiten\". "</string>
     <string name="person_insert_failed">Etwas ist schiefgelaufen...</string>
     <string name="person_insert_ok">Neue Person wurde angelegt</string>
-    <string name="present_idea_insert_title">Titel</string>
-    <string name="present_idea_insert_short_description">Kurze Beschreibung</string>
-    <string name="present_idea_insert_person">Person</string>
+    <string name="present_idea_insert_title">Titel:</string>
+    <string name="present_idea_insert_short_description">Kurze Beschreibung:</string>
+    <string name="present_idea_insert_person">Person:</string>
     <string name="present_idea_insert_maintitle">Neue Geschenkidee</string>
     <string name="present_idea_insert_button">Hinzufügen</string>
     <string name="event_insert_ok">Neuer Termin wurde angelegt</string>
@@ -80,5 +80,14 @@
     <string name="app_slogan">Behalte deine  Geschenkideen immer und überall im Auge</string>
     <string name="categories_mainAct">Kategorien</string>
     <string name="mark_as_present">Als Geschenk markieren</string>
+    <string name="save">Speichern</string>
+    <string name="firstname">Vorname:</string>
+    <string name="lastname">Nachname:</string>
+    <string name="interests_edit">Interessen:</string>
+    <string name="person_delete">Person löschen</string>
+    <string name="delete_event">Termin löschen</string>
+    <string name="price">Preis:</string>
+    <string name="description">Beschreibung:</string>
+    <string name="Delete_idea">Idee löschen</string>
 
 </resources>

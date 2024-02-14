@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#B60000</color>
     <color name="textWhite">#CDCDCD</color> <!--Main text color-->
     <color name="darkGray">#161616</color> <!--Main background color-->
     <color name="blueButton">#158CE8</color> <!-- Main button color-->

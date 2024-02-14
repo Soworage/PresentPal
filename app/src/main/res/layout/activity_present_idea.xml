@@ -21,7 +21,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="0dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.057"
@@ -81,9 +81,10 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/person_tabs"
-            android:layout_width="388dp"
+            android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="308dp"
+            android:background="@drawable/border_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toStartOf="parent"
