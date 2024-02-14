@@ -2,13 +2,25 @@ package com.example.presentpal.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.presentpal.R;
+import com.example.presentpal.databinding.FragmentPresentIdeaTabDetailsBinding;
+import com.example.presentpal.db.Event;
+import com.example.presentpal.db.EventPlus;
+import com.example.presentpal.db.PresentIdea;
+import com.example.presentpal.viewmodel.fragment.PresentIdeaTabDetailsViewModel;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,33 +29,21 @@ import com.example.presentpal.R;
  */
 public class PresentIdeaTabDetailsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private PresentIdeaTabDetailsViewModel presentIdeaTabDetailsViewModel;
+
+    public PresentIdea presentIdea;
+
+    private static final String ARG_PARAM1 = "presentIdea";
 
     public PresentIdeaTabDetailsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PresentIdeaTabDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PresentIdeaTabDetailsFragment newInstance(String param1, String param2) {
+    public static PresentIdeaTabDetailsFragment newInstance(PresentIdea presentIdea) {
         PresentIdeaTabDetailsFragment fragment = new PresentIdeaTabDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("presentIdeaFragment", (Serializable) presentIdea);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +52,29 @@ public class PresentIdeaTabDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+            if (getArguments().containsKey("presentIdeaFragment")) {
+
+                Serializable serializable = getArguments().getSerializable("presentIdeaFragment");
+
+                if (serializable instanceof PresentIdea) {
+                    presentIdea = (PresentIdea) serializable;
+                }
+            }
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_present_idea_tab_details, container, false);
+        FragmentPresentIdeaTabDetailsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_present_idea_tab_details, container, false);
+        presentIdeaTabDetailsViewModel = new ViewModelProvider(this).get(PresentIdeaTabDetailsViewModel.class);
+
+        presentIdeaTabDetailsViewModel.setPresentIdea(presentIdea);
+
+        binding.setPresentIdeaTabDetailsViewModel(presentIdeaTabDetailsViewModel);
+        binding.setLifecycleOwner(this);
+
+        return binding.getRoot();
     }
 }

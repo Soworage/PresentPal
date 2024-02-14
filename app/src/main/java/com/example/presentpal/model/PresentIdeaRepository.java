@@ -14,6 +14,7 @@ import com.example.presentpal.db.Person;
 import com.example.presentpal.db.PresentIdea;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.db.dao.CategoryDao;
+import com.example.presentpal.db.dao.EventDao;
 import com.example.presentpal.db.dao.PersonDao;
 import com.example.presentpal.db.dao.PresentIdeaDao;
 import com.example.presentpal.viewmodel.CategoryViewModel;
@@ -32,7 +33,7 @@ public class PresentIdeaRepository {
 
     private final PersonDao personDao;
 
-    private LiveData<List<PresentIdea>> allPresentIdeas;
+    private final EventDao eventDao;
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -41,7 +42,7 @@ public class PresentIdeaRepository {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         presentIdeaDao = database.presentIdeaDao();
         personDao = database.personDao();
-
+        eventDao = database.eventDao();
     }
 
     public LiveData<List<PresentIdea>> getAllPresentIdeasByEvent(Event event, Person person) {
@@ -53,6 +54,18 @@ public class PresentIdeaRepository {
         PresentIdea presentIdea = new PresentIdea(personId, null, title, "", shortDescription, 0f, null, false);
         return insertPresentIdea(presentIdea);
     }
+
+    public void updatePresentIdea(PresentIdea presentIdea){
+        executor.execute(new Runnable() {
+            @Override
+            public void run(){ presentIdeaDao.update(presentIdea);}
+        });
+    }
+
+    public LiveData<List<Event>> getAllEventsByPerson(int personId){
+        return eventDao.getEventsForPerson(personId);
+    }
+
 
     public LiveData<List<Person>> getAllPersons() {
         return personDao.getAllPersons();

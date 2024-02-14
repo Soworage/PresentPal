@@ -2,6 +2,7 @@ package com.example.presentpal.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -81,7 +82,7 @@ public class PersonTabEventsFragment extends Fragment {
     // promt: is it possible to use databinding on this Fragment class?
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         fragmentPersonTabEventsBinding = FragmentPersonTabEventsBinding.inflate(inflater, container, false);

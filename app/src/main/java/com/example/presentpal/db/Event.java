@@ -1,5 +1,6 @@
 package com.example.presentpal.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -38,7 +39,7 @@ public class Event implements Serializable {
     @ColumnInfo(name = "date")
     public String date;
 
-    @ColumnInfo(name="dateSortable")
+    @ColumnInfo(name = "dateSortable")
     public int dateSortable;
 
     @ColumnInfo(name = "description")
@@ -50,11 +51,11 @@ public class Event implements Serializable {
     @ColumnInfo(name = "firstYear")
     public String firstYear;
 
-    @ColumnInfo(name="budget")
+    @ColumnInfo(name = "budget")
     public float budget;
 
     @Ignore
-    public Event(int eid, Integer personId, String title, @NotNull String date,int dateSortable, String description, int closed, String firstYear, float budget) {
+    public Event(int eid, Integer personId, String title, @NotNull String date, int dateSortable, String description, int closed, String firstYear, float budget) {
         this.eid = eid;
         this.personId = personId;
         this.title = title;
@@ -66,7 +67,7 @@ public class Event implements Serializable {
         this.budget = budget;
     }
 
-    public Event(Integer personId, String title, @NotNull String date,int dateSortable, String description, int closed, String firstYear, float budget) {
+    public Event(Integer personId, String title, @NotNull String date, int dateSortable, String description, int closed, String firstYear, float budget) {
         this.personId = personId;
         this.title = title;
         this.date = date;
@@ -177,5 +178,15 @@ public class Event implements Serializable {
         String date = year + month + day;
         return Integer.parseInt(date);
 
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        if (this.title == null) {
+            return "-";
+        } else {
+            return this.title + " (" + this.date + ")";
+        }
     }
 }

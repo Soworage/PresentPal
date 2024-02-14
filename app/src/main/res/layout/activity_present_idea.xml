@@ -7,12 +7,74 @@
         <variable
             name="PresentIdea"
             type="com.example.presentpal.db.PresentIdea" />
+
+        <variable
+            name="PresentIdeaViewModel"
+            type="com.example.presentpal.viewmodel.PresentIdeaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.PersonActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/darkGray"
+            app:layout_constraintBottom_toTopOf="@+id/person_tabs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/cardview_border">
+
+                <CheckBox
+                    android:id="@+id/presentIdea_checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@{PresentIdea.isPresent}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spinner"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintHorizontal_bias="0.516"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_redeem_24"
+                    app:tint="@color/white" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="25dp"
+                    android:entries="@{PresentIdeaViewModel.allEvents}"
+                    android:padding="6dp"
+                    android:selectedItemPosition="@={PresentIdeaViewModel.position}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.466" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/presentIdea_viewpager"
@@ -79,64 +141,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <!-- https://stackoverflow.com/questions/3156781/how-to-show-android-checkbox-at-right-side -->
+
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/person_tabs"
             android:layout_width="match_parent"
             android:layout_height="34dp"
-            android:layout_marginTop="308dp"
+            android:layout_marginTop="260dp"
             android:background="@drawable/border_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.304"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <CheckBox
-            android:id="@+id/presentIdea_checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:checked="@{PresentIdea.isPresent}"
-            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="10dp"
-            android:text="@string/mark_as_present"
-            app:drawableLeftCompat="@drawable/baseline_lightbulb_24"
-            app:layout_constraintBottom_toTopOf="@+id/person_tabs"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.088"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
-            app:layout_constraintVertical_bias="0.367" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/person_tabs"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
-            app:srcCompat="@drawable/baseline_redeem_24"
-            app:tint="@color/white" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
-            app:layout_constraintTop_toBottomOf="@+id/presentIdea_description_shot" />
-
-
-        <!-- https://stackoverflow.com/questions/3156781/how-to-show-android-checkbox-at-right-side -->
-
 
         <FrameLayout
             android:id="@+id/navbar_present_idea"

@@ -7,6 +7,7 @@ package com.example.presentpal.view.adapter.viewpager;
         import androidx.fragment.app.FragmentActivity;
         import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+        import com.example.presentpal.db.PresentIdea;
         import com.example.presentpal.view.fragment.EventTabEditFragment;
         import com.example.presentpal.view.fragment.EventTabIdeasFragment;
         import com.example.presentpal.view.fragment.EventTabPresentsFragment;
@@ -14,8 +15,11 @@ package com.example.presentpal.view.adapter.viewpager;
         import com.example.presentpal.view.fragment.PresentIdeaTabEditFragment;
 
 public class PresentIdeaViewPagerAdapter extends FragmentStateAdapter {
-    public PresentIdeaViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+
+    public PresentIdea presentIdea;
+    public PresentIdeaViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, PresentIdea presentIdea) {
         super(fragmentActivity);
+        this.presentIdea =presentIdea;
     }
 
     @NonNull
@@ -24,7 +28,7 @@ public class PresentIdeaViewPagerAdapter extends FragmentStateAdapter {
 
         switch (position) {
             case 0:
-                return new PresentIdeaTabDetailsFragment();
+                return PresentIdeaTabDetailsFragment.newInstance(presentIdea);
             case 1:
                 return new PresentIdeaTabEditFragment();
             default:

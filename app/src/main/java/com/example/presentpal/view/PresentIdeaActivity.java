@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityPresentIdeaBinding;
@@ -44,6 +45,14 @@ public class PresentIdeaActivity extends AppCompatActivity {
         }
         PresentIdea presentIdeaId = (PresentIdea) getIntent().getSerializableExtra("presentIdea");
 
+        presentIdeaViewModel.getAllEventsByPerson(presentIdeaId.personId).observe(this, allEvents -> {
+            if (allEvents != null) {
+                Log.i("allEvents", "size:" +allEvents.size());
+                presentIdeaViewModel.setAllEvents(allEvents);
+                activityPresentIdeaBinding.setPresentIdeaViewModel(presentIdeaViewModel);
+            }
+        });
+
         TabLayout tabLayout = findViewById(R.id.person_tabs);
         ViewPager2 viewPager = findViewById(R.id.presentIdea_viewpager);
 
@@ -51,7 +60,8 @@ public class PresentIdeaActivity extends AppCompatActivity {
 
             activityPresentIdeaBinding.setPresentIdea(presentIdea);
 
-            PresentIdeaViewPagerAdapter adapter = new PresentIdeaViewPagerAdapter(this);
+
+            PresentIdeaViewPagerAdapter adapter = new PresentIdeaViewPagerAdapter(this, presentIdea);
             viewPager.setAdapter(adapter);
 
 
