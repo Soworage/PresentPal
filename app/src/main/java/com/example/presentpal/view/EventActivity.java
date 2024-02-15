@@ -3,7 +3,6 @@ package com.example.presentpal.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -16,7 +15,6 @@ import com.example.presentpal.databinding.ActivityEventBinding;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.view.adapter.viewpager.EventViewPagerAdapter;
-import com.example.presentpal.view.adapter.viewpager.PersonViewPagerAdapter;
 import com.example.presentpal.view.fragment.NavbarFragment;
 import com.example.presentpal.viewmodel.EventViewModel;
 import com.google.android.material.tabs.TabLayout;
@@ -53,6 +51,12 @@ public class EventActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.event_tabs);
         ViewPager2 viewPager = findViewById(R.id.event_viewpager);
 
+        eventViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
+
         eventViewModel.getAllPresentIdeas().observe(this, presentIdeas -> {
             int value = eventViewModel.readyState.getValue();
             eventViewModel.readyState.setValue(value + 1);
@@ -64,6 +68,12 @@ public class EventActivity extends AppCompatActivity {
             eventViewModel.calculatePrice();
         });
 
+        eventViewModel.getEventById(eventViewModel.event.getValue().eid).observe(this, event ->{
+            eventViewModel.event.setValue(event);
+            activityEventBinding.setEventViewModel(eventViewModel);
+            eventViewModel.getAllPresentIdeasAndPresents();
+        });
+
 
         eventViewModel.getReadyState().observe(this, readyState -> {
             Log.d("EventActivity", "readyState: " + readyState);
@@ -72,7 +82,7 @@ public class EventActivity extends AppCompatActivity {
                 List<PresentIdeaJoinPerson> presentIdeasWithPersonList = eventViewModel.getAllPresentIdeas().getValue();
                 List<PresentIdeaJoinPerson> presentWithPersonList = eventViewModel.getAllPresents().getValue();
 
-                EventViewPagerAdapter adapter = new EventViewPagerAdapter(this, presentIdeasWithPersonList, presentWithPersonList);
+                EventViewPagerAdapter adapter = new EventViewPagerAdapter(this, presentIdeasWithPersonList, presentWithPersonList, eventViewModel.event.getValue());
                 viewPager.setAdapter(adapter);
 
                 new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {

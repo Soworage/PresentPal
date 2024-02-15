@@ -16,7 +16,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.ActivityMainBinding;
+import com.example.presentpal.db.Event;
 import com.example.presentpal.db.EventJoinPerson;
+import com.example.presentpal.db.Person;
 import com.example.presentpal.view.fragment.NavbarFragment;
 import com.example.presentpal.viewmodel.CategoryViewModel;
 import com.example.presentpal.viewmodel.LoginScreenViewModel;
@@ -58,9 +60,16 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("MainActivity", "Test" + upcomingEvents.size());
                             if(upcomingEvents.size() > 0) {
                             activityMainBinding.setEventJoinPersonA(upcomingEvents.get(0));
+                                activityMainBinding.setEventJoinPersonB(new EventJoinPerson(new Event(1,"-","-",0,"-",0,"-",0f),new Person("-","-","-",false)));
+
                             }
                             if(upcomingEvents.size() > 1) {
                                 activityMainBinding.setEventJoinPersonB(upcomingEvents.get(1));
+                            }
+                            if(upcomingEvents.size() == 0){
+                                activityMainBinding.setEventJoinPersonA(new EventJoinPerson(new Event(1,"-","-",0,"-",0,"-",0f),new Person("-","-","-",false)));
+                                activityMainBinding.setEventJoinPersonB(new EventJoinPerson(new Event(1,"-","-",0,"-",0,"-",0f),new Person("-","-","-",false)));
+
                             }
                         }
                     }

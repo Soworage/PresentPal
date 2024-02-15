@@ -31,7 +31,7 @@ import com.example.presentpal.db.dao.RelationshipDao;
         PresentIdea.class,
         Relationship.class,
         LogIn.class
-}, version = 7)
+}, version = 10)
 public abstract class AppDatabase extends RoomDatabase {
   //Abstract für jedes Dao
     public abstract PersonDao personDao();

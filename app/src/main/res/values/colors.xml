@@ -5,7 +5,7 @@
     <color name="red">#B60000</color>
     <color name="textWhite">#CDCDCD</color> <!--Main text color-->
     <color name="darkGray">#161616</color> <!--Main background color-->
-    <color name="blueButton">#158CE8</color> <!-- Main button color-->
+    <color name="blueButton">#3073CA</color> <!-- Main button color #158CE8-->
     <color name="lightGray">#313131</color> <!-- Main background text color-->
     <color name="backgroundTextColor">#9A9AA0</color> <!-- Main background text-->
 

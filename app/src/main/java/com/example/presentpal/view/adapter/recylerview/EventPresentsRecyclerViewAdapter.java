@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.presentpal.databinding.FragmentEventTabIdeasRowBinding;
 
+import com.example.presentpal.db.Event;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.view.PresentIdeaActivity;
 
@@ -19,8 +20,12 @@ public class EventPresentsRecyclerViewAdapter extends RecyclerView.Adapter<Event
 
     private List<PresentIdeaJoinPerson> presentIdeas;
 
-    public EventPresentsRecyclerViewAdapter(List<PresentIdeaJoinPerson> presentIdeas) {
+
+    private Event event;
+
+    public EventPresentsRecyclerViewAdapter(List<PresentIdeaJoinPerson> presentIdeas, Event event) {
         this.presentIdeas = presentIdeas;
+        this.event = event;
     }
 
     @NonNull
@@ -45,6 +50,7 @@ public class EventPresentsRecyclerViewAdapter extends RecyclerView.Adapter<Event
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), PresentIdeaActivity.class);
                     intent.putExtra("presentIdea", presentIdeaJoinPerson.getPresentIdea());
+                    intent.putExtra("event", event);
                     v.getContext().startActivity(intent);
                 }
             });
@@ -66,4 +72,11 @@ public class EventPresentsRecyclerViewAdapter extends RecyclerView.Adapter<Event
             this.fragmentEventTabIdeasRowBinding = fragmentEventTabIdeasRowBinding;
         }
     }
+
+    public Event getEvent() {
+        return event;
+    }
+
 }
+
+

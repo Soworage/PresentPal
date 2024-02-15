@@ -43,6 +43,12 @@ public class EventInsertActivity extends AppCompatActivity {
             }
         });
 
+        eventInsertViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
+
         eventInsertViewModel.getCalendarOpen().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {

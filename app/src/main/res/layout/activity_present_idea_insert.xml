@@ -64,7 +64,7 @@
                 android:text="@string/present_idea_insert_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
@@ -136,17 +136,15 @@
             app:drawableLeftCompat="@drawable/baseline_list_add_24"
             app:drawableTint="@color/white" />
 
-        <Button
+        <ImageButton
             android:id="@+id/presentIdea_insert_button_back"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:text=""
-            app:icon="@drawable/baseline_arrow_back_24"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{()->PresentIdeaInsertViewModel.goBack()}"
+            android:background="@drawable/baseline_arrow_back_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -29,5 +29,13 @@ public class PersonInsertViewModel extends AndroidViewModel {
         personInsertOk.setValue(personRepository.addPerson(firstname.getValue(), lastname.getValue(), nickname.getValue()));
     }
 
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    public void goBack(){
+        finish.setValue(true);
+    }
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
+
 
 }

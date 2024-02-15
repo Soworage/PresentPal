@@ -11,6 +11,10 @@
         <variable
             name="Person"
             type="com.example.presentpal.db.Person" />
+
+        <import type="android.view.View"/>
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -133,6 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:onClick="@{()->EventViewModel.goBack()}"
             android:background="@drawable/baseline_arrow_back_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.08"
@@ -144,6 +149,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="32dp"
+            android:onClick="@{()-> EventViewModel.closeEvent()}"
             android:background="@drawable/baseline_event_available_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.92"
@@ -158,6 +164,19 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="@{EventViewModel.price}"
+            app:layout_constraintBottom_toTopOf="@+id/event_tabs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toEndOf="@+id/event_daysleft"
+            app:layout_constraintTop_toBottomOf="@+id/event_button_close"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <TextView
+            android:id="@+id/event_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{` Budget: ` + EventViewModel.event.budget +` €`}"
             app:layout_constraintBottom_toTopOf="@+id/event_tabs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.92"

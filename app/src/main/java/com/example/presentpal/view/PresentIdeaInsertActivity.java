@@ -50,5 +50,11 @@ public class PresentIdeaInsertActivity extends AppCompatActivity {
 
             }
         });
+
+        presentIdeaInsertViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
     }
 }

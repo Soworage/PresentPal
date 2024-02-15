@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.presentpal.db.Event;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.view.fragment.EventTabEditFragment;
 import com.example.presentpal.view.fragment.EventTabIdeasFragment;
@@ -18,10 +19,14 @@ public class EventViewPagerAdapter extends FragmentStateAdapter {
     private List<PresentIdeaJoinPerson> presentIdeasList;
     private List<PresentIdeaJoinPerson> presentList;
 
-    public EventViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<PresentIdeaJoinPerson> presentIdeasList, List<PresentIdeaJoinPerson> presentList) {
+    private Event event;
+
+    public EventViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<PresentIdeaJoinPerson> presentIdeasList, List<PresentIdeaJoinPerson> presentList, Event event) {
         super(fragmentActivity);
         this.presentIdeasList = presentIdeasList;
         this.presentList = presentList;
+        this.event = event;
+
     }
 
     @NonNull
@@ -30,9 +35,9 @@ public class EventViewPagerAdapter extends FragmentStateAdapter {
 
         switch (position) {
             case 0:
-                return EventTabIdeasFragment.newInstance(presentIdeasList);
+                return EventTabIdeasFragment.newInstance(presentIdeasList, event);
             case 1:
-                return EventTabIdeasFragment.newInstance(presentList);
+                return EventTabIdeasFragment.newInstance(presentList, event);
             case 2:
                 return new EventTabEditFragment();
             default:

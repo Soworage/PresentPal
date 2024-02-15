@@ -9,4 +9,8 @@ public class EventJoinPerson {
     @Embedded
     public Person person;
 
+    public EventJoinPerson(Event event, Person person) {
+        this.event = event;
+        this.person = person;
+    }
 }

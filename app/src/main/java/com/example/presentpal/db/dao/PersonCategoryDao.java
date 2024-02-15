@@ -15,7 +15,7 @@ import java.util.List;
 public interface PersonCategoryDao {
 
     @Insert
-    void insert(PersonCategory personCategory);
+    long insert(PersonCategory personCategory);
 
     @Delete
     void delete(PersonCategory personCategory);

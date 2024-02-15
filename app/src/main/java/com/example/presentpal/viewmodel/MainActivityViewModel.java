@@ -46,19 +46,19 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public void selectFamilyCategory() {
-        onCategorySelected("family");
+        onCategorySelected("#family");
     }
 
     public void selectColleagueCategory() {
-        onCategorySelected("colleague");
+        onCategorySelected("#work");
     }
 
     public void selectFavoriteCategory() {
-        onCategorySelected("favorites");
+        onCategorySelected("#favorites");
     }
 
     public void selectFriendsCategory() {
-        onCategorySelected("friends");
+        onCategorySelected("#friends");
     }
 
     public LiveData<List<EventJoinPerson>> getUpcomingEvents(){

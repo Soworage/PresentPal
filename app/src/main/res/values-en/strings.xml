@@ -93,4 +93,5 @@
     <string name="description">Description:</string>
     <string name="Delete_idea">Delete idea</string>
     <string name="present_idea_no_description">No description yet...\n\nTo add more information to the idea, select \"Edit idea\"</string>
+    <string name="add_to_category">Add to category</string>
 </resources>

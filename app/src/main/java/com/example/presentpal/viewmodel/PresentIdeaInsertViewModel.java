@@ -64,4 +64,12 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
         this.position = position;
     }
 
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    public void goBack(){
+        finish.setValue(true);
+    }
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
+
 }

@@ -23,14 +23,22 @@ public class BindingAdapters {
     // https://stackoverflow.com/questions/57555280/android-two-way-databinding-float-to-edittext
     @BindingAdapter("android:text")
     public static void setText(TextView view, Float value) {
-        if (value == null)
-            return;
+        if (value == null){
+            view.setText(String.valueOf(0.00f));
+        }else {
+            view.setText(String.valueOf(value));
+        }
 
-        view.setText(String.valueOf(value));
+
     }
 
     @InverseBindingAdapter(attribute = "android:text", event = "android:textAttrChanged")
     public static Float getTextString(TextView view) {
-        return Float.valueOf(view.getText().toString());
+        if(view.getText().toString().equals("")){
+           return Float.valueOf("0.00");
+        }
+        else{
+            return Float.valueOf(view.getText().toString());
+        }
     }
 }

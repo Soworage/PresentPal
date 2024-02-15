@@ -11,7 +11,10 @@ import com.example.presentpal.db.Category;
 import com.example.presentpal.db.Event;
 import com.example.presentpal.db.LogIn;
 import com.example.presentpal.db.Person;
+import com.example.presentpal.db.PersonCategory;
+import com.example.presentpal.db.dao.CategoryDao;
 import com.example.presentpal.db.dao.LogInDao;
+import com.example.presentpal.db.dao.PersonCategoryDao;
 import com.example.presentpal.db.dao.PersonDao;
 
 import java.util.List;
@@ -22,12 +25,18 @@ public class PersonRepository {
 
     private final PersonDao personDao;
     private final LogInDao logInDao;
+
+    private final PersonCategoryDao personCategoryDao;
+
+    private final CategoryDao categoryDao;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public PersonRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         personDao = database.personDao();
         logInDao = database.logInDao();
+        categoryDao = database.categoryDao();
+        personCategoryDao = database.personCategoryDao();
 
     }
 
@@ -36,14 +45,32 @@ public class PersonRepository {
         return insertPerson(person);
     }
 
-    public void updatePerson(Person person){
+    public void updatePerson(Person person) {
         executor.execute(new Runnable() {
             @Override
-            public void run(){ personDao.update(person);}
+            public void run() {
+                personDao.update(person);
+            }
         });
     }
 
-    public LiveData<Person> getPersonById(int id){
+    public long insertPersonCatergory(int persinId, String category) {
+
+        final long[] returnValue = new long[1];
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                returnValue[0] = personCategoryDao.insert(new PersonCategory(persinId, category));
+            }
+        });
+
+        return returnValue[0];
+
+
+    }
+
+
+    public LiveData<Person> getPersonById(int id) {
         return personDao.getPersonById(id);
     }
 
@@ -83,7 +110,7 @@ public class PersonRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-               returnValue[0] = personDao.insert(person);
+                returnValue[0] = personDao.insert(person);
             }
         });
 
@@ -91,11 +118,20 @@ public class PersonRepository {
 
     }
 
-    public LiveData<List<Person>> getAllPersons(){
+    public LiveData<List<Person>> getAllPersons() {
         return personDao.getAllPersons();
     }
 
-    public LiveData<List<Person>> getAllPersonsByCategory(Category category){
-        return personDao.getAllPersonsByCategory(category.name);
+    public LiveData<List<Person>> getAllPersonsByCategory(String category) {
+        return personDao.getAllPersonsByCategory(category);
+    }
+
+    public void addCategory(Category category){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                categoryDao.insert(category);
+            }
+        });
     }
 }

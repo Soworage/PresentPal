@@ -61,6 +61,12 @@ public class PersonActivity extends AppCompatActivity {
 
         });
 
+        personViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
+
         personViewModel.getEventsByPerson(intentPerson.getId()).observe(this, eventsByPerson -> {
             Log.i("PersonActivity", "eventsByPerson changed");
             PersonViewPagerAdapter adapter = new PersonViewPagerAdapter(this, eventsByPerson);

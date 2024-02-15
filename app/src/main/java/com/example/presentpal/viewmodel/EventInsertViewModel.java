@@ -84,4 +84,12 @@ public class EventInsertViewModel extends AndroidViewModel {
     public void setPosition(MutableLiveData<Integer> position) {
         this.position = position;
     }
+
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    public void goBack(){
+        finish.setValue(true);
+    }
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
 }

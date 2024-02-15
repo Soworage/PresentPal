@@ -19,17 +19,15 @@ import com.example.presentpal.model.PresentIdeaRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class EventViewModel extends AndroidViewModel {
 
     public MutableLiveData<Event> event = new MutableLiveData<>();
+
 
     public MutableLiveData<Person> person = new MutableLiveData<>();
 
@@ -58,6 +56,10 @@ public class EventViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<PresentIdeaJoinPerson>> getAllPresentIdeas() {
         return allPresentIdeas;
+    }
+
+    public LiveData<Event> getEventById(int eid) {
+        return presentIdeaRepository.getEventById(eid);
     }
 
     public MutableLiveData<List<PresentIdeaJoinPerson>> getAllPresents() {
@@ -136,5 +138,20 @@ public class EventViewModel extends AndroidViewModel {
             priceSum += present.presentIdea.price;
         }
         price.setValue(String.valueOf(priceSum) + " €");
+    }
+
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    public void goBack(){
+        finish.setValue(true);
+    }
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
+
+    public void closeEvent(){
+        Event eventClosed = event.getValue();
+        eventClosed.setClosed(1);
+        presentIdeaRepository.updateEvent(eventClosed);
+        goBack();
     }
 }

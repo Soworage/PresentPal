@@ -43,20 +43,20 @@ public class PresentIdeaActivity extends AppCompatActivity {
                     .add(R.id.navbar_present_idea, new NavbarFragment())
                     .commit();
         }
-        PresentIdea presentIdeaId = (PresentIdea) getIntent().getSerializableExtra("presentIdea");
-
-        presentIdeaViewModel.getAllEventsByPerson(presentIdeaId.personId).observe(this, allEvents -> {
-            if (allEvents != null) {
-                Log.i("allEvents", "size:" +allEvents.size());
-                presentIdeaViewModel.setAllEvents(allEvents);
-                activityPresentIdeaBinding.setPresentIdeaViewModel(presentIdeaViewModel);
-            }
-        });
+        presentIdeaViewModel.presentIdea.setValue((PresentIdea) getIntent().getSerializableExtra("presentIdea"));
+        presentIdeaViewModel.event.setValue((Event) getIntent().getSerializableExtra("event"));
+        activityPresentIdeaBinding.setPresentIdeaViewModel(presentIdeaViewModel);
 
         TabLayout tabLayout = findViewById(R.id.person_tabs);
         ViewPager2 viewPager = findViewById(R.id.presentIdea_viewpager);
 
-        presentIdeaViewModel.getPresentIdeaById(presentIdeaId.piid).observe(this, presentIdea -> {
+        presentIdeaViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
+
+        presentIdeaViewModel.getPresentIdeaById(presentIdeaViewModel.presentIdea.getValue().piid).observe(this, presentIdea -> {
 
             activityPresentIdeaBinding.setPresentIdea(presentIdea);
 

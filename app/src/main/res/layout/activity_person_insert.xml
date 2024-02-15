@@ -78,6 +78,7 @@
                 android:layout_marginTop="324dp"
                 android:onClick="@{()-> PersonInsertViewModel.addPerson()}"
                 android:text="@string/person_insert_button_add"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -137,20 +138,17 @@
             app:drawableTint="@color/white"
             android:textColor="@color/white"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button2"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:text=""
-            app:icon="@drawable/baseline_arrow_back_24"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{()->PersonInsertViewModel.goBack()}"
+            android:background="@drawable/baseline_arrow_back_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view"

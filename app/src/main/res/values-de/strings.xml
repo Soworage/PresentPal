@@ -90,5 +90,6 @@
     <string name="description">Beschreibung:</string>
     <string name="Delete_idea">Idee löschen</string>
     <string name="present_idea_no_description">Noch keine Beschreibung...\n\nUm mehr Informationen zur Idee hinzuzufügen wählen Sie \"Bearbeiten\"</string>
+    <string name="add_to_category">Zu Kategorie hinzufügen</string>
 
 </resources>

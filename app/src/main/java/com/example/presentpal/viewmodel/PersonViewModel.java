@@ -41,4 +41,12 @@ public class PersonViewModel extends AndroidViewModel {
     public LiveData<List<Category>> getCategoryByPerson(int id){
       return  eventRepository.getCategoryByPerson(id);
     }
+
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    public void goBack(){
+        finish.setValue(true);
+    }
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
+    }
 }

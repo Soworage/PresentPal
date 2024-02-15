@@ -22,7 +22,13 @@ import java.util.List;
 public class CategoryViewModel extends AndroidViewModel {
 
     private EventRepository eventRepository;
+
+    private PersonRepository personRepository;
     private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+
+    private MutableLiveData<Boolean> add = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> showAddIcon = new MutableLiveData<>();
 
     private final Resources resources;
     public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
@@ -35,7 +41,9 @@ public class CategoryViewModel extends AndroidViewModel {
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
+        personRepository = new PersonRepository(application);
         finish.setValue(false);
+        showAddIcon.setValue(false);
 
         resources = application.getResources();
 
@@ -58,10 +66,17 @@ public class CategoryViewModel extends AndroidViewModel {
         finish.setValue(true);
     }
 
+    public void goToAdd(){
+        add.setValue(true);
+    }
+
     public MutableLiveData<Boolean> getFinish() {
         return finish;
     }
 
+    public MutableLiveData<Boolean> getAdd() {
+        return add;
+    }
     public MutableLiveData<String> getCategory() {
         return category;
     }
@@ -70,27 +85,36 @@ public class CategoryViewModel extends AndroidViewModel {
         this.category.setValue(category);
     }
 
+    public LiveData<List<Person>> getAllPersonByCategory(String category){
+        return personRepository.getAllPersonsByCategory(category);
+    }
+
     public void setCategoryString(){
         if(getCategory().getValue() != null){
             Log.i("CategoryViewModel", "in setCategoryString()");
             switch (getCategory().getValue()){
-                case "friends":
+                case "#friends":
+                    showAddIcon.setValue(true);
                     categoryText.setValue(resources.getString(R.string.friends));
                     categorySymbol.setValue(R.drawable.baseline_person_24);
                     break;
-                case "family":
+                case "#family":
+                    showAddIcon.setValue(true);
                     categoryText.setValue(resources.getString(R.string.family));
                     categorySymbol.setValue(R.drawable.baseline_groups_24);
                     break;
-                case "colleague":
+                case "#work":
+                    showAddIcon.setValue(true);
                     categoryText.setValue(resources.getString(R.string.colleagues));
                     categorySymbol.setValue(R.drawable.baseline_work_24);
                     break;
-                case "favorites":
+                case "#favorites":
+                    showAddIcon.setValue(true);
                     categoryText.setValue(resources.getString(R.string.favorites));
                     categorySymbol.setValue(R.drawable.baseline_favorite_24);
                     break;
                 default:
+                    showAddIcon.setValue(false);
                     categoryText.setValue(resources.getString(R.string.categories));
                     categorySymbol.setValue(R.drawable.baseline_groups_3_24);
             }

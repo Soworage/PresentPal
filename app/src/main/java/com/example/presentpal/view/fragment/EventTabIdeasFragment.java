@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.presentpal.R;
 import com.example.presentpal.databinding.FragmentEventTabIdeasBinding;
+import com.example.presentpal.db.Event;
 import com.example.presentpal.db.PresentIdeaJoinPerson;
 import com.example.presentpal.view.adapter.recylerview.EventPresentsRecyclerViewAdapter;
 
@@ -29,6 +30,7 @@ public class EventTabIdeasFragment extends Fragment {
     private static final String ARG_PARAM1 = "presentIdeas";
 
     private List<PresentIdeaJoinPerson> presentIdeas;
+    private Event event;
 
     private FragmentEventTabIdeasBinding fragmentEventTabIdeasBinding;
     private EventPresentsRecyclerViewAdapter eventPresentsRecyclerViewAdapter;
@@ -38,12 +40,13 @@ public class EventTabIdeasFragment extends Fragment {
     }
 
 
-    public static EventTabIdeasFragment newInstance(List<PresentIdeaJoinPerson> presentIdeas) {
+    public static EventTabIdeasFragment newInstance(List<PresentIdeaJoinPerson> presentIdeas, Event event) {
 
         EventTabIdeasFragment fragment = new EventTabIdeasFragment();
         Bundle args = new Bundle();
 
         args.putSerializable("presentIdeas", (Serializable) presentIdeas);
+        args.putSerializable("event", (Serializable) event);
         fragment.setArguments(args);
 
         return fragment;
@@ -53,11 +56,13 @@ public class EventTabIdeasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            if (getArguments().containsKey("presentIdeas")) {
-                Serializable serializable = getArguments().getSerializable("presentIdeas");
-                if (serializable != null) {
-                    if (serializable instanceof List<?>) {
-                        presentIdeas = (List<PresentIdeaJoinPerson>) serializable;
+            if (getArguments().containsKey("presentIdeas") && getArguments().containsKey("event")) {
+                Serializable serializableA = getArguments().getSerializable("presentIdeas");
+                Serializable serializableB = getArguments().getSerializable("event");
+                if (serializableA != null && serializableB != null) {
+                    if (serializableA instanceof List<?> && serializableB instanceof Event ) {
+                        presentIdeas = (List<PresentIdeaJoinPerson>) serializableA;
+                        event = (Event) serializableB;
                     }
                 }
             }
@@ -73,7 +78,7 @@ public class EventTabIdeasFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        eventPresentsRecyclerViewAdapter = new EventPresentsRecyclerViewAdapter(presentIdeas);
+        eventPresentsRecyclerViewAdapter = new EventPresentsRecyclerViewAdapter(presentIdeas, event);
         fragmentEventTabIdeasBinding.fragmentEventIdeasRecyclerView.setAdapter(eventPresentsRecyclerViewAdapter);
 
         return rootView;

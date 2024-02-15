@@ -32,6 +32,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean success) {
                 if (success) {
+                    registerScreenViewModel.addCategories();
                     // Navigate to the login screend
                     Intent intent = new Intent(RegisterScreenActivity.this, LoginScreenActivity.class);
                     startActivity(intent);

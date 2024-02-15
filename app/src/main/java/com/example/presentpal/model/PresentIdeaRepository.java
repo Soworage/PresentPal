@@ -33,7 +33,7 @@ public class PresentIdeaRepository {
 
     private final PersonDao personDao;
 
-    private final EventDao eventDao;
+    public final EventDao eventDao;
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -62,10 +62,16 @@ public class PresentIdeaRepository {
         });
     }
 
-    public LiveData<List<Event>> getAllEventsByPerson(int personId){
-        return eventDao.getEventsForPerson(personId);
+    public void updateEvent(Event event){
+        executor.execute(new Runnable() {
+            @Override
+            public void run(){ eventDao.update(event);}
+        });
     }
 
+    public LiveData<Event> getEventById(int eid){
+        return eventDao.getEventById(eid);
+    }
 
     public LiveData<List<Person>> getAllPersons() {
         return personDao.getAllPersons();

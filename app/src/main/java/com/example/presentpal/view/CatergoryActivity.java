@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -56,6 +57,19 @@ public class CatergoryActivity extends AppCompatActivity {
         categoryViewModel.getFinish().observe(this, finish -> {
             if (finish) {
                 finish();
+            }
+        });
+
+        categoryViewModel.getAllPersonByCategory(categoryViewModel.category.getValue()).observe(this, allPersonInCategory -> {
+            categoryViewModel.getEventsWithPerson();
+        });
+
+
+        categoryViewModel.getAdd().observe(this, add -> {
+            if (add) {
+                Intent intent = new Intent(this, CategoryInsertActivity.class);
+                intent.putExtra("category", categoryViewModel.getCategory().getValue());
+                startActivity(intent);
             }
         });
 

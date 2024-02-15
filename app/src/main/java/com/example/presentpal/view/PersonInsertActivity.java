@@ -46,5 +46,11 @@ public class PersonInsertActivity extends AppCompatActivity {
 
             }
         });
+
+        personInsertViewModel.getFinish().observe(this, finish -> {
+            if (finish) {
+                finish();
+            }
+        });
     }
 }

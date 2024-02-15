@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.presentpal.db.Category;
 import com.example.presentpal.model.PersonRepository;
 
 import java.util.Objects;
@@ -16,6 +17,7 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
     public MutableLiveData<Boolean> addUserResult = new MutableLiveData<>();
     private final PersonRepository personRepository;
+
     public MutableLiveData<String> nicknameEditText = new MutableLiveData<>();
     public MutableLiveData<String> passwordEditText = new MutableLiveData<>();
     public MutableLiveData<String> passwordCheckEditText = new MutableLiveData<>();
@@ -43,5 +45,12 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
 
         }
+    }
+
+    public void addCategories(){
+        personRepository.addCategory(new Category("#favorites"));
+        personRepository.addCategory(new Category("#work"));
+        personRepository.addCategory(new Category("#friends"));
+        personRepository.addCategory(new Category("#family"));
     }
 }

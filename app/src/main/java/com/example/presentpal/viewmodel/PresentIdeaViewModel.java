@@ -18,29 +18,42 @@ public class PresentIdeaViewModel extends AndroidViewModel {
 
     private final PresentIdeaRepository presentIdeaRepository;
 
-    public MutableLiveData<List<Event>> allEvents = new MutableLiveData<>();
+    public MutableLiveData<Event> event = new MutableLiveData<>();
 
-    public MutableLiveData<Integer> position = new MutableLiveData<>();
+    public MutableLiveData<PresentIdea> presentIdea = new MutableLiveData<>();
 
     public PresentIdeaViewModel(@NonNull Application application) {
         super(application);
         presentIdeaRepository = new PresentIdeaRepository(application);
-        position.setValue(0);
     }
 
     public LiveData<PresentIdea> getPresentIdeaById(int presentIdeaId) {
         return presentIdeaRepository.getPresentIdeaById(presentIdeaId);
     }
 
-    public LiveData<List<Event>> getAllEventsByPerson(int personId){
-        return presentIdeaRepository.getAllEventsByPerson(personId);
+    public void markAsPresent() {
+        if (presentIdea.getValue().isPresent) {
+            presentIdea.getValue().setPresent(false);
+            presentIdea.getValue().setEventId(null);
+            presentIdeaRepository.updateEvent(event.getValue());
+            presentIdeaRepository.updatePresentIdea(presentIdea.getValue());
+        } else {
+            presentIdea.getValue().setPresent(true);
+            presentIdea.getValue().setEventId(event.getValue().eid);
+            presentIdeaRepository.updateEvent(event.getValue());
+            presentIdeaRepository.updatePresentIdea(presentIdea.getValue());
+        }
     }
 
-    public MutableLiveData<List<Event>> getAllEvents() {
-        return allEvents;
+    private MutableLiveData<Boolean> finish = new MutableLiveData<>();
+
+    public void goBack() {
+        finish.setValue(true);
     }
 
-    public void setAllEvents(List<Event> allEventsNew) {
-        allEvents.setValue(allEventsNew);
+    public MutableLiveData<Boolean> getFinish() {
+        return finish;
     }
+
+
 }

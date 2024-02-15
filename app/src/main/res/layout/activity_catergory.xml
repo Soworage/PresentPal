@@ -7,7 +7,10 @@
         <variable
             name="CategoryViewModel"
             type="com.example.presentpal.viewmodel.CategoryViewModel" />
+        <import type="android.view.View"
+            alias="View"/>
     </data>
+    <!-- https://developer.android.com/topic/libraries/data-binding/expressions  -->
 <androidx.constraintlayout.widget.ConstraintLayout
 
     android:layout_width="match_parent"
@@ -59,6 +62,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="@{()->CategoryViewModel.goBack()}"/>
+
+    <ImageButton
+        android:id="@+id/category_button_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/baseline_post_add_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="@{CategoryViewModel.showAddIcon ? View.VISIBLE : View.GONE}"
+        android:onClick="@{()-> CategoryViewModel.goToAdd()}"/>
 
     <FrameLayout
         android:id="@+id/navbar_category"
