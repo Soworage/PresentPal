@@ -18,7 +18,10 @@ import com.example.presentpal.model.LogInRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * ViewModel für die Hauptaktivität der Anwendung.
+ * Verwaltet die Benutzerinteraktionen und Datenbeziehungen für Kategorien und bevorstehende Ereignisse.
+ */
 public class MainActivityViewModel extends AndroidViewModel {
 
 
@@ -28,6 +31,12 @@ public class MainActivityViewModel extends AndroidViewModel {
     private EventRepository eventRepository;
     private LogInRepository logInRepository;
 
+    /**
+     * Konstruktor, der eine neue Instanz von MainActivityViewModel initialisiert.
+     * Initialisiert die Repositories und lädt den aktuellen Benutzer.
+     *
+     * @param application Die Anwendung, die das ViewModel besitzt.
+     */
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         logInRepository = new LogInRepository(application);
@@ -61,7 +70,13 @@ public class MainActivityViewModel extends AndroidViewModel {
         onCategorySelected("#friends");
     }
 
-    public LiveData<List<EventJoinPerson>> getUpcomingEvents(){
+    /**
+     * Liefert LiveData einer Liste bevorstehender Ereignisse.
+     * Die Daten werden basierend auf der aktuellen Benutzerauswahl gefiltert.
+     *
+     * @return LiveData einer Liste von EventJoinPerson-Objekten, die bevorstehende Ereignisse darstellen.
+     */
+    public LiveData<List<EventJoinPerson>> getUpcomingEvents() {
         return eventRepository.getUpcomingEvents();
     }
 }

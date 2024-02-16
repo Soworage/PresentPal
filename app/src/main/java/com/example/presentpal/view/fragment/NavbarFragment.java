@@ -32,7 +32,14 @@ private FragmentNavbarBinding binding;
         // Required empty public constructor
     }
 
-
+    /**
+     * Sets up the binding for the NavbarFragment.
+     *
+     * @param inflater           The layout inflater to inflate the view.
+     * @param container          The parent view group.
+     * @param savedInstanceState The saved instance state of the fragment.
+     * @return The root view of the binding.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,14 +51,18 @@ private FragmentNavbarBinding binding;
         // Gibt die Root-View des Bindings zurück
         return binding.getRoot();
     }
-
+    /**
+     * Navigates to the main screen activity.
+     */
     @Override
     public void navigateToMainScreenActivity() {
         Intent intent = new Intent(getActivity(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
+    /**
+     * Navigates to view all categories activity.
+     */
     @Override
     public void navigateToViewAll() {
         String category = null;
@@ -59,7 +70,9 @@ private FragmentNavbarBinding binding;
         intent.putExtra("category", category);
         startActivity(intent);
     }
-
+    /**
+     * Navigates to the options dialog to insert a new person, event, or present idea.
+     */
     public void navigateToShowOptionsDialog() {
 
         final CharSequence[] options = {getString(R.string.insert_a_new_person), getString(R.string.insert_a_new_event), getString(R.string.insert_a_new_present_idea)};

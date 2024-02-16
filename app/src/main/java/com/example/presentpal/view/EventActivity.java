@@ -22,11 +22,24 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
+/**
+ * Die Activity für die Anzeige und Verwaltung eines Ereignisses.
+ * Diese Klasse ist verantwortlich für die Anzeige der Details eines Ereignisses,
+ * inklusive zugehöriger Geschenkideen und Geschenke, sowie die Bearbeitung des Ereignisses.
+ * Sie nutzt das MVVM-Pattern, um die Geschäftslogik von der UI-Logik zu trennen.
+ */
 public class EventActivity extends AppCompatActivity {
 
     private EventViewModel eventViewModel;
 
     private ActivityEventBinding activityEventBinding;
+
+    /**
+     * Bindet die Daten des Ereignisses an die UI und stellt Tabs für die Anzeige von Geschenkideen, Geschenken und
+     * Ereignisbearbeitung zur Verfügung.
+     *
+     * @param savedInstanceState Enthält die Daten der Aktivität, wenn sie zuvor beendet wurde.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +81,7 @@ public class EventActivity extends AppCompatActivity {
             eventViewModel.calculatePrice();
         });
 
-        eventViewModel.getEventById(eventViewModel.event.getValue().eid).observe(this, event ->{
+        eventViewModel.getEventById(eventViewModel.event.getValue().eid).observe(this, event -> {
             eventViewModel.event.setValue(event);
             activityEventBinding.setEventViewModel(eventViewModel);
             eventViewModel.getAllPresentIdeasAndPresents();
@@ -90,12 +103,18 @@ public class EventActivity extends AppCompatActivity {
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                         switch (position) {
                             case 0:
-                                if (presentIdeasWithPersonList != null){tab.setText(resources.getString(R.string.ideas) + " (" + presentIdeasWithPersonList.size() + ")");}
-                                else{tab.setText(resources.getString(R.string.ideas) + " (0)");}
+                                if (presentIdeasWithPersonList != null) {
+                                    tab.setText(resources.getString(R.string.ideas) + " (" + presentIdeasWithPersonList.size() + ")");
+                                } else {
+                                    tab.setText(resources.getString(R.string.ideas) + " (0)");
+                                }
                                 break;
                             case 1:
-                                if (presentWithPersonList != null){ tab.setText(resources.getString(R.string.presents) + " (" + presentWithPersonList.size() + ")");}
-                                else {tab.setText(resources.getString(R.string.presents) + " (0)");}
+                                if (presentWithPersonList != null) {
+                                    tab.setText(resources.getString(R.string.presents) + " (" + presentWithPersonList.size() + ")");
+                                } else {
+                                    tab.setText(resources.getString(R.string.presents) + " (0)");
+                                }
                                 break;
                             case 2:
                                 tab.setText(resources.getString(R.string.edit_event));
@@ -114,7 +133,7 @@ public class EventActivity extends AppCompatActivity {
         });
 
 
-        eventViewModel.getPeronById(eventViewModel.event.getValue().personId).observe(this, person ->{
+        eventViewModel.getPeronById(eventViewModel.event.getValue().personId).observe(this, person -> {
             activityEventBinding.setPerson(person);
         });
     }

@@ -39,7 +39,13 @@ public class EventTabIdeasFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /**
+     * Statische Methode zum Erstellen einer neuen Instanz des EventTabIdeasFragment.
+     *
+     * @param presentIdeas Die Liste der PresentIdeaJoinPerson-Objekte.
+     * @param event        Das Event-Objekt.
+     * @return Eine neue Instanz des EventTabIdeasFragment.
+     */
     public static EventTabIdeasFragment newInstance(List<PresentIdeaJoinPerson> presentIdeas, Event event) {
 
         EventTabIdeasFragment fragment = new EventTabIdeasFragment();
@@ -52,6 +58,13 @@ public class EventTabIdeasFragment extends Fragment {
         return fragment;
     }
 
+
+    /**
+     * Die Methode onCreate wird aufgerufen, wenn das Fragment erstellt wird.
+     * Hier werden die Fragment-Argumente abgerufen und den entsprechenden Variablen zugewiesen.
+     *
+     * @param savedInstanceState Das Bundle-Objekt, das den Zustand des Fragments enthält.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +73,7 @@ public class EventTabIdeasFragment extends Fragment {
                 Serializable serializableA = getArguments().getSerializable("presentIdeas");
                 Serializable serializableB = getArguments().getSerializable("event");
                 if (serializableA != null && serializableB != null) {
-                    if (serializableA instanceof List<?> && serializableB instanceof Event ) {
+                    if (serializableA instanceof List<?> && serializableB instanceof Event) {
                         presentIdeas = (List<PresentIdeaJoinPerson>) serializableA;
                         event = (Event) serializableB;
                     }
@@ -69,6 +82,15 @@ public class EventTabIdeasFragment extends Fragment {
         }
     }
 
+    /**
+     * Die Methode onCreateView wird aufgerufen, um das Layout des Fragments zu erstellen und anzuzeigen.
+     * Hier wird das Layout aufgeblasen und das Binding-Objekt initialisiert.
+     *
+     * @param inflater           Der LayoutInflater, der zum Inflating des Layouts verwendet wird.
+     * @param container          Die ViewGroup, in der das Fragment platziert wird.
+     * @param savedInstanceState Das Bundle-Objekt, das den Zustand des Fragments enthält.
+     * @return Die gerenderte View des Fragments.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -19,6 +19,9 @@ import com.example.presentpal.view.adapter.recylerview.CategoryRecyclerViewAdapt
 
 import java.util.List;
 
+/**
+ * ViewModel für die Kategorienansicht, verantwortlich für die Verwaltung der UI-bezogenen Daten.
+ */
 public class CategoryViewModel extends AndroidViewModel {
 
     private EventRepository eventRepository;
@@ -34,10 +37,13 @@ public class CategoryViewModel extends AndroidViewModel {
     public MutableLiveData<List<PersonWithEvents>> allEventsWithPersonByCategory = new MutableLiveData<>();
 
 
-
     public MutableLiveData<Integer> categorySymbol = new MutableLiveData<>();
     public MutableLiveData<String> categoryText = new MutableLiveData<>();
 
+    /**
+     * Konstruktor für CategoryViewModel.
+     * @param application Die Instanz der Anwendung, zu der dieses ViewModel gehört.
+     */
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         eventRepository = new EventRepository(application);
@@ -60,13 +66,13 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public void getEventsWithPerson() {
         allEventsWithPersonByCategory.setValue(eventRepository.getAllPersonsWithEventsByCategory(category.getValue()));
-   }
+    }
 
-    public void goBack(){
+    public void goBack() {
         finish.setValue(true);
     }
 
-    public void goToAdd(){
+    public void goToAdd() {
         add.setValue(true);
     }
 
@@ -77,6 +83,7 @@ public class CategoryViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> getAdd() {
         return add;
     }
+
     public MutableLiveData<String> getCategory() {
         return category;
     }
@@ -85,14 +92,16 @@ public class CategoryViewModel extends AndroidViewModel {
         this.category.setValue(category);
     }
 
-    public LiveData<List<Person>> getAllPersonByCategory(String category){
+    public LiveData<List<Person>> getAllPersonByCategory(String category) {
         return personRepository.getAllPersonsByCategory(category);
     }
-
-    public void setCategoryString(){
-        if(getCategory().getValue() != null){
+    /**
+     * Setzt die Kategorie basierend auf einer Zeichenkette und passt die UI entsprechend an.
+     */
+    public void setCategoryString() {
+        if (getCategory().getValue() != null) {
             Log.i("CategoryViewModel", "in setCategoryString()");
-            switch (getCategory().getValue()){
+            switch (getCategory().getValue()) {
                 case "#friends":
                     showAddIcon.setValue(true);
                     categoryText.setValue(resources.getString(R.string.friends));
@@ -126,8 +135,6 @@ public class CategoryViewModel extends AndroidViewModel {
     }
 
 
-
-
     public static class PersonWithEvents {
         private String name;
         private String dateA;
@@ -141,8 +148,8 @@ public class CategoryViewModel extends AndroidViewModel {
 
         public PersonWithEvents(String name, String dateA, String titleA, String dateB, String titleB, int number) {
             this.name = name;
-            this.dateA = dateA;
             this.titleA = titleA;
+            this.dateA = dateA;
             this.dateB = dateB;
             this.titleB = titleB;
             this.number = number;
@@ -152,7 +159,9 @@ public class CategoryViewModel extends AndroidViewModel {
                 this.more = "";
             }
         }
-
+        /**
+         * Innere Klasse, die eine Person mit ihren Ereignissen modelliert.
+         */
         public PersonWithEvents(List<EventJoinPerson> eventJoinPersonList) {
             if (eventJoinPersonList != null) {
 
@@ -223,13 +232,6 @@ public class CategoryViewModel extends AndroidViewModel {
             this.titleB = titleB;
         }
 
-        public int getNumber() {
-            return number;
-        }
-
-        public void setNumber(int number) {
-            this.number = number;
-        }
 
         public String getMore() {
             return more;

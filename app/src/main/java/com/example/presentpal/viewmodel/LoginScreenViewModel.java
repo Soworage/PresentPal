@@ -22,6 +22,10 @@ import com.example.presentpal.view.MainActivity;
 
 import java.util.Objects;
 
+/**
+ * ViewModel für den Login-Bildschirm.
+ * Verantwortlich für die Authentifizierung des Benutzers und die Bereitstellung der Navigationsoptionen.
+ */
 public class LoginScreenViewModel extends AndroidViewModel {
 
 
@@ -34,24 +38,39 @@ public class LoginScreenViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> openIdeaInsert = new MutableLiveData<>();
     public MutableLiveData<Boolean> openInfo = new MutableLiveData<>();
 
-
-
+    /**
+     * Konstruktor, der eine neue Instanz von LoginScreenViewModel initialisiert.
+     *
+     * @param application Die Anwendung, die das ViewModel besitzt.
+     */
     public LoginScreenViewModel(@NonNull Application application) {
         super(application);
         logInRepository = new LogInRepository(application);
         User = logInRepository.getUser();
     }
 
-
+    /**
+     * Setzt den Text des Passwortprüfers.
+     *
+     * @param s Der eingegebene Text.
+     */
     public void setPasswordCheckerText(CharSequence s) {
         this.passwordCheckerText.setValue(s.toString());
     }
 
+    /**
+     * Liefert LiveData, die angibt, ob das Passwort korrekt ist.
+     *
+     * @return LiveData, die den Zustand der Passwortüberprüfung enthält.
+     */
     public LiveData<Integer> getIsPasswordCorrect() {
         return isPasswordCorrect;
     }
 
 
+    /**
+     * Überprüft das eingegebene Passwort und setzt das Ergebnis der Überprüfung.
+     */
     public void loginUser() {
         Log.d("Password", "Password1: " + passwordCheckerText.getValue());
         if (passwordCheckerText.getValue() != null) {
@@ -63,21 +82,30 @@ public class LoginScreenViewModel extends AndroidViewModel {
             Log.e("LoginUser", "passwordCheckerText is null");
         }
     }
-
+    /**
+     * Signalisiert die Anforderung, den Informationsdialog anzuzeigen.
+     */
     //https://stackoverflow.com/questions/10903754/input-text-dialog-android
     public void showInfo() {
         openInfo.setValue(true);
     }
-
-    public void quickIdea(){
-      openIdeaInsert.setValue(true);
+    /**
+     * Signalisiert die Anforderung, den Dialog für die schnelle Ideeneingabe zu öffnen.
+     */
+    public void quickIdea() {
+        openIdeaInsert.setValue(true);
     }
 
+    /**
+     * Liefert den Text für den Informationsdialog.
+     *
+     * @return Der Text, der im Informationsdialog angezeigt werden soll.
+     */
     public String getInfoText() {
         return infoText;
     }
 
-    private String infoText =  "\n" +
+    private String infoText = "\n" +
             "Autoren:" +
             "\n" +
             "Alex Mihel, Kay Schindler  \n" +
@@ -94,7 +122,6 @@ public class LoginScreenViewModel extends AndroidViewModel {
             "\n" +
             "Prof. Dr. Rainer Roosmann \n" +
             "\n";
-
 
 
 }

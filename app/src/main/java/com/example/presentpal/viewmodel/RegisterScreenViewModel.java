@@ -13,6 +13,9 @@ import com.example.presentpal.model.PersonRepository;
 
 import java.util.Objects;
 
+/**
+ * ViewModel für die Registrierungsbildschirm, verantwortlich für die Verwaltung der Benutzerregistrierung.
+ */
 public class RegisterScreenViewModel extends AndroidViewModel {
 
     public MutableLiveData<Boolean> addUserResult = new MutableLiveData<>();
@@ -21,15 +24,23 @@ public class RegisterScreenViewModel extends AndroidViewModel {
     public MutableLiveData<String> nicknameEditText = new MutableLiveData<>();
     public MutableLiveData<String> passwordEditText = new MutableLiveData<>();
     public MutableLiveData<String> passwordCheckEditText = new MutableLiveData<>();
-
-
+    /**
+     * Konstruktor, der das ViewModel mit der Anwendungskontext initialisiert und das PersonRepository instanziiert.
+     *
+     * @param application Die Anwendung, die das ViewModel besitzt.
+     */
     public RegisterScreenViewModel(@NonNull Application application) {
         super(application);
         personRepository = new PersonRepository(application);
 
     }
 
-
+    /**
+     * Fügt einen neuen Benutzer hinzu, wenn die Passwörter übereinstimmen.
+     * Setzt das Ergebnis der Registrierung in {@link #addUserResult}.
+     *
+     * @param view Der View, von dem die Aktion ausgelöst wurde (nicht verwendet).
+     */
     public void addUser(View view) {
         if (Objects.equals(passwordEditText.getValue(), passwordCheckEditText.getValue())) {
 
@@ -46,7 +57,9 @@ public class RegisterScreenViewModel extends AndroidViewModel {
 
         }
     }
-
+    /**
+     * Fügt initiale Kategorien zur Datenbank hinzu.
+     */
     public void addCategories(){
         personRepository.addCategory(new Category("#favorites"));
         personRepository.addCategory(new Category("#work"));

@@ -22,12 +22,22 @@ import com.example.presentpal.viewmodel.PresentIdeaViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+/**
+ * Aktivität für die Anzeige und Bearbeitung von Geschenkideen. Diese Aktivität stellt die Details einer Geschenkidee dar
+ * und ermöglicht es dem Benutzer, die Idee zu bearbeiten.
+ */
 public class PresentIdeaActivity extends AppCompatActivity {
 
     private ActivityPresentIdeaBinding activityPresentIdeaBinding;
 
     private PresentIdeaViewModel presentIdeaViewModel;
 
+    /**
+     * Wird aufgerufen, wenn die Aktivität erstellt wird. Initialisiert das ViewModel, bindet Daten und
+     * konfiguriert die Benutzeroberfläche, einschließlich des ViewPager und TabLayout für die Detailansicht und Bearbeitung.
+     *
+     * @param savedInstanceState Zustand der Aktivität, wenn sie neu erstellt wird, nachdem sie zuvor zerstört wurde.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

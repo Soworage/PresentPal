@@ -12,10 +12,21 @@ import com.example.presentpal.R;
 import com.example.presentpal.viewmodel.RegisterScreenViewModel;
 import com.example.presentpal.databinding.ActivityRegisterScreenBinding;
 
+/**
+ * Die Aktivität für den Registrierungsbildschirm, die es Benutzern ermöglicht, ein neues Konto anzulegen.
+ * Diese Klasse bindet das Benutzerinterface an das RegisterScreenViewModel und reagiert auf die Benutzereingaben
+ * für den Registrierungsprozess.
+ */
 public class RegisterScreenActivity extends AppCompatActivity {
     private RegisterScreenViewModel registerScreenViewModel;
     private ActivityRegisterScreenBinding activityRegisterScreenBinding;
 
+    /**
+     * Wird aufgerufen, wenn die Aktivität erstellt wird. Initialisiert das Binding und das ViewModel und
+     * stellt die Verbindung zwischen der Benutzeroberfläche und der Geschäftslogik her.
+     *
+     * @param savedInstanceState Zustand der Aktivität, wenn sie neu erstellt wird, nachdem sie zuvor zerstört wurde.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -26,8 +37,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
         activityRegisterScreenBinding.setRegisterScreenViewModel(registerScreenViewModel);
 
 
-
-    // Beobachten des addUserResult LiveData-Objekts
+        // Beobachten des addUserResult LiveData-Objekts
         registerScreenViewModel.addUserResult.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean success) {

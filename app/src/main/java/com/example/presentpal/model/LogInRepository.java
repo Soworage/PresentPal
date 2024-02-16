@@ -14,27 +14,48 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Repository für den Login, welches die Datenzugriffsschicht abstrahiert und eine saubere API für den Datenzugriff bereitstellt.
+ */
 public class LogInRepository {
     private final LogInDao logInDao;
-
-
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    /**
+     * Konstruktor, der eine Instanz der LogInRepository-Klasse erstellt.
+     *
+     * @param application Die Application-Instanz, die verwendet wird, um auf die Datenbank zugreifen zu können.
+     */
     public LogInRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         logInDao = database.logInDao();
     }
 
-    public LiveData<User> getUser(){
+    /**
+     * Gibt den aktuellen Benutzer zurück.
+     *
+     * @return LiveData<User> Eine LiveData-Instanz, die den aktuellen Benutzer enthält.
+     */
+    public LiveData<User> getUser() {
         return logInDao.getUser();
     }
 
-    public LiveData<Integer> isPasswordSetLiveData(){
+    /**
+     * Überprüft, ob ein Passwort im System hinterlegt ist.
+     *
+     * @return LiveData<Integer> Eine LiveData-Instanz, die angibt, ob ein Passwort gesetzt ist oder nicht.
+     */
+    public LiveData<Integer> isPasswordSetLiveData() {
         return logInDao.isPasswordSet();
     }
 
+    /**
+     * Überprüft, ob das übergebene Passwort mit dem in der Datenbank hinterlegten Passwort übereinstimmt.
+     *
+     * @param password Das zu überprüfende Passwort.
+     * @return Integer Der Wert 1, wenn das Passwort korrekt ist, sonst 0.
+     */
     public Integer checkPassword(String password) {
         final int[] value = {0};
         Log.d("TAG", "checkPassword: test start");
@@ -46,7 +67,7 @@ public class LogInRepository {
         });
 
         try {
-            value[0] = future.get(); // This will block until the result is available
+            value[0] = future.get(); // Blockiert, bis das Ergebnis verfügbar ist
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

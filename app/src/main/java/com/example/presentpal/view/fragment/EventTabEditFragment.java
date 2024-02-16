@@ -21,9 +21,7 @@ import com.example.presentpal.db.Event;
 import com.example.presentpal.viewmodel.fragment.EventTabEditViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventTabEditFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Ein Fragment für die Bearbeitung von Eventdetails.
  */
 public class EventTabEditFragment extends Fragment {
 
@@ -34,6 +32,11 @@ public class EventTabEditFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Statische Methode zum Erstellen einer neuen Instanz des EventTabEditFragment.
+     *
+     * @return Eine neue Instanz des EventTabEditFragment.
+     */
     public static EventTabEditFragment newInstance() {
         return new EventTabEditFragment();
     }
@@ -48,7 +51,7 @@ public class EventTabEditFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentEventTabEditBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_event_tab_edit, container, false);
+        FragmentEventTabEditBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_tab_edit, container, false);
         eventTabEditViewModel = new ViewModelProvider(this).get(EventTabEditViewModel.class);
 
         eventTabEditViewModel.event.setValue((Event) getActivity().getIntent().getSerializableExtra("event"));

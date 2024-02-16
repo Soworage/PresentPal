@@ -12,6 +12,10 @@ import com.example.presentpal.model.PersonRepository;
 
 import java.util.List;
 
+/**
+ * Das ViewModel für den Vorgang des Einfügens neuer Kategorien.
+ * Es ist zuständig für die Kommunikation zwischen der Repository-Schicht und der UI.
+ */
 public class CategoryInsertViewModel extends AndroidViewModel {
 
     private final PersonRepository personRepository;
@@ -34,6 +38,12 @@ public class CategoryInsertViewModel extends AndroidViewModel {
 
     public String category;
 
+
+    /**
+     * Konstruktor, der eine Instanz von CategoryInsertViewModel erstellt.
+     *
+     * @param application Die Anwendung, zu der das ViewModel gehört.
+     */
     public CategoryInsertViewModel(@NonNull Application application) {
         super(application);
         personRepository = new PersonRepository(application);
@@ -41,26 +51,43 @@ public class CategoryInsertViewModel extends AndroidViewModel {
         position.setValue(0);
     }
 
+    /**
+     * Setzt die ausgewählte Person basierend auf der Position in der Liste.
+     *
+     * @param personPosition Die Position der ausgewählten Person in der Liste.
+     */
     public void setSelectedPerson(int personPosition) {
-        if (allPersons.getValue() != null){
+        if (allPersons.getValue() != null) {
             selectedPerson.setValue(allPersons.getValue().get(personPosition));
         }
     }
 
-    public void addCategory(){
+    /**
+     * Fügt eine neue Kategorie zur ausgewählten Person hinzu.
+     * Signalisiert das Ende des Vorgangs, wenn die Kategorie erfolgreich hinzugefügt wurde.
+     */
+    public void addCategory() {
         if (selectedPerson.getValue() != null) {
-           long returnValue = personRepository.insertPersonCatergory(selectedPerson.getValue().id, category);
-           if(returnValue >= 0){
-               goBack();
-           }
+            long returnValue = personRepository.insertPersonCatergory(selectedPerson.getValue().id, category);
+            if (returnValue >= 0) {
+                goBack();
+            }
         }
     }
 
+    /**
+     * Getter für die Position der ausgewählten Person.
+     *
+     * @return Die Position als LiveData, um Beobachtung zu ermöglichen.
+     */
     public MutableLiveData<Integer> getPosition() {
         return position;
     }
 
-    public void goBack(){
+    /**
+     * Signalisiert, dass der Vorgang beendet werden soll, z.B. durch Schließen der aktuellen Aktivität.
+     */
+    public void goBack() {
         finish.setValue(true);
     }
 

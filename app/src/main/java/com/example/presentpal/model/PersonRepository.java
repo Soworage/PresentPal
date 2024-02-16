@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Verwaltet den Zugriff auf Personen-bezogene Datenquellen und führt asynchrone Operationen aus.
+ */
 public class PersonRepository {
 
     private final PersonDao personDao;
@@ -31,6 +34,12 @@ public class PersonRepository {
     private final CategoryDao categoryDao;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    /**
+     * Konstruktor für PersonRepository.
+     * Initialisiert die Datenzugriffsobjekte (DAOs) für die Arbeit mit der Datenbank.
+     *
+     * @param application Die Anwendungsinstanz, die für den Datenbankzugriff benötigt wird.
+     */
     public PersonRepository(Application application) {
         AppDatabase database = AppDatabaseClient.getInstance(application).getAppDatabase();
         personDao = database.personDao();
@@ -40,11 +49,24 @@ public class PersonRepository {
 
     }
 
+    /**
+     * Fügt eine neue Person hinzu.
+     *
+     * @param firstname Der Vorname der Person.
+     * @param lastname  Der Nachname der Person.
+     * @param nickname  Der Spitzname der Person.
+     * @return Die ID der neu eingefügten Person.
+     */
     public long addPerson(String firstname, String lastname, String nickname) {
         Person person = new Person(firstname, lastname, nickname, false);
         return insertPerson(person);
     }
 
+    /**
+     * Aktualisiert die Daten einer Person in der Datenbank.
+     *
+     * @param person Das Person-Objekt mit den aktualisierten Daten.
+     */
     public void updatePerson(Person person) {
         executor.execute(new Runnable() {
             @Override
@@ -54,13 +76,20 @@ public class PersonRepository {
         });
     }
 
-    public long insertPersonCatergory(int persinId, String category) {
+    /**
+     * Fügt eine neue Person-Kategorie-Beziehung hinzu.
+     *
+     * @param personId Die ID der Person.
+     * @param category Die Kategorie.
+     * @return Die ID der neu eingefügten Person-Kategorie-Beziehung.
+     */
+    public long insertPersonCatergory(int personId, String category) {
 
         final long[] returnValue = new long[1];
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                returnValue[0] = personCategoryDao.insert(new PersonCategory(persinId, category));
+                returnValue[0] = personCategoryDao.insert(new PersonCategory(personId, category));
             }
         });
 
@@ -69,11 +98,23 @@ public class PersonRepository {
 
     }
 
-
+    /**
+     * Ruft eine Person anhand ihrer ID ab.
+     *
+     * @param id Die ID der Person.
+     * @return LiveData, die die angeforderte Person enthält.
+     */
     public LiveData<Person> getPersonById(int id) {
         return personDao.getPersonById(id);
     }
 
+    /**
+     * Fügt einen Benutzer hinzu und erstellt gleichzeitig ein Login.
+     *
+     * @param nickname Der Spitzname des Benutzers.
+     * @param password Das Passwort für das Login.
+     * @param callback Callback, um den Erfolg der Operation zu kommunizieren.
+     */
     public void addUser(String nickname, String password, DataOperationCallback callback) {
         LogIn logIn = new LogIn(password);
         if (nickname == null || nickname.trim().isEmpty()) {
@@ -98,11 +139,19 @@ public class PersonRepository {
         });
     }
 
-
+    /**
+     * Callback-Interface für Datenoperationsrückmeldungen.
+     */
     public interface DataOperationCallback { //für überprüfen ob es geklappt hat für user adden
         void onCompleted(boolean success);
     }
 
+    /**
+     * Fügt eine Person in die Datenbank ein.
+     *
+     * @param person Das Person-Objekt, das eingefügt werden soll.
+     * @return Die ID der eingefügten Person.
+     */
 
     private long insertPerson(Person person) {
 
@@ -118,15 +167,31 @@ public class PersonRepository {
 
     }
 
+    /**
+     * Ruft alle Personen ab.
+     *
+     * @return LiveData-Liste aller Personen.
+     */
     public LiveData<List<Person>> getAllPersons() {
         return personDao.getAllPersons();
     }
 
+    /**
+     * Ruft alle Personen ab, die einer bestimmten Kategorie zugeordnet sind.
+     *
+     * @param category Die Kategorie, nach der gefiltert werden soll.
+     * @return LiveData-Liste der Personen in der angegebenen Kategorie.
+     */
     public LiveData<List<Person>> getAllPersonsByCategory(String category) {
         return personDao.getAllPersonsByCategory(category);
     }
 
-    public void addCategory(Category category){
+    /**
+     * Fügt eine neue Kategorie hinzu.
+     *
+     * @param category Das Kategorie-Objekt, das hinzugefügt werden soll.
+     */
+    public void addCategory(Category category) {
         executor.execute(new Runnable() {
             @Override
             public void run() {

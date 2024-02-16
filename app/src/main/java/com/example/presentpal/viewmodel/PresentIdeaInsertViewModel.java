@@ -13,6 +13,10 @@ import com.example.presentpal.model.PresentIdeaRepository;
 
 import java.util.List;
 
+/**
+ * ViewModel für die Hinzufügung einer neuen Geschenkidee. Es stellt LiveData und Funktionen zur Verfügung,
+ * um die Interaktion zwischen der Benutzeroberfläche und den Datenquellen zu verwalten.
+ */
 public class PresentIdeaInsertViewModel extends AndroidViewModel {
 
     private final PresentIdeaRepository presentIdeaRepository;
@@ -31,6 +35,12 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
 
     public LiveData<List<Person>> allPersons;
 
+    /**
+     * Konstruktor, initialisiert das Repository und lädt alle Personen.
+     *
+     * @param application Die Anwendung, die das ViewModel besitzt.
+     */
+
     public PresentIdeaInsertViewModel(@NonNull Application application) {
         super(application);
         presentIdeaRepository = new PresentIdeaRepository(application);
@@ -39,19 +49,27 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
     }
 
 
-    //private MutableLiveData<>
-    public void addPresentIdea(){
+    /**
+     * Fügt eine neue Geschenkidee hinzu, basierend auf den eingegebenen Daten.
+     */
+    public void addPresentIdea() {
         if (selectedPerson.getValue() != null) {
             presentIdeaInsertOk.setValue(presentIdeaRepository.addPresentIdea(selectedPerson.getValue().getId(), title.getValue(), shortDescription.getValue()));
         }
     }
-
+    /**
+     * Gibt die aktuell ausgewählte Person zurück.
+     * @return LiveData für die ausgewählte Person.
+     */
     public LiveData<Person> getSelectedPerson() {
         return selectedPerson;
     }
-
+    /**
+     * Setzt die ausgewählte Person basierend auf der Position in der Liste.
+     * @param personPosition Die Position der ausgewählten Person in der Liste.
+     */
     public void setSelectedPerson(int personPosition) {
-        if (allPersons.getValue() != null){
+        if (allPersons.getValue() != null) {
             selectedPerson.setValue(allPersons.getValue().get(personPosition));
         }
     }
@@ -65,9 +83,16 @@ public class PresentIdeaInsertViewModel extends AndroidViewModel {
     }
 
     private MutableLiveData<Boolean> finish = new MutableLiveData<>();
-    public void goBack(){
+    /**
+     * Signalisiert der UI, dass der Nutzer zurück navigieren möchte.
+     */
+    public void goBack() {
         finish.setValue(true);
     }
+    /**
+     * Gibt LiveData zurück, das beobachtet werden kann, um auf die Aufforderung zum Zurückgehen zu reagieren.
+     * @return MutableLiveData, das den Zustand des Zurückgehens repräsentiert.
+     */
     public MutableLiveData<Boolean> getFinish() {
         return finish;
     }

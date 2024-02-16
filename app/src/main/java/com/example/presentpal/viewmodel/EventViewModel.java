@@ -24,6 +24,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * ViewModel zur Verwaltung der Event-bezogenen Daten und Geschäftslogik.
+ * Ermöglicht die Interaktion mit der Datenbank über das Repository für die Präsentationsideen und Ereignisse.
+ */
 public class EventViewModel extends AndroidViewModel {
 
     public MutableLiveData<Event> event = new MutableLiveData<>();
@@ -47,6 +51,11 @@ public class EventViewModel extends AndroidViewModel {
 
     private PresentIdeaRepository presentIdeaRepository;
 
+    /**
+     * Konstruktor, der eine neue Instanz von {@link EventViewModel} initialisiert.
+     *
+     * @param application Die Anwendung, die das ViewModel besitzt.
+     */
     public EventViewModel(@NonNull Application application) {
         super(application);
         presentIdeaRepository = new PresentIdeaRepository(application);
@@ -54,6 +63,11 @@ public class EventViewModel extends AndroidViewModel {
         resources = application.getResources();
     }
 
+    /**
+     * Liefert alle Ideen für Präsente.
+     *
+     * @return Eine Liste aller Präsentideen in Verbindung mit Personen.
+     */
     public MutableLiveData<List<PresentIdeaJoinPerson>> getAllPresentIdeas() {
         return allPresentIdeas;
     }
@@ -70,6 +84,9 @@ public class EventViewModel extends AndroidViewModel {
         return readyState;
     }
 
+    /**
+     * Holt alle Ideen für Präsente und Präsente und aktualisiert die entsprechenden LiveData-Objekte.
+     */
     public void getAllPresentIdeasAndPresents() {
 
         if (event.getValue() != null) {
@@ -90,16 +107,33 @@ public class EventViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<Person> getPeronById(int id){
+    /**
+     * Holt eine Person anhand ihrer ID.
+     *
+     * @param id Die ID der Person.
+     * @return Die LiveData der angeforderten Person.
+     */
+    public LiveData<Person> getPeronById(int id) {
         return presentIdeaRepository.getPersonById(id);
     }
 
-
+    /**
+     * Hilfsmethode zur Ermittlung des Monatsnamens basierend auf einem Index.
+     *
+     * @param context Der Kontext der Anwendung.
+     * @param index   Der Index des Monats.
+     * @return Der Name des Monats als String.
+     */
     public String getMonthName(Context context, int index) {
         String[] months = context.getResources().getStringArray(R.array.months_array);
         return months[index - 1];
     }
 
+    /**
+     * Berechnet die verbleibenden Tage bis zum Ereignis und aktualisiert `daysLeft`.
+     *
+     * @throws ParseException Wenn das Datumsformat nicht analysiert werden kann.
+     */
     //https://stackoverflow.com/questions/7103064/java-calculate-the-number-of-days-between-two-dates
     public void daysLeft() throws ParseException {
 
@@ -132,23 +166,39 @@ public class EventViewModel extends AndroidViewModel {
 
     }
 
-    public void calculatePrice(){
+    /**
+     * Berechnet den Gesamtpreis aller Präsente und aktualisiert `price`.
+     */
+    public void calculatePrice() {
         float priceSum = 0f;
-        for (PresentIdeaJoinPerson present: allPresents.getValue()) {
+        for (PresentIdeaJoinPerson present : allPresents.getValue()) {
             priceSum += present.presentIdea.price;
         }
         price.setValue(String.valueOf(priceSum) + " €");
     }
 
     private MutableLiveData<Boolean> finish = new MutableLiveData<>();
-    public void goBack(){
+
+    /**
+     * Signalisiert den Wunsch, den aktuellen Vorgang zu beenden und zurückzukehren.
+     */
+    public void goBack() {
         finish.setValue(true);
     }
+
+    /**
+     * Liefert die LiveData, die angibt, ob der Vorgang beendet werden soll.
+     *
+     * @return Die MutableLiveData, die den Beendigungswunsch enthält.
+     */
     public MutableLiveData<Boolean> getFinish() {
         return finish;
     }
 
-    public void closeEvent(){
+    /**
+     * Schließt das aktuelle Ereignis und aktualisiert die Datenbank entsprechend.
+     */
+    public void closeEvent() {
         Event eventClosed = event.getValue();
         eventClosed.setClosed(1);
         presentIdeaRepository.updateEvent(eventClosed);
