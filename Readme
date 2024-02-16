@@ -1,0 +1,61 @@
+# PresentPal
+
+## Überblick
+PresentPal ist eine innovative App, die NutzerInnen dabei unterstützt, Geschenkideen für Familie, Freunde und Bekannte effizient zu verwalten. Die App hilft, einen Überblick über anstehende Events und Festlichkeiten zu behalten und personalisierte Geschenkvorschläge basierend auf den Vorlieben und Abneigungen der Beschenkten zu sammeln.
+
+## Hauptfeatures
+
+- **Profilverwaltung**: Erstellung und Verwaltung von Profilen für beschenkte Personen mit Details zu Vorlieben, Abneigungen, Interessen und Besonderheiten.
+- **Terminmanagement**: Erfassung einmaliger oder wiederkehrender Termine wie Geburtstage und Hochzeiten.
+- **Geschenkideensammlung**: Sammeln und Verwalten von Geschenkideen für jeden Anlass, inklusive Kaufstatus und persönlichen Notizen.
+- **Favoriten**: Markieren von Personen als Favoriten für schnellen Zugriff.
+- **Mehrsprachigkeit**: Verfügbarkeit der App in Deutsch und Englisch.
+
+
+## Musskriterien
+
+- Splash-Screen beim App-Start
+- Passwortschutz und Login-Screen
+- Erweiterbare Personenprofile
+- Kategorisierung von Personen
+- Übersichtliche Hauptansicht mit nächstgelegenen Terminen
+- Einfache Hinzufügung von Personen, Terminen und Geschenkideen
+- Mehrsprachige Unterstützung
+- Speicherung der Daten in SQLite-Datenbank
+
+## Installation
+
+### Voraussetzungen
+
+- Java OpenJDK 17.0 (LTS) - Verfügbar bei [Eclipse Adoptium](https://adoptium.net)
+- IntelliJ IDEA - Frei für Student*innen über [JetBrains](https://www.jetbrains.com/community/education/#students)
+- Android Studio - [Download](https://developer.android.com/studio)
+
+### Schritte
+
+1. **Java JDK installieren**: Stelle sicher, dass Java OpenJDK 17.0 auf deinem System installiert ist.
+
+2. **IntelliJ IDEA installieren**: Lade IntelliJ IDEA für Student*innen herunter und installiere es.
+
+3. **Android Studio installieren**: Folge dem Link, um Android Studio zu installieren und konfiguriere es mit Android 13.0 (Tiramisu), API-Level 33.
+
+### App-Setup
+
+Nach der Installation der Entwicklungsumgebungen kannst du das Projekt in IntelliJ IDEA oder Android Studio öffnen und die App auf einem Emulator oder einem echten Gerät ausführen.
+
+## Benutzung
+
+Nach dem Start der App erscheint der Splash-Screen, gefolgt von der Aufforderung zur Passworteingabe. In der Hauptansicht kannst du neue Personenprofile anlegen, Termine hinzufügen und Geschenkideen verwalten. Die App bietet intuitive Navigation durch die verschiedenen Kategorien und eine detaillierte Übersicht über anstehende Ereignisse.
+
+## Autoren
+
+- Kay Schindler
+- Alex Mihel
+
+## Kontakt
+
+Für Fragen und Feedback zu PresentPal, wenden Sie sich bitte an alex.mihel@hs-osnabrueck.de.
+
+## Schluss
+
+Wir hoffen, dass PresentPal Ihnen dabei hilft, Ihre Geschenkideen besser zu organisieren und nie wieder einen besonderen Anlass zu vergessen!
